@@ -88,18 +88,18 @@ header("Content-Type: text/html; charset=utf-8"); ?>
         
         <div class="menu clearfix">
             
+            <span id="main_menu_trigger" class="main_menu_item" onclick="toggle_main_menu_items()">
+                <span class="fa fa-bars fa-fw"></span>
+            </span>
+    
             <? if( $template->count_left_sidebar_groups() > 0 ): ?>
-                <span id="left_sidebar_trigger" class="main_menu_item" style="display: none;"
+                <span id="left_sidebar_trigger" class="main_menu_item pull-left"
                       onclick="toggle_left_sidebar_items()">
                     <span class="fa fa-ellipsis-v fa-fw"></span>
                 </span>
             <? endif; ?>
             
-            <span id="main_menu_trigger" class="main_menu_item" onclick="toggle_main_menu_items()">
-                <span class="fa fa-bars fa-fw"></span>
-            </span>
-            
-            <a class="main_menu_item pull-left" href="<?= $config->full_root_path ?>">
+            <a class="main_menu_item always_visible pull-left" href="<?= $config->full_root_path ?>">
                 <span class="fa fa-home fa-fw"></span>
             </a>
             
