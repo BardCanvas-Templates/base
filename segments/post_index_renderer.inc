@@ -5,14 +5,16 @@
  * @var post_record[] $posts
  * @var post_record[] $featured_posts
  * @var array         $pagination
+ * @var record_browser $posts_browser
  */
 
 use hng2_modules\posts\post_record;
+use hng2_tools\record_browser;
 ?>
 
 <div id="posts_index" class="posts_index clearfix">
     
-    <? foreach($posts as $post): ?>
+    <? foreach( $posts as $post ): ?>
         <? $author = $post->get_author(); ?>
         
         <article class="post clearfix" data-post-id="<?= $post->id_post ?>"
