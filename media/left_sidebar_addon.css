@@ -5,9 +5,10 @@
                                   width: 150px; float: left; padding-top: 20px; }
 #content                        { width: calc(100% - 150px); float: left; }
 
-#left_sidebar a                 { text-decoration: none; }
+#left_sidebar a                 { text-decoration: none; color: #990d0d; }
 #left_sidebar .item             { display: block; margin: 0 0 0 10px; padding: 4px 6px; cursor: pointer; }
 #left_sidebar .item:hover       { background-color: white; }
+#left_sidebar .item.selected    { background-color: rgba(255, 255, 255, .5); }
 #left_sidebar .group            { margin-bottom: 20px; }
 #left_sidebar .group .title     { display: block; margin: 0 0 0 2px; padding: 2px 6px; color: grey;
                                   font-weight: bold; font-size: 8pt; line-height: normal; font-variant: small-caps; }
