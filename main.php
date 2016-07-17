@@ -77,7 +77,7 @@ header("Content-Type: text/html; charset=utf-8"); ?>
         
         <div class="header_top">
             <?
-            if($account->_is_admin && $settings->get("engine.show_admin_menu_in_header_menu") != "true")
+            if( $account->_is_admin && $settings->get("engine.show_admin_menu_in_header_menu") != "true" )
                 include "{$template->abspath}/segments/admin_menu.inc";
             
             foreach($modules as $this_module)
@@ -99,12 +99,12 @@ header("Content-Type: text/html; charset=utf-8"); ?>
                 </span>
             <? endif; ?>
             
-            <a class="main_menu_item always_visible pull-left" href="<?= $config->full_root_path ?>/">
+            <a class="main_menu_item always_visible pull-left" href="<?= $config->full_root_path ?>">
                 <span class="fa fa-home fa-fw"></span>
             </a>
             
             <?
-            if( $settings->get("engine.show_admin_menu_in_header_menu") == "true" )
+            if( $account->_is_admin && $settings->get("engine.show_admin_menu_in_header_menu") == "true" )
                 add_admin_menu_items_to_header_menu();
             
             foreach($modules as $this_module)
