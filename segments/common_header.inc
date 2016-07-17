@@ -21,7 +21,7 @@
 
 <!-- Defaults -->
 <script type="text/javascript">
-    var $_FULL_ROOT_PATH          = '<?= $config->full_root_path ?>';
+    var $_FULL_ROOT_PATH          = '<?= $config->full_root_path ?>/';
     var $_PHP_SELF                = '<?= $_SERVER["PHP_SELF"] ?>';
     var $_CURRENT_USER_ID_ACCOUNT = '<?= $account->id_account ?>';
     var $_CURRENT_USER_LANGUAGE   = '<?= $_COOKIE["{$config->website_key}_UL"] ?>';

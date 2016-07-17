@@ -45,7 +45,7 @@ header("Content-Type: text/html; charset=utf-8"); ?>
     <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/styles~v<?=$config->scripts_version?>.css">
     <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/post_styles~v<?=$config->scripts_version?>.css">
     
-    <? if( $template->count_left_sidebar_groups() > 0 ): ?>
+    <? if( $settings->get("engine.hide_left_sidebar_on_admin_pages") != "true" && $template->count_left_sidebar_groups() > 0 ): ?>
         <!-- Left sidebar -->
         <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/left_sidebar_addon~v<?=$config->scripts_version?>.css">
         <script type="text/javascript"          src="<?= $template->url ?>/media/left_sidebar_addon~v<?=$config->scripts_version?>.js"></script>
@@ -87,14 +87,14 @@ header("Content-Type: text/html; charset=utf-8"); ?>
                 <span class="fa fa-bars fa-fw"></span>
             </span>
             
-            <? if( $template->count_left_sidebar_groups() > 0 ): ?>
+            <? if( $settings->get("engine.hide_left_sidebar_on_admin_pages") != "true" && $template->count_left_sidebar_groups() > 0 ): ?>
                 <span id="left_sidebar_trigger" class="main_menu_item pull-left"
                       onclick="toggle_left_sidebar_items()">
                     <span class="fa fa-ellipsis-v fa-fw"></span>
                 </span>
             <? endif; ?>
             
-            <a class="main_menu_item always_visible pull-left" href="<?= $config->full_root_path ?>">
+            <a class="main_menu_item always_visible pull-left" href="<?= $config->full_root_path ?>/">
                 <span class="fa fa-home fa-fw"></span>
             </a>
             
@@ -123,7 +123,7 @@ header("Content-Type: text/html; charset=utf-8"); ?>
     
     <div id="content_wrapper" class="clearfix">
         
-        <? if( $template->count_left_sidebar_groups() > 0 ): ?>
+        <? if( $settings->get("engine.hide_left_sidebar_on_admin_pages") != "true" && $template->count_left_sidebar_groups() > 0 ): ?>
             <div id="left_sidebar">
                 <? echo $template->build_left_sidebar_groups(); ?>
             </div>
@@ -134,7 +134,7 @@ header("Content-Type: text/html; charset=utf-8"); ?>
         </div><!-- /#content -->
         
     </div>
-        
+    
     <?
     foreach($modules as $this_module)
         if( ! empty($this_module->template_includes->post_footer) )
