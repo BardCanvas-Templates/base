@@ -36,12 +36,18 @@ use hng2_tools\record_browser;
                     </a>
                 </div>
                 <div class="meta_section">
-                    <a class="meta_field dimmed" href="<?= $config->full_root_url ?>/date/<?= date("Y", strtotime($post->publishing_date)) ?>/<?= date("m", strtotime($post->publishing_date)) ?>/<?= date("d", strtotime($post->publishing_date)) ?>/">
+                    <a class="meta_field dimmed" href="<?= $config->full_root_url ?>/date/<?= date("Y/m/d", strtotime($post->publishing_date)) ?>/">
                         <span class="fa fa-calendar fa-fw"></span>
                         <?= time_elapsed_string($post->publishing_date) ?>
                     </a>
+                    <? if($post->expiration_date != "0000-00-00 00:00:00"): ?>
+                        <span class="meta_field dimmed">
+                            <span class="fa fa-clock-o fa-fw"></span>
+                            <?= preg_replace('/\d+s/', "", time_remaining_string($post->expiration_date)) ?>
+                        </span>
+                    <? endif; ?>
                 </div>
-            
+                
             </div>
             
             <h1><?= $post->get_processed_title() ?></h1>
