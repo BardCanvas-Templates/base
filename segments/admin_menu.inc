@@ -58,7 +58,8 @@
                 $added_class = ($module_name == $current_module->name && stristr($_SERVER["PHP_SELF"], "/$module_name/$item_url") !== false) ? "current" : "";
                 $url         = "{$config->full_root_path}/$module_name/$item_url";
                 $caption     = $this_module->language->admin->menu_items->{$this_menu_item->caption_language_var};
-                $menu       .= "<a class='item $added_class' href='$url'>$caption</a>";
+                $icon        = empty($this_module->language->icon) ? "" : ("<span class='fa " . trim($this_module->language->icon) . "'></span>");
+                $menu       .= "<a class='item $added_class' href='$url'>$icon $caption</a>";
             }
         }
     }
