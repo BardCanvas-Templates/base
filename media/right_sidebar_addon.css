@@ -22,3 +22,17 @@
        We must adjust the content width. */
     #content { width: 100%; }
 }
+
+/* large displays */
+
+@media all and (min-width: 1920px) and (max-width: 9999px) {
+    #content       { width: calc(83% - 150px) }
+    #right_sidebar { width: 17% }
+}
+
+@media all and (min-width: 1281px) and (max-width: 1366px)
+{
+
+    #content       { width: calc(80% - 150px) }
+    #right_sidebar { width: 20% }
+}

@@ -58,7 +58,7 @@ header("Content-Type: text/html; charset=utf-8"); ?>
             include "{$this_module->abspath}/contents/{$this_module->template_includes->html_head}";
     ?>
 </head>
-<body data-orientation="landscape" data-viewport-class="0" class="admin">
+<body data-orientation="landscape" data-viewport-class="0" <?=$template->get("additional_body_attributes")?>  class="admin">
 
 <div id="body_wrapper">
     
