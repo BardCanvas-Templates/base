@@ -143,7 +143,13 @@ header("Content-Type: text/html; charset=utf-8"); ?>
     
 </div><!-- /#body_wrapper -->
 
-<? internals::render(__FILE__); ?>
+<?
+foreach($modules as $this_module)
+    if( ! empty($this_module->template_includes->pre_eof) )
+        include "{$this_module->abspath}/contents/{$this_module->template_includes->pre_eof}";
+
+internals::render(__FILE__);
+?>
 
 </body>
 </html>
