@@ -29,6 +29,11 @@
     var $_CURRENT_USER_IS_ADMIN   = <?= $account->_is_admin ? "true" : "false" ?>;
     var $_TEMPLATE_URL            = '<?= $template->url ?>';
     var $_SCRIPTS_VERSION         = '<?= $config->scripts_version ?>';
+    
+    var tinymce_default_css_files = [
+        $_FULL_ROOT_PATH  + '/media/styles~v' + $_SCRIPTS_VERSION + '.css',
+        $_TEMPLATE_URL    + '/media/styles~v' + $_SCRIPTS_VERSION + '.css'
+    ];
 </script>
 <script type="text/javascript" src="<?= $config->full_root_path ?>/media/defaults~v<?=$config->scripts_version?>.js"></script>
 
