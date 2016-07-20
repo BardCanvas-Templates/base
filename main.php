@@ -26,10 +26,6 @@ header("Content-Type: text/html; charset=utf-8"); ?>
     <script type="text/javascript" src="<?= $config->full_root_path ?>/lib/jquery.blockUI.js"></script>
     <script type="text/javascript" src="<?= $config->full_root_path ?>/lib/jquery.form.min.js"></script>
     
-    <!-- These must be loaded after setting $_FULL_ROOT_PATH and other JS defaults -->
-    <link rel="stylesheet" type="text/css" href="<?= $config->full_root_path ?>/lib/jquery-lightbox/jquery.lightbox.css">
-    <script type="text/javascript"          src="<?= $config->full_root_path ?>/lib/jquery-lightbox/jquery.lightbox.js"></script>
-    
     <!-- Noty -->
     <script type="text/javascript" src="<?= $config->full_root_path ?>/lib/noty-2.3.7/js/noty/packaged/jquery.noty.packaged.min.js"></script>
     <script type="text/javascript" src="<?= $config->full_root_path ?>/lib/noty-2.3.7/js/noty/themes/default.js"></script>

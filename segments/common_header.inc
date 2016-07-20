@@ -49,3 +49,6 @@
 
 <!-- UI Additions -->
 <link rel="stylesheet" type="text/css" href="<?= $config->full_root_path ?>/lib/font-awesome-4.6.3/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="<?= $config->full_root_path ?>/lib/prettyPhoto_compressed_3.1.6/css/prettyPhoto.css">
+<script type="text/javascript"          src="<?= $config->full_root_path ?>/lib/prettyPhoto_compressed_3.1.6/js/jquery.prettyPhoto.js"></script>
+<script type="text/javascript" charset="utf-8"> $(document).ready(function(){ $(".prettyPhoto").prettyPhoto({social_tools: false}); }); </script>
