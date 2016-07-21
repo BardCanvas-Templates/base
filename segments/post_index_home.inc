@@ -19,9 +19,11 @@ $has_featured_posts = count($featured_posts) > 0 ? "true" : "false";
         <? foreach($featured_posts as $post): ?>
             
             <div class="featured_post">
-                <div class="thumbnail">
-                    <img src="http://www.foro-elite.com/wp-content/uploads/2016/07/Katherine-Jackman-255339.13-201927-e1468460131434-375x210.png?8f7ba1">
-                </div>
+                <? if( ! empty($post->featured_image_thumbnail) ): ?>
+                    <div class="thumbnail">
+                        <img src="<?= $post->featured_image_thumbnail ?>">
+                    </div>
+                <? endif; ?>
                 <h3><?= $post->get_processed_title() ?></h3>
             </div>
             

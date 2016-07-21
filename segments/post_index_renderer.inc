@@ -51,10 +51,12 @@ use hng2_tools\record_browser;
             </div>
             
             <h1><?= $post->get_processed_title() ?></h1>
-            
-            <div class="post_featured_image">
-                <img src="http://www.foro-elite.com/wp-content/uploads/2016/07/Katherine-Jackman-255339.13-201927-e1468460131434-375x210.png?8f7ba1">
-            </div>
+    
+            <? if( ! empty($post->featured_image_thumbnail) ): ?>
+                <div class="post_featured_image">
+                    <img src="<?= $post->featured_image_thumbnail ?>">
+                </div>
+            <? endif; ?>
             
             <div class="post_contents post_excerpt">
                 <?= $post->get_processed_excerpt() ?>
