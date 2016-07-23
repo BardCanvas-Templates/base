@@ -45,12 +45,6 @@ $author = $post->get_author();
     
     </div>
     
-    <? if( ! empty($post->featured_image_thumbnail) ): ?>
-        <div class="post_featured_image">
-            <img src="<?= $post->featured_image_thumbnail ?>">
-        </div>
-    <? endif; ?>
-    
     <div class="post_contents">
         <?= $post->get_processed_content() ?>
     </div>
