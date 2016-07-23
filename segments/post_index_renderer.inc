@@ -50,7 +50,7 @@ use hng2_tools\record_browser;
                 
             </div>
             
-            <h1><?= $post->get_processed_title() ?></h1>
+            <h1><a href="<?= $config->full_root_path ?>/<?= $post->id_post ?>"><?= $post->get_processed_title() ?></a></h1>
     
             <? if( ! empty($post->featured_image_thumbnail) ): ?>
                 <div class="post_featured_image">
