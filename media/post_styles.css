@@ -85,6 +85,9 @@ article .post_meta .meta_section.upper {
 .single_post h1         { margin-bottom: 0; }
 .single_post .post_meta { margin-bottom: 20px; }
 
+.single_post img   { max-width: 100%; }
+.single_post video { max-width: 100%; }
+
 /* ======= */
 /* INDEXES */
 /* ======= */
