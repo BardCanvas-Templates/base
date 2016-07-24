@@ -80,6 +80,13 @@ article .post_meta .meta_section.upper {
     font-size: 11pt;
 }
 
+article.single_post, .comments_post_form {
+    margin-bottom: 20px; background-color: white; padding: 10px;
+    -webkit-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.25);
+    -moz-box-shadow:    1px 1px 5px 0 rgba(0, 0, 0, 0.25);
+    box-shadow:         1px 1px 5px 0 rgba(0, 0, 0, 0.25);
+}
+
 /* Single post overrides */
 
 .single_post h1         { margin-bottom: 0; }

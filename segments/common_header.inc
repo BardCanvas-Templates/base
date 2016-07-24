@@ -5,7 +5,11 @@
  * @package    HNG2
  * @subpackage core
  * @author     Alejandro Caballero - lava.caballero@gmail.com
+ *             
+ * @var template $template
  */
+
+use hng2_base\template;
 ?>
 
 <!-- Base metas -->
@@ -30,6 +34,7 @@
     var $_TEMPLATE_URL            = '<?= $template->url ?>';
     var $_SCRIPTS_VERSION         = '<?= $config->scripts_version ?>';
     
+    var $_TINYMCE_ADDON_FUNCTIONS = {};
     var tinymce_default_css_files = [
         $_FULL_ROOT_PATH  + '/media/styles~v' + $_SCRIPTS_VERSION + '.css',
         $_TEMPLATE_URL    + '/media/styles~v' + $_SCRIPTS_VERSION + '.css'

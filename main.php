@@ -25,6 +25,9 @@ header("Content-Type: text/html; charset=utf-8"); ?>
     <!-- Others -->
     <script type="text/javascript" src="<?= $config->full_root_path ?>/lib/jquery.blockUI.js"></script>
     <script type="text/javascript" src="<?= $config->full_root_path ?>/lib/jquery.form.min.js"></script>
+    <script type="text/javascript" src="<?= $config->full_root_path ?>/lib/tinymce-4.4.0/tinymce.min.js"></script>
+    <script type="text/javascript" src="<?= $config->full_root_path ?>/media/init_tinymce~v<?=$config->scripts_version?>.js"></script>
+    <script type="text/javascript"> $(document).ready(function() { tinymce.init(tinymce_defaults); }); </script>
     
     <!-- Noty -->
     <script type="text/javascript" src="<?= $config->full_root_path ?>/lib/noty-2.3.7/js/noty/packaged/jquery.noty.packaged.min.js"></script>
@@ -206,6 +209,11 @@ header("Content-Type: text/html; charset=utf-8"); ?>
     ?>
     
 </div><!-- /#body_wrapper -->
+
+<!-- These must be at the end of the document -->
+<script type="text/javascript" src="<?= $config->full_root_path ?>/lib/tinymce-4.4.0/tinymce.min.js"></script>
+<script type="text/javascript" src="<?= $config->full_root_path ?>/media/init_tinymce~v<?=$config->scripts_version?>.js"></script>
+<script type="text/javascript"> $(document).ready(function() { tinymce.init(tinymce_defaults); }); </script>
 
 <?
 foreach($modules as $this_module)

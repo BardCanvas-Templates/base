@@ -2,9 +2,11 @@
 /**
  * Single post renderer
  *
+ * @var module      $current_module posts
  * @var post_record $post
  */
 
+use hng2_base\module;
 use hng2_modules\posts\post_record;
 
 $author = $post->get_author();
@@ -49,6 +51,6 @@ $author = $post->get_author();
         <?= $post->get_processed_content() ?>
     </div>
     
-    <? $current_module->load_extensions("front", "single_post_after_contents"); ?>
-    
 </article>
+
+<? $current_module->load_extensions("front", "single_post_after_contents"); ?>
