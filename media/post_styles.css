@@ -37,7 +37,7 @@
                                                -moz-box-shadow:    1px 1px 5px 0 rgba(0, 0, 0, 0.25);
                                                box-shadow:         1px 1px 5px 0 rgba(0, 0, 0, 0.25); }
 .posts_index article h1                       { margin: 0; padding: 5px 10px; }
-.posts_index article .post_featured_image     { padding: 5px 10px; }
+.posts_index article .post_featured_image     { padding: 5px 10px; height: 25vh; }
 .posts_index article .post_featured_image img { width: 100%; }
 .posts_index article .post_contents           { padding: 5px 10px 10px 10px; }
 .posts_index article .post_contents *         { margin-top: 1px; margin-bottom: 1px; }

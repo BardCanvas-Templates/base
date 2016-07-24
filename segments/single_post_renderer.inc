@@ -37,9 +37,9 @@ $author = $post->get_author();
             </a>
             <? if($post->expiration_date != "0000-00-00 00:00:00"): ?>
                 <span class="meta_field dimmed">
-                            <span class="fa fa-clock-o fa-fw"></span>
+                    <span class="fa fa-clock-o fa-fw"></span>
                     <?= preg_replace('/\d+s/', "", time_remaining_string($post->expiration_date)) ?>
-                        </span>
+                </span>
             <? endif; ?>
         </div>
     
@@ -48,5 +48,7 @@ $author = $post->get_author();
     <div class="post_contents">
         <?= $post->get_processed_content() ?>
     </div>
+    
+    <? $current_module->load_extensions("front", "single_post_after_contents"); ?>
     
 </article>
