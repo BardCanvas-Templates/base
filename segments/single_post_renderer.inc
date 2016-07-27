@@ -18,7 +18,7 @@ $author = $post->get_author();
     
     <h1><?= $post->get_processed_title() ?></h1>
     
-    <div class="post_meta clearfix">
+    <div class="meta_box clearfix">
         
         <img class="user_avatar" src="<?= $config->full_root_url ?>/media/default_avatar.jpg">
         

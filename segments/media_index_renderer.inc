@@ -21,7 +21,7 @@ use hng2_tools\record_browser;
                  data-main-category="<?= $item->main_category_slug ?>"
                  data-author-role="<?= $author->get_role() ?>">
             
-            <div class="post_meta clearfix">
+            <div class="meta_box clearfix">
                 
                 <img class="user_avatar" src="<?= $config->full_root_url ?>/media/default_avatar.jpg">
                 

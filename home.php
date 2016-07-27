@@ -5,8 +5,11 @@
  * @package    HNG2
  * @subpackage core
  * @author     Alejandro Caballero - lava.caballero@gmail.com
+ *             
+ * @var template $template
  */
 
+use hng2_base\template;
 use hng2_tools\internals;
 
 include __DIR__ . "/functions.inc";
