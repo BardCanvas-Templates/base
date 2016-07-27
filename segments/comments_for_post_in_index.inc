@@ -7,6 +7,7 @@
  * @subpackage comments
  * @author     Alejandro Caballero - lava.caballero@gmail.com
  *
+ * @var config   $config
  * @var settings $settings
  * @var template $template
  * @var module   $this_module    self (comments)
@@ -17,6 +18,7 @@
  * @var comment_record[] $comments
  */
 
+use hng2_base\config;
 use hng2_base\module;
 use hng2_base\settings;
 use hng2_base\template;
@@ -46,7 +48,7 @@ if( empty($excerpt_length) ) $excerpt_length = 100;
                 <?
                 $excerpt = make_excerpt_of($comment->content, $excerpt_length);
                 if( empty($excerpt) ) echo "<span class='ellipsis'>...</span>";
-                else              echo $excerpt;
+                else                  echo $excerpt;
                 ?>
             </a>
         </li>
