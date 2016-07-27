@@ -1,22 +1,18 @@
 <?php
 /**
- * Posts index renderer
+ * Posts index renderer - called by the home layout and archives
  *
- * @var post_record[]  $posts
- * @var post_record[]  $featured_posts
- * @var array          $pagination
- * @var record_browser $posts_browser
+ * @var home_posts_data $home_posts
  * @var template       $template
  */
 
 use hng2_base\template;
-use hng2_modules\posts\post_record;
-use hng2_tools\record_browser;
+use hng2_modules\posts\home_posts_data;
 ?>
 
 <div id="posts_index" class="posts_index clearfix">
     
-    <? foreach( $posts as $post ): ?>
+    <? foreach( $home_posts->posts as $post ): ?>
         <? $author = $post->get_author(); ?>
         
         <article class="post clearfix" data-post-id="<?= $post->id_post ?>"
@@ -73,6 +69,6 @@ use hng2_tools\record_browser;
 
 <div id="posts_pagination">
     
-    <? $posts_browser->render_pagination_links($template->get("pagination_url_prefix"), $pagination); ?>
-
+    <? $home_posts->browser->render_pagination_links($template->get("pagination_url_prefix"), $home_posts->pagination); ?>
+    
 </div>

@@ -2,21 +2,21 @@
 /**
  * Posts index for the home layout
  * 
- * @var post_record[] $posts
- * @var post_record[] $featured_posts
- * @var array         $pagination
+ * @var template        $template
+ * @var home_posts_data $home_posts
  */
 
-use hng2_modules\posts\post_record;
+use hng2_base\template;
+use hng2_modules\posts\home_posts_data;
 
-$has_featured_posts = count($featured_posts) > 0 ? "true" : "false";
+$has_featured_posts = count($home_posts->featured_posts) > 0 ? "true" : "false";
 ?>
 
 <div id="home_index_wrapper" data-with-featured-posts="<?= $has_featured_posts ?>" class="clearfix">
     
     <div id="featured_posts_column">
         
-        <? foreach($featured_posts as $post): ?>
+        <? foreach($home_posts->featured_posts as $post): ?>
             
             <div class="featured_post">
                 <? if( ! empty($post->featured_image_thumbnail) ): ?>
