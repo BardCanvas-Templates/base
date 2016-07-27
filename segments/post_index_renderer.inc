@@ -2,12 +2,14 @@
 /**
  * Posts index renderer
  *
- * @var post_record[] $posts
- * @var post_record[] $featured_posts
- * @var array         $pagination
+ * @var post_record[]  $posts
+ * @var post_record[]  $featured_posts
+ * @var array          $pagination
  * @var record_browser $posts_browser
+ * @var template       $template
  */
 
+use hng2_base\template;
 use hng2_modules\posts\post_record;
 use hng2_tools\record_browser;
 ?>
@@ -50,8 +52,8 @@ use hng2_tools\record_browser;
                 
             </div>
             
-            <h1><a href="<?= $config->full_root_path ?>/<?= $post->id_post ?>"><?= $post->get_processed_title() ?></a></h1>
-    
+            <h1><a href="<?= $post->get_permalink() ?>"><?= $post->get_processed_title() ?></a></h1>
+            
             <? if( ! empty($post->featured_image_thumbnail) ): ?>
                 <div class="post_featured_image thumbnail">
                     <img src="<?= $post->featured_image_thumbnail ?>">
@@ -60,8 +62,9 @@ use hng2_tools\record_browser;
             
             <div class="post_contents post_excerpt">
                 <?= $post->get_processed_excerpt() ?>
+                <? $this_module->load_extensions("front", "indexes_after_excerpt"); ?>
             </div>
-        
+            
         </article>
     
     <? endforeach; ?>

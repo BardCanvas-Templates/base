@@ -45,7 +45,8 @@ if( count($comments) ) $comments = array_reverse($comments);
     
     <? foreach($comments as $comment): ?>
         <? $author = $comment->get_author(); ?>
-        <div class="comment_entry" id="comment_<?= $comment->id_comment ?>" data-id-comment="<?= $comment->id_comment ?>">
+        <div class="comment_entry" id="comment_<?= $comment->id_comment ?>" data-id-comment="<?= $comment->id_comment ?>"
+             data-parent-comment="<?= $comment->parent_comment ?>">
             
             <div class="comment_wrapper">
                 <div class="meta_box clearfix">
