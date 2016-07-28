@@ -2,19 +2,23 @@
 /**
  * Media index renderer
  *
- * @var media_record[] $items
- * @var media_record[] $featured_posts
- * @var array          $pagination
- * @var record_browser $media_browser
+ * @var config         $config
+ * @var template       $template
+ * @var settings       $settings
+ * @var items_data     $items_data
  */
 
-use hng2_base\repository\media_record;
-use hng2_tools\record_browser;
+use hng2_base\config;
+use hng2_base\settings;
+use hng2_base\template;
+use hng2_modules\gallery\items_data;
+
+$this_module = $modules["gallery"];
 ?>
 
 <div id="posts_index" class="posts_index clearfix">
     
-    <? foreach( $items as $item): ?>
+    <? foreach( $items_data->items as $item): ?>
         <? $author = $item->get_author(); ?>
         
         <article class="post clearfix" data-post-id="<?= $item->id_post ?>"
@@ -46,8 +50,8 @@ use hng2_tools\record_browser;
             
             <h1><?= $item->get_processed_title() ?></h1>
             
-            <div class="post_featured_image">
-                <img src="http://www.foro-elite.com/wp-content/uploads/2016/07/Katherine-Jackman-255339.13-201927-e1468460131434-375x210.png?8f7ba1">
+            <div class="post_featured_image thumbnail">
+                <img src="<?= $item->get_thumbnail_url() ?>">
             </div>
             
             <div class="post_contents post_excerpt">
@@ -62,6 +66,6 @@ use hng2_tools\record_browser;
 
 <div id="posts_pagination">
     
-    <? $media_browser->render_pagination_links($template->get("pagination_url_prefix"), $pagination); ?>
+    <? $items_data->browser->render_pagination_links($template->get("pagination_url_prefix"), $items_data->pagination); ?>
 
 </div>

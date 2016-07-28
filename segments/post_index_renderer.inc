@@ -2,17 +2,21 @@
 /**
  * Posts index renderer - called by the home layout and archives
  *
- * @var home_posts_data $home_posts
- * @var template       $template
+ * @var config     $config
+ * @var posts_data $posts_data
+ * @var template   $template
  */
 
+use hng2_base\config;
 use hng2_base\template;
-use hng2_modules\posts\home_posts_data;
+use hng2_modules\posts\posts_data;
+
+$this_module = $modules["posts"];
 ?>
 
 <div id="posts_index" class="posts_index clearfix">
     
-    <? foreach( $home_posts->posts as $post ): ?>
+    <? foreach( $posts_data->posts as $post ): ?>
         <? $author = $post->get_author(); ?>
         
         <article class="post clearfix" data-post-id="<?= $post->id_post ?>"
@@ -69,6 +73,6 @@ use hng2_modules\posts\home_posts_data;
 
 <div id="posts_pagination">
     
-    <? $home_posts->browser->render_pagination_links($template->get("pagination_url_prefix"), $home_posts->pagination); ?>
+    <? $posts_data->browser->render_pagination_links($template->get("pagination_url_prefix"), $posts_data->pagination); ?>
     
 </div>
