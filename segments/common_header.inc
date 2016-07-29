@@ -7,8 +7,14 @@
  * @author     Alejandro Caballero - lava.caballero@gmail.com
  *             
  * @var template $template
+ * @var settings $settings
+ * @var config   $config
+ * @var account  $account
  */
 
+use hng2_base\account;
+use hng2_base\config;
+use hng2_base\settings;
 use hng2_base\template;
 ?>
 
@@ -33,6 +39,8 @@ use hng2_base\template;
     var $_CURRENT_USER_IS_ADMIN   = <?= $account->_is_admin ? "true" : "false" ?>;
     var $_TEMPLATE_URL            = '<?= $template->url ?>';
     var $_SCRIPTS_VERSION         = '<?= $config->scripts_version ?>';
+    
+    var $_MAIN_MENU_AUTO_COLLAPSE_WIDTH = parseInt('<?= (int) $settings->get("engine.main_menu_auto_collapse_width", 700) ?>');
     
     var $_TINYMCE_ADDON_FUNCTIONS = {};
     var tinymce_default_css_files = [
