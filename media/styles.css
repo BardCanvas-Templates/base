@@ -61,22 +61,10 @@ h3 .emojione { height: 12pt; }
 
 /* Thumbnail placeholders */
 
-.thumbnail {
-    border: 1px solid; background-color: transparent;
-    position: relative; height: 110px; overflow: hidden;
-}
+.thumbnail { border: 1px solid; background-color: transparent; }
 
-.nav_table .thumbnail {
-    display: inline-block; width: 230px;
-}
+.nav_table .thumbnail     { display: inline-block; }
+.nav_table .thumbnail img { width: 230px; }
 
-.posts_index .thumbnail {
-    height: 400px; border: none;
-}
-
-.thumbnail img {
-    position: absolute; left: 50%; top: 50%; max-width: 100%; height: auto;
-    -webkit-transform: translate(-50%,-50%);
-    -ms-transform:     translate(-50%,-50%);
-    transform:         translate(-50%,-50%);
-}
+.posts_index .thumbnail     { border: none; }
+.posts_index .thumbnail img { width: 100%; }
