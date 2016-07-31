@@ -164,13 +164,13 @@ article.single_post, .content_frame {
 @media all and (min-width: 1281px) {
     body[data-listing-type="archive"] .posts_index article {
         float: left;
-        width: 49%;
-        margin-right: 2%;
+        width: calc(50% - 5px);
+        margin-right: 10px;
         display: inline-block;
         vertical-align: top;
     }
 
-    body[data-listing-type="archive"] .posts_index article:nth-child(2) {
+    body[data-listing-type="archive"] .posts_index article:nth-child(even) {
         margin-right: 0;
     }
 }

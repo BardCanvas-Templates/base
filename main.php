@@ -5,10 +5,16 @@
  * @package    HNG2
  * @subpackage core
  * @author     Alejandro Caballero - lava.caballero@gmail.com
- *             
+ *
+ * @var account  $account
+ * @var config   $config
  * @var template $template
+ * @var settings $settings
  */
 
+use hng2_base\account;
+use hng2_base\config;
+use hng2_base\settings;
 use hng2_base\template;
 use hng2_tools\internals;
 
@@ -65,7 +71,8 @@ header("Content-Type: text/html; charset=utf-8"); ?>
             include "{$this_module->abspath}/contents/{$this_module->template_includes->html_head}";
     ?>
 </head>
-<body data-orientation="landscape" data-viewport-class="0" <?=$template->get("additional_body_attributes")?>  class="main">
+<body data-orientation="landscape" data-viewport-class="0" <?=$template->get("additional_body_attributes")?>
+      data-is-user-profile-page="<?= $template->get("show_user_profile_heading") ? "true" : "false" ?>" class="main">
 
 <div id="body_wrapper">
     
@@ -129,14 +136,25 @@ header("Content-Type: text/html; charset=utf-8"); ?>
     </div><!-- /#header -->
     
     <div id="content_wrapper" class="clearfix">
-    
+        
         <? if( $template->count_left_sidebar_groups() > 0 ): ?>
             <div id="left_sidebar">
                 <? echo $template->build_left_sidebar_groups(); ?>
             </div>
         <? endif; ?>
         
+        <?
+        foreach($modules as $this_module)
+            if( ! empty($this_module->template_includes->pre_content) )
+                include "{$this_module->abspath}/contents/{$this_module->template_includes->pre_content}";
+        ?>
+        
         <div id="content">
+            <?
+            if( $template->get("show_user_profile_heading") )
+                include "{$template->abspath}/segments/user_profile_heading.inc";
+            ?>
+            
             <?
             foreach($modules as $this_module)
                 if( ! empty($this_module->template_includes->content_top) )
@@ -149,7 +167,13 @@ header("Content-Type: text/html; charset=utf-8"); ?>
                     include "{$this_module->abspath}/contents/{$this_module->template_includes->content_bottom}";
             ?>
         </div><!-- /#content -->
-    
+        
+        <?
+        foreach($modules as $this_module)
+            if( ! empty($this_module->template_includes->post_content) )
+                include "{$this_module->abspath}/contents/{$this_module->template_includes->post_content}";
+        ?>
+        
         <? # if( $template->count_right_sidebar_items() > 0 ): ?>
             <div id="right_sidebar">
                 <? # echo $template->build_right_sidebar_items(); ?>

@@ -68,3 +68,28 @@ h3 .emojione { height: 12pt; }
 
 .posts_index .thumbnail     { border: none; }
 .posts_index .thumbnail img { width: 100%; }
+
+/* User profile styles */
+
+#user_profile_area    { background-color: white; box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.25); }
+#user_profile_heading { background: #990d0d center center no-repeat; background-size: cover;
+                        width: 100%; height: 300px; display: table; }
+
+#user_profile_area .details                { width: 100%; height: 300px; padding: 0 10px 10px 195px;
+                                             display: table-cell; text-align: left; vertical-align: bottom;
+                                             color: white; font-weight: bold; text-shadow: 2px 2px 5px black; }
+#user_profile_area .display_name           { font-size: 20pt; margin-bottom: 5px; }
+#user_profile_area .display_name .emojione { height:    20pt; }
+#user_profile_area .handler                { font-size: 14pt; margin-bottom: 5px; }
+#user_profile_area .extras                 { font-size: 12pt; }
+
+#user_profile_area .avatar     { background-color: white; padding: 5px;
+                                 border: 1px solid silver; border-radius: 3px;
+                                 display: inline-block; position: absolute; margin-top: 165px; margin-left: 20px; }
+#user_profile_area .avatar img { width: 150px; height: 150px; }
+
+#user_profile_tabs              { min-height: 45px; margin-bottom: 20px; margin-left: 190px; margin-top: 5px;
+                                  padding-bottom: 5px; }
+#user_profile_tabs .tab         { display: inline-block; padding: 5px 8px; text-align: center; color: #990d0d;
+                                  border-radius: 3px; }
+#user_profile_tabs .tab.current { color: white; background-color: #990d0d; }
