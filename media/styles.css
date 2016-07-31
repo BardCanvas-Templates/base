@@ -93,3 +93,13 @@ h3 .emojione { height: 12pt; }
 #user_profile_tabs .tab         { display: inline-block; padding: 5px 8px; text-align: center; color: #990d0d;
                                   border-radius: 3px; }
 #user_profile_tabs .tab.current { color: white; background-color: #990d0d; }
+
+/* Signatures, for both base pages and tinymce */
+
+.author_signature                         { margin-top: 20px; padding-top: 10px; padding-right: 20px;
+                                            border-top: 2px solid silver; display: inline-block; width: auto;
+                                            font-family: 'Roboto', sans-serif; font-size: 11pt; line-height: normal; }
+body#tinymce[data-id="account_signature"] { font-family: 'Roboto', sans-serif; font-size: 11pt; line-height: normal; }
+
+.author_signature *, body#tinymce[data-id="account_signature"] *                 { margin-top: 1px; margin-bottom: 1px; }
+.author_signature .emojione, body#tinymce[data-id="account_signature"] .emojione { height: 11pt; }

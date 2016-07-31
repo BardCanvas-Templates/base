@@ -53,6 +53,12 @@ $author = $post->get_author();
         <?= $post->get_processed_content() ?>
     </div>
     
+    <? if( ! empty($author->signature) ): ?>
+        <div class="author_signature">
+            <?= $author->signature ?>
+        </div>
+    <? endif ?>
+    
 </article>
 
 <? $current_module->load_extensions("front", "single_post_after_contents"); ?>
