@@ -13,7 +13,7 @@ th       { font-family: 'Roboto', sans-serif; font-size: 11pt; }
 td       { font-family: 'Roboto Condensed', 'Arial Narrow', sans-serif; font-size: 11pt; }
 #header  { font-family: 'Roboto', sans-serif; font-size: 12pt; }
 #footer  { font-family: 'Roboto Condensed', 'Arial Narrow', sans-serif; font-size: 11pt; }
-#content { line-height: 1em; }
+#content { line-height: 1.2em; }
 
 textarea, pre, .fixed_font, code { font-family: 'Ubuntu Mono', 'Lucida Console', 'Courier new', 'Courier', monospace; font-size: 10pt; }
 textarea.no_fw_font              { font-family: 'Prompt', sans-serif; font-size: 12pt; }
@@ -21,6 +21,8 @@ textarea.no_fw_font              { font-family: 'Prompt', sans-serif; font-size:
 h1 { font-family: 'Lora', sans-serif; font-size: 14pt; line-height: 1em; }
 h2 { font-family: 'Lora', sans-serif; font-size: 13pt; line-height: 1em; }
 h3 { font-family: 'Lora', sans-serif; font-size: 12pt; line-height: 1em; }
+
+/* Forms */
 
 #post_form  textarea[name="title"]  { font-family: 'Lora', sans-serif;   font-size: 18pt; min-height: 34px; height: 34px; }
 #media_form textarea[name="title"]  { font-family: 'Lora', sans-serif;   font-size: 18pt; min-height: 34px; height: 34px; }
