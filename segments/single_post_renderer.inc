@@ -2,10 +2,12 @@
 /**
  * Single post renderer
  *
+ * @var config      $config
  * @var module      $current_module posts
  * @var post_record $post
  */
 
+use hng2_base\config;
 use hng2_base\module;
 use hng2_modules\posts\post_record;
 
@@ -20,7 +22,7 @@ $author = $post->get_author();
     
     <div class="meta_box clearfix">
         
-        <img class="user_avatar" src="<?= $config->full_root_url ?>/media/default_avatar.jpg">
+        <img class="user_avatar" src="<?= $author->get_avatar_url() ?>">
         
         <div class="meta_section upper">
             <a class="meta_field" href="<?= $config->full_root_url ?>/user/<?= $author->user_name ?>/">

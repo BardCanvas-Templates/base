@@ -7,6 +7,7 @@
  * @subpackage comments
  * @author     Alejandro Caballero - lava.caballero@gmail.com
  *
+ * @var config   $config
  * @var settings $settings
  * @var template $template
  * @var module   $this_module    self (comments)
@@ -17,6 +18,7 @@
  * @var comment_record[] $comments
  */
 
+use hng2_base\config;
 use hng2_base\module;
 use hng2_base\settings;
 use hng2_base\template;
@@ -50,7 +52,7 @@ if( count($comments) ) $comments = array_reverse($comments);
             
             <div class="comment_wrapper">
                 <div class="meta_box clearfix">
-                    <img class="user_avatar" src="<?= $config->full_root_url ?>/media/default_avatar.jpg">
+                    <img class="user_avatar" src="<?= $author->get_avatar_url() ?>">
                     
                     <div class="meta_section upper">
                         <? if($author->_exists): ?>
