@@ -5,8 +5,17 @@
  * @package    HNG2
  * @subpackage core
  * @author     Alejandro Caballero - lava.caballero@gmail.com
+ *
+ * @var template $template
+ * @var settings $settings
+ * @var config   $config
+ * @var account  $account
  */
 
+use hng2_base\account;
+use hng2_base\config;
+use hng2_base\settings;
+use hng2_base\template;
 use hng2_tools\internals;
 
 include __DIR__ . "/functions.inc";

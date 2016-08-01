@@ -7,13 +7,20 @@
  * @author     Alejandro Caballero - lava.caballero@gmail.com
  *             
  * @var template $template
+ * @var settings $settings
+ * @var config   $config
+ * @var account  $account
  */
 
+use hng2_base\account;
+use hng2_base\config;
+use hng2_base\settings;
 use hng2_base\template;
 use hng2_tools\internals;
 
 include __DIR__ . "/functions.inc";
 $template->init(__FILE__);
+$template->set("page_tag", "home"); # This is a very specific case
 
 foreach($modules as $this_module)
     if( ! empty($this_module->template_includes->pre_rendering) )
@@ -50,10 +57,10 @@ header("Content-Type: text/html; charset=utf-8"); ?>
         <script type="text/javascript"          src="<?= $template->url ?>/media/left_sidebar_addon~v<?=$config->scripts_version?>.js"></script>
     <? endif; ?>
     
-    <? # if( $template->count_right_sidebar_items() > 0 ): ?>
+    <? if( $template->count_right_sidebar_items() > 0 ): ?>
         <!-- Right sidebar -->
         <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/right_sidebar_addon~v<?=$config->scripts_version?>.css">
-    <? # endif; ?>
+    <? endif; ?>
     
     <!-- Per module loads -->
     <?
@@ -149,29 +156,11 @@ header("Content-Type: text/html; charset=utf-8"); ?>
             ?>
         </div><!-- /#content -->
         
-        <? # if( $template->count_right_sidebar_items() > 0 ): ?>
+        <? if( $template->count_right_sidebar_items() > 0 ): ?>
             <div id="right_sidebar">
-                <? # echo $template->build_right_sidebar_items(); ?>
-                <div class="item_container">
-                    <h3>Title</h3>
-                    <div class="content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In maximus blandit eros, sit amet lobortis neque convallis nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris consequat enim ut tortor hendrerit sodales.
-                    </div>
-                </div>
-                <div class="item_container">
-                    <h3>Title</h3>
-                    <div class="content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In maximus blandit eros, sit amet lobortis neque convallis nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris consequat enim ut tortor hendrerit sodales.
-                    </div>
-                </div>
-                <div class="item_container">
-                    <h3>Title</h3>
-                    <div class="content">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In maximus blandit eros, sit amet lobortis neque convallis nec. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris consequat enim ut tortor hendrerit sodales.
-                    </div>
-                </div>
+                <? echo $template->build_right_sidebar_items(); ?>
             </div>
-        <? # endif; ?>
+        <? endif; ?>
         
     </div>
         

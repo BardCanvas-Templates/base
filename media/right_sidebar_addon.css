@@ -4,10 +4,15 @@
                  font-size: 11pt; line-height: normal;
                  width: 23%; float: right; padding-top: 20px; padding-right: 10px; }
 
-#right_sidebar .item_container { margin-bottom: 20px; }
+#right_sidebar .item_container             { margin-bottom: 20px; }
+#right_sidebar .item_container.highlighted { background-color: white; box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.25); }
 
-#right_sidebar .item_container h3       { margin: 0 0 5px 0; padding: 0 0 5px 0; border-bottom: 1px solid #ceaea7; }
-#right_sidebar .item_container .content { padding: 5px; }
+#right_sidebar .item_container h3         { margin: 0 0 5px 0; padding: 0 0 5px 0; border-bottom: 1px solid #ceaea7; }
+#right_sidebar .item_container h3:empty   { display: none; }
+#right_sidebar .item_container .content   { padding: 5px; }
+
+#right_sidebar .item_container .content *:first-child { margin-top: 0; }
+#right_sidebar .item_container .content *:last-child  { margin-bottom: 0; }
 
 @media all and (min-width: 100px) and (max-width: 720px)
 {

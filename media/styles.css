@@ -105,3 +105,9 @@ body#tinymce[data-id="account_signature"] { font-family: 'Roboto', sans-serif; f
 
 .author_signature *, body#tinymce[data-id="account_signature"] *                 { margin-top: 1px; margin-bottom: 1px; }
 .author_signature .emojione, body#tinymce[data-id="account_signature"] .emojione { height: 11pt; }
+
+/* Search form styles */
+
+.search_form input[name="s"] { font-size: 16px; width: 100%; padding: 6px 28px 6px 6px; }
+.search_form .submit_icon    { position: absolute; font-size: 20px; line-height: 30px;
+                               margin-left: -28px; margin-top: 2px; }
