@@ -72,7 +72,8 @@ header("Content-Type: text/html; charset=utf-8"); ?>
     ?>
 </head>
 <body data-orientation="landscape" data-viewport-class="0" <?=$template->get("additional_body_attributes")?>
-      data-is-user-profile-page="<?= $template->get("show_user_profile_heading") ? "true" : "false" ?>" class="main">
+      data-is-user-profile-page="<?= $template->get("show_user_profile_heading") ? "true" : "false" ?>"
+      data-page-tag="<?= $template->get("page_tag") ?>" class="main">
 
 <div id="body_wrapper">
     
