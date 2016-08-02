@@ -5,13 +5,23 @@
                                   width: 150px; float: left; padding-top: 20px; }
 #content                        { width: calc(100% - 150px); float: left; }
 
-#left_sidebar a                 { text-decoration: none; color: #990d0d; }
-#left_sidebar .item             { display: block; margin: 0 0 0 10px; padding: 4px 6px; cursor: pointer; }
-#left_sidebar .item:hover       { background-color: white; }
-#left_sidebar .item.selected    { background-color: rgba(255, 255, 255, .5); }
 #left_sidebar .group            { margin-bottom: 20px; }
 #left_sidebar .group .title     { display: block; margin: 0 0 0 2px; padding: 2px 6px; color: grey;
-                                  font-weight: bold; font-size: 8pt; line-height: normal; font-variant: small-caps; }
+                                  font-weight: bold; font-size: 8pt; line-height: normal; text-transform: uppercase; }
+
+#left_sidebar .item             { display: block; margin: 0 0 0 10px; padding: 4px 6px; }
+#left_sidebar .item.selected    { background-color: rgba(255, 255, 255, .5); }
+#left_sidebar .item.highlighted { background-color: rgba(173, 255, 47, .25) }
+
+#left_sidebar a                                    ,
+#left_sidebar .pseudo_link                         { text-decoration: none; color: #990d0d; }
+#left_sidebar a.item:hover                         ,
+#left_sidebar .pseudo_link:hover                   { background-color: white; }
+#left_sidebar a.item.highlighted:hover             ,
+#left_sidebar  .item.pseudo_link.highlighted:hover { background-color: rgba(173, 255, 47, .75) }
+
+
+#left_sidebar .group .title:empty { display: none; }
 
 #header .main_menu_item#left_sidebar_trigger { cursor: pointer; display: none; }
 
