@@ -112,3 +112,9 @@ body#tinymce[data-id="account_signature"] { font-family: 'Roboto', sans-serif; f
 .search_form input[name="s"] { font-size: 16px; width: 100%; padding: 6px 28px 6px 6px; }
 .search_form .submit_icon    { font-size: 20px; line-height: 30px; z-index: 1;
                                position: absolute; margin-left: -28px; }
+
+/* Sidebar generics */
+
+.sidebar ul                { padding-left: 12px; margin-top: 2px; margin-bottom: 0; }
+.sidebar ul li             { margin-top: 0; margin-bottom: 2px; padding-bottom: 2px; border-bottom: 1px solid silver; }
+.sidebar ul li:last-child  { border-bottom: 0; padding-bottom: 0; }

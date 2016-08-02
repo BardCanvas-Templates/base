@@ -136,7 +136,7 @@ header("Content-Type: text/html; charset=utf-8"); ?>
     <div id="content_wrapper" class="clearfix">
         
         <? if( $template->count_left_sidebar_groups() > 0 ): ?>
-            <div id="left_sidebar">
+            <div id="left_sidebar" class="sidebar">
                 <? echo $template->build_left_sidebar_groups(); ?>
             </div>
         <? endif; ?>
@@ -158,7 +158,7 @@ header("Content-Type: text/html; charset=utf-8"); ?>
         </div><!-- /#content -->
         
         <? if( $template->count_right_sidebar_items() > 0 ): ?>
-            <div id="right_sidebar">
+            <div id="right_sidebar" class="sidebar">
                 <? echo $template->build_right_sidebar_items(); ?>
             </div>
         <? endif; ?>

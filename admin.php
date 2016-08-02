@@ -133,7 +133,7 @@ header("Content-Type: text/html; charset=utf-8"); ?>
     <div id="content_wrapper" class="clearfix">
         
         <? if( $settings->get("engine.hide_left_sidebar_on_admin_pages") != "true" && $template->count_left_sidebar_groups() > 0 ): ?>
-            <div id="left_sidebar">
+            <div id="left_sidebar" class="sidebar">
                 <? echo $template->build_left_sidebar_groups(); ?>
             </div>
         <? endif; ?>

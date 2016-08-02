@@ -183,3 +183,9 @@ article.single_post, .content_frame {
 #post_comments .comment_entry .content       { margin-left: 67px; }
 #post_comments .comment_entry .content *     { margin-top: 2px; margin-bottom: 2px; }
 #post_comments .comment_entry .comment_reply { margin-left: 67px; margin-top: 10px; }
+
+/* Generic elements */
+
+.simple_entries_listing .date        { color: grey; }
+.simple_entries_listing .date:before { content: '[' }
+.simple_entries_listing .date:after  { content: ']' }
