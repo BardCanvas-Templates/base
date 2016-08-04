@@ -96,6 +96,16 @@ h3 .emojione { height: 12pt; }
                                   border-radius: 3px; }
 #user_profile_tabs .tab.current { color: white; background-color: #990d0d; }
 
+#user_info_sections { -moz-column-gap:   10px; -webkit-column-gap:   5px; column-gap:   5px; }
+#user_info_sections { -moz-column-count:    2; -webkit-column-count:   2; column-count:   2; }
+
+#user_info_sections section { display: inline-block; width: 100%; }
+#user_info_sections section form .field:last-child { margin-bottom: 0; }
+#user_info_sections .user_signature *   ,
+#user_info_sections .user_bio       *   { margin-top: 0; margin-bottom: 0; }
+#user_info_sections .user_signature img ,
+#user_info_sections .user_bio       img { max-width: 100%; }
+
 /* Signatures, for both base pages and tinymce */
 
 .author_signature                         { margin-top: 20px; padding-top: 10px; padding-right: 20px;

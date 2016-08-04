@@ -19,6 +19,8 @@
     /* Hidden for small displays (below 1024px) */
     #content       { width: calc(100% - 150px) }
     #right_sidebar { width: 100%; float: none; padding-left: 10px; }
+
+    #user_info_sections { -moz-column-count:    1; -webkit-column-count:   1; column-count:   1; }
 }
 
 @media all and (min-width: 100px) and (max-width: 480px)
@@ -26,6 +28,8 @@
     /* Left sidebar is hidden here. Right sidebar goes below. 
        We must adjust the content width. */
     #content { width: 100%; }
+
+    #user_info_sections { -moz-column-count:    1; -webkit-column-count:   1; column-count:   1; }
 }
 
 /* large displays */
@@ -33,11 +37,14 @@
 @media all and (min-width: 1920px) and (max-width: 9999px) {
     #content       { width: calc(83% - 150px) }
     #right_sidebar { width: 17% }
+
+    #user_info_sections { -moz-column-count:    4; -webkit-column-count:   4; column-count:   4; }
 }
 
 @media all and (min-width: 1281px) and (max-width: 1366px)
 {
-
     #content       { width: calc(80% - 150px) }
     #right_sidebar { width: 20% }
+
+    #user_info_sections { -moz-column-count:    2; -webkit-column-count:   2; column-count:   2; }
 }
