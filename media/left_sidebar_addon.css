@@ -44,3 +44,6 @@ body[data-left-sidebar-visible="true"] #left_sidebar {
     -moz-box-shadow:    5px 5px 10px 1px rgba(0,0,0,0.5);
     box-shadow:         5px 5px 10px 1px rgba(0,0,0,0.5);
 }
+
+/* The trigger is hidden when the main menu is expanded on small devices. */
+#header .main_menu_item#left_sidebar_trigger.visible { display: none; }
