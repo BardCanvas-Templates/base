@@ -42,11 +42,12 @@ use hng2_base\template;
     
     var $_MAIN_MENU_AUTO_COLLAPSE_WIDTH = parseInt('<?= (int) $settings->get("engine.main_menu_auto_collapse_width", 700) ?>');
     
-    var $_TINYMCE_ADDON_FUNCTIONS = {};
     var tinymce_default_css_files = [
         $_FULL_ROOT_PATH  + '/media/styles~v' + $_SCRIPTS_VERSION + '.css',
         $_TEMPLATE_URL    + '/media/styles~v' + $_SCRIPTS_VERSION + '.css'
     ];
+    var tinymce_custom_plugins = [];
+    var tinymce_custom_toolbar_buttons = [];
 </script>
 <script type="text/javascript" src="<?= $config->full_root_path ?>/media/defaults~v<?=$config->scripts_version?>.js"></script>
 
