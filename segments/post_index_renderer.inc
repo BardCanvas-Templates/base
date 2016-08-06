@@ -14,6 +14,16 @@ use hng2_modules\posts\posts_data;
 $this_module = $modules["posts"];
 ?>
 
+<? if( $template->get("show_quick_post_form") ): ?>
+    
+    <div id="quick_post_form_container">
+        <div align="center" style="margin: 10px; color: maroon;">
+            This is the quick post form
+        </div>
+    </div>
+    
+<? endif; ?>
+
 <div id="posts_index" class="posts_index clearfix">
     
     <? foreach( $posts_data->posts as $post ): ?>

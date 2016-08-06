@@ -13,6 +13,15 @@
     -webkit-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.25);
     -moz-box-shadow:    1px 1px 5px 0 rgba(0, 0, 0, 0.25);
     box-shadow:         1px 1px 5px 0 rgba(0, 0, 0, 0.25);
+    padding: 10px;
+}
+
+#quick_post_form_container {
+    margin-bottom: 20px; background-color: white;
+    -webkit-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.25);
+    -moz-box-shadow:    1px 1px 5px 0 rgba(0, 0, 0, 0.25);
+    box-shadow:         1px 1px 5px 0 rgba(0, 0, 0, 0.25);
+    padding: 10px;
 }
 
 /* Common meta areas */
