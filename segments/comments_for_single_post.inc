@@ -27,14 +27,10 @@ use hng2_modules\comments\comments_repository;
 use hng2_modules\posts\post_record;
 use hng2_tools\record_browser;
 
-$browser        = new record_browser("");
-$repository     = new comments_repository();
-$find_params    = $repository->build_find_params_for_post($post->id_post);
-$comments_count = $repository->get_record_count($find_params->where);
-$comments       = $repository->find($find_params->where, $find_params->limit, $find_params->offset, $find_params->order);
-$pagination     = $browser->build_pagination($comments_count, $find_params->limit, $find_params->offset);
+$browser    = new record_browser("");
+$repository = new comments_repository();
 
-if( count($comments) ) $comments = array_reverse($comments);
+list($find_params, $comments_count, $comments, $pagination) = $repository->get_for_single_post($post->id_post);
 ?>
 
 <div id="post_comments" class="content_frame" data-post-id="<?= $post->id_post ?>">
@@ -46,9 +42,13 @@ if( count($comments) ) $comments = array_reverse($comments);
     </h1>
     
     <? foreach($comments as $comment): ?>
-        <? $author = $comment->get_author(); ?>
+        <?
+        $author    = $comment->get_author();
+        $max_level = $settings->get("modules:comments.max_indent_level"); if( empty($max_level) ) $max_level = 5;
+        $level     = $comment->indent_level <= $max_level ? $comment->indent_level : $max_level;
+        ?>
         <div class="comment_entry" id="comment_<?= $comment->id_comment ?>" data-id-comment="<?= $comment->id_comment ?>"
-             data-parent-comment="<?= $comment->parent_comment ?>">
+             data-parent-comment="<?= $comment->parent_comment ?>" data-indent-level="<?= $level ?>">
             
             <div class="comment_wrapper">
                 <div class="meta_box clearfix">

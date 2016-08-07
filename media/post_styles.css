@@ -193,6 +193,11 @@ article.single_post, .content_frame {
 #post_comments .comment_entry .content *     { margin-top: 2px; margin-bottom: 2px; }
 #post_comments .comment_entry .comment_reply { margin-left: 67px; margin-top: 10px; }
 
+#post_comments .comment_entry[data-indent-level="2"] { margin-left:  66px; }
+#post_comments .comment_entry[data-indent-level="3"] { margin-left: 132px; }
+#post_comments .comment_entry[data-indent-level="4"] { margin-left: 198px; }
+#post_comments .comment_entry[data-indent-level="5"] { margin-left: 264px; }
+
 /* Generic elements */
 
 .simple_entries_listing .date        { color: grey; }
