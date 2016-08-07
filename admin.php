@@ -34,9 +34,6 @@ header("Content-Type: text/html; charset=utf-8"); ?>
     <!-- Others -->
     <script type="text/javascript" src="<?= $config->full_root_path ?>/lib/jquery.blockUI.js"></script>
     <script type="text/javascript" src="<?= $config->full_root_path ?>/lib/jquery.form.min.js"></script>
-    <script type="text/javascript" src="<?= $config->full_root_path ?>/lib/tinymce-4.4.0/tinymce.min.js"></script>
-    <script type="text/javascript" src="<?= $config->full_root_path ?>/media/init_tinymce~v<?=$config->scripts_version?>.js"></script>
-    <script type="text/javascript"> $(document).ready(function() { tinymce.init(tinymce_defaults); }); </script>
     
     <!-- Noty -->
     <script type="text/javascript" src="<?= $config->full_root_path ?>/lib/noty-2.3.7/js/noty/packaged/jquery.noty.packaged.min.js"></script>
@@ -156,7 +153,14 @@ header("Content-Type: text/html; charset=utf-8"); ?>
 <script type="text/javascript" src="<?= $config->full_root_path ?>/lib/tinymce-4.4.0/tinymce.min.js"></script>
 <? $template->render_tinymce_additions(); ?>
 <script type="text/javascript" src="<?= $config->full_root_path ?>/media/init_tinymce~v<?=$config->scripts_version?>.js"></script>
-<script type="text/javascript"> $(document).ready(function() { tinymce.init(tinymce_defaults); }); </script>
+<script type="text/javascript">
+    $(document).ready(function()
+    {
+        tinymce.init(tinymce_defaults);
+        tinymce.init(tinymce_full_defaults);
+        tinymce.init(tinymce_minimal_defaults);
+    });
+</script>
 
 <?
 foreach($modules as $this_module)
