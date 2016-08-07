@@ -38,8 +38,7 @@ if( empty($excerpt_length) ) $excerpt_length = 100;
             <? if($author->_exists): ?>
                 <a href="<?= $config->full_root_url ?>/user/<?= $author->user_name ?>/">
                     <span class="fa fa-user"></span>
-                    <?= $author->get_processed_display_name() ?>:
-                </a>
+                    <?= $author->get_processed_display_name() ?>:</a>
             <? else: ?>
                 <span class="fa fa-user"></span>
                 <?= $comment->author_display_name ?>:            
