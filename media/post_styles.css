@@ -82,9 +82,11 @@
 .posts_index article .post_contents           { padding: 5px 10px 10px 10px; }
 .posts_index article .post_contents *         { margin-top: 1px; margin-bottom: 1px; }
 
+body#tinymce blockquote,
 article .post_contents blockquote {
     margin-left: 20px;
-    padding-left: 20px;
+    padding: 10px 10px 10px 20px;
+    background-color: #efefef;
     border-left: 5px solid silver;
     color: grey;
 }
