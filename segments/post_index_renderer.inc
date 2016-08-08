@@ -5,24 +5,34 @@
  * @var config     $config
  * @var posts_data $posts_data
  * @var template   $template
+ * @var module[]   $modules
  */
 
 use hng2_base\config;
+use hng2_base\module;
 use hng2_base\template;
 use hng2_modules\posts\posts_data;
 
 $this_module = $modules["posts"];
 ?>
 
-<? if( $template->get("show_quick_post_form") ): ?>
-    
-    <div id="quick_post_form_container">
+<? if( $template->get("page_tag") == "home" 
+       && $posts_data->pagination["this_page_number"] == 1 ): ?>
+    <div id="posts_slider">
         <div align="center" style="margin: 10px; color: maroon;">
-            This is the quick post form
+            This is the posts slider and should be shown only at the page 1 of the home.
         </div>
     </div>
-    
 <? endif; ?>
+
+<? if( in_array($template->get("page_tag"), array("post_category_index", "home"))
+       && $account->level >= config::NEWCOMER_USER_LEVEL ): ?>
+    <div id="quick_post_form_container">
+        <? include __DIR__ . "/quick_post_form.inc"; ?>
+    </div>
+<? endif; ?>
+
+<? if( $posts_data->count == 0 ) return; ?>
 
 <div id="posts_index" class="posts_index clearfix">
     

@@ -207,3 +207,12 @@ body#tinymce .comment_quote *                { margin-top: 2px; margin-bottom: 2
 .simple_entries_listing .date        { color: grey; }
 .simple_entries_listing .date:before { content: '[' }
 .simple_entries_listing .date:after  { content: ']' }
+
+/* Quick posts form */
+
+#quick_post_form_container form .field                         { margin-bottom: 5px; }
+#quick_post_form_container form .field.attachments             { margin-bottom: 0; }
+
+#quick_post_form_container form .field.attachments .attachment {
+    white-space: nowrap; margin: 0 5px 5px 0;
+}
