@@ -33,14 +33,7 @@ $has_featured_posts = count($posts_data->featured_posts) > 0 ? "true" : "false";
     
     <div id="posts_index_wrapper">
         
-        <div id="posts_slider">
-            <div align="center" style="margin: 10px; color: maroon;">
-                This is the posts slider and should be shown only at the home.
-            </div>
-        </div>
-        
         <?
-        $template->set("show_quick_post_form", true);
         $template->set("pagination_url_prefix", "$config->full_root_url/");
         include __DIR__ . "/post_index_renderer.inc";
         ?>
