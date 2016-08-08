@@ -14,30 +14,13 @@ $has_featured_posts = count($posts_data->featured_posts) > 0 ? "true" : "false";
 
 <div id="home_index_wrapper" data-with-featured-posts="<?= $has_featured_posts ?>" class="clearfix">
     
-    <div id="featured_posts_column">
-        
-        <? foreach($posts_data->featured_posts as $post): ?>
-            
-            <a class="featured_post" href="<?= $post->get_permalink() ?>">
-                <? if( ! empty($post->featured_image_thumbnail) ): ?>
-                    <span class="thumbnail">
-                        <img src="<?= $post->featured_image_thumbnail ?>">
-                    </span>
-                <? endif; ?>
-                <h3><?= $post->get_processed_title() ?></h3>
-            </a>
-            
-        <? endforeach; ?>
-        
-    </div>
+    <? if( $has_featured_posts == "true" ) include __DIR__ . "/home_featured_posts.inc"; ?>
     
     <div id="posts_index_wrapper">
-        
         <?
         $template->set("pagination_url_prefix", "$config->full_root_url/");
         include __DIR__ . "/post_index_renderer.inc";
         ?>
-        
     </div>
     
 </div>
