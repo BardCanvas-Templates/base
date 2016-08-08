@@ -79,11 +79,13 @@ use hng2_modules\posts\posts_data;
         </span>
         
         <span style="float: right">
+            <!--
             <button type="submit" data-save-type="save_draft"
                     onclick="$('#post_form').find('input[name=status]').val('draft')">
                 <span class="fa fa-save"></span>
                 <?= $this_module->language->form->buttons->save_draft ?>
             </button>
+            -->
             
             <button type="submit" data-save-type="publish">
                 <span class="fa fa-check"></span>
