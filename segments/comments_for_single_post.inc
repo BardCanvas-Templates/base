@@ -76,7 +76,7 @@ list($find_params, $comments_count, $comments, $pagination) = $repository->get_f
                 </div>
                 
                 <div class="content">
-                    <?= $comment->content ?>
+                    <?= $comment->get_processed_content() ?>
                 </div>
             </div>
             

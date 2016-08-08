@@ -63,7 +63,7 @@ $author = $template->get("user_profile_account");
     <section>
         <h2><?= $current_module->language->user_profile_page->signature->title ?></h2>
         <div class="framed_content user_signature">
-            <?= $author->signature ?>
+            <?= $author->get_processed_signature() ?>
         </div>
     </section>
     

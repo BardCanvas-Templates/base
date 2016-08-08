@@ -47,7 +47,7 @@ if( empty($excerpt_length) ) $excerpt_length = 100;
                 <?
                 $excerpt = make_excerpt_of($comment->content, $excerpt_length);
                 if( empty($excerpt) ) echo "<span class='ellipsis'>...</span>";
-                else                  echo $excerpt;
+                else                  echo convert_emojis($excerpt);
                 ?>
             </a>
         </li>

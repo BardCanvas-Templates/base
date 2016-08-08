@@ -55,7 +55,7 @@ $author = $post->get_author();
     
     <? if( ! empty($author->signature) ): ?>
         <div class="author_signature">
-            <?= $author->signature ?>
+            <?= $author->get_processed_signature() ?>
         </div>
     <? endif ?>
     
