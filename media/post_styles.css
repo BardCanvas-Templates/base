@@ -211,7 +211,11 @@ body#tinymce .comment_quote *                { margin-top: 2px; margin-bottom: 2
 /* Quick posts form */
 
 #quick_post_form_container form .field                         { margin-bottom: 5px; }
+#quick_post_form_container form .field:last-child              { margin-bottom: 0; }
 #quick_post_form_container form .field.attachments             { margin-bottom: 0; }
+
+#quick_post_form_container form .field[data-field="title"]     { margin-bottom: 0; line-height: 0; }
+#quick_post_form_container form .rest                          { margin-top: 5px; }
 
 #quick_post_form_container form .field.attachments .attachment {
     white-space: nowrap; margin: 0 5px 5px 0;
