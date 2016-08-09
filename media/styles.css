@@ -67,8 +67,18 @@ h3 .emojione { height: 12pt; }
 
 .thumbnail { border: 1px solid; background-color: transparent; }
 
-.nav_table .thumbnail     { display: inline-block; line-height: 0; }
-.nav_table .thumbnail img { width: 230px; }
+.nav_table .thumbnail     {
+    display: inline-block; line-height: 0;
+    border: 1px solid; background-color: transparent;
+    position: relative; width: 230px; height: 110px; overflow: hidden;
+
+}
+.nav_table .thumbnail img {
+    position: absolute; left: 50%; top: 50%; max-width: 100%; height: auto;
+    -webkit-transform: translate(-50%,-50%);
+    -ms-transform:     translate(-50%,-50%);
+    transform:         translate(-50%,-50%);
+}
 
 .posts_index .thumbnail     { border: none; }
 .posts_index .thumbnail img { width: 100%; }
