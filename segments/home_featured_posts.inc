@@ -17,8 +17,10 @@ use hng2_modules\posts\posts_data;
             $src = $post->featured_image_thumbnail;
         else
             $src = $settings->get("modules:posts.default_featured_image");
+        
+        $pinned = $post->pin_to_home == 1 ? "pinned" : "";
         ?>
-        <a class="featured_post" href="<?= $post->get_permalink() ?>">
+        <a class="featured_post <?= $pinned ?>" href="<?= $post->get_permalink() ?>">
             <? if( ! empty($src) ): ?><span class="thumbnail"><img src="<?= $src ?>"></span><? endif; ?>
             <h3><?= $post->get_processed_title() ?></h3>
         </a>

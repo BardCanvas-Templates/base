@@ -36,10 +36,15 @@ $this_module = $modules["posts"];
 
 <div id="posts_index" class="posts_index clearfix">
     
-    <? foreach( $posts_data->posts as $post ): ?>
-        <? $author = $post->get_author(); ?>
+    <? foreach( $posts_data->posts as $post ):
+        $author = $post->get_author();
+        if( $template->get("page_tag") == "home" && $post->pin_to_home == 1 )
+            $pinned = "pinned";
+        elseif( $template->get("page_tag") == "post_category_index" && $post->pin_to_main_category_index == 1 )
+            $pinned = "pinned";
+        else $pinned = ""; ?>
         
-        <article class="post clearfix" data-post-id="<?= $post->id_post ?>"
+        <article class="post clearfix <?= $pinned ?>" data-post-id="<?= $post->id_post ?>"
                  data-main-category="<?= $post->main_category_slug ?>"
                  data-author-role="<?= $author->get_role() ?>">
             
