@@ -90,8 +90,8 @@ use hng2_modules\posts\posts_data;
                 -->
                 
                 <button type="submit" data-save-type="publish">
-                    <span class="fa fa-check"></span>
                     <?= $this_module->language->form->buttons->publish ?>
+                    <span class="fa fa-play"></span>
                 </button>
             </span>
         </div>
