@@ -1,8 +1,7 @@
 
-#content       { width: calc(100% - 150px - 230px) }
 #right_sidebar { font-family: 'Roboto Condensed', 'Arial Narrow', sans-serif;
                  font-size: 11pt; line-height: normal;
-                 width: 230px; float: right; padding-top: 20px; padding-right: 10px; }
+                 float: right; padding-top: 20px; padding-right: 10px; }
 
 #right_sidebar .item_container             { margin-bottom: 20px; }
 #right_sidebar .item_container.highlighted { background-color: white; box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.25); }
@@ -14,12 +13,16 @@
 #right_sidebar .item_container .content *:first-child { margin-top: 0; }
 #right_sidebar .item_container .content *:last-child  { margin-bottom: 0; }
 
+/* Default dimensions, for everything above  720px */
+#content       { width: calc(100% - 150px - 220px) }
+#right_sidebar { width: 220px; }
+
 @media all and (min-width: 100px) and (max-width: 720px)
 {
-    /* Hidden for small displays (below 1024px) */
+    /* Hidden for small displays (below 720px) */
     #content       { width: calc(100% - 150px) }
     #right_sidebar { width: 100%; float: none; padding-left: 10px; }
-
+    
     #user_info_sections { -moz-column-count:    1; -webkit-column-count:   1; column-count:   1; }
 }
 
@@ -28,23 +31,23 @@
     /* Left sidebar is hidden here. Right sidebar goes below. 
        We must adjust the content width. */
     #content { width: 100%; }
-
+    
     #user_info_sections { -moz-column-count:    1; -webkit-column-count:   1; column-count:   1; }
 }
 
-/* large displays */
-
+/* 1080p and above */
 @media all and (min-width: 1920px) and (max-width: 9999px) {
-    #content       { width: calc(100% - 150px - 230px) }
-    #right_sidebar { width: 230px }
-
+    #content       { width: calc(100% - 150px - 310px) }
+    #right_sidebar { width: 310px }
+    
     #user_info_sections { -moz-column-count:    4; -webkit-column-count:   4; column-count:   4; }
 }
 
+/* Laptop displays */
 @media all and (min-width: 1281px) and (max-width: 1366px)
 {
-    #content       { width: calc(100% - 150px - 230px) }
-    #right_sidebar { width: 230px }
+    #content       { width: calc(100% - 150px - 260px) }
+    #right_sidebar { width: 260px }
     
     #user_info_sections { -moz-column-count:    2; -webkit-column-count:   2; column-count:   2; }
 }
