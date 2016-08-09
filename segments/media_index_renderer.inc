@@ -55,7 +55,7 @@ $this_module = $modules["gallery"];
             </div>
             
             <div class="post_contents post_excerpt">
-                <?= make_excerpt_of($item->description, $settings->get("modules:gallery.excerpt_length", 30)) ?>
+                <?= $item->get_description_excerpt() ?>
             </div>
             
         </article>
