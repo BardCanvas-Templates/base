@@ -48,7 +48,7 @@ $this_module = $modules["gallery"];
             
             </div>
             
-            <h1><?= $item->get_processed_title() ?></h1>
+            <h1><a href="<?= $item->get_page_url() ?>"><?= $item->get_processed_title(false) ?></a></h1>
             
             <div class="post_featured_image thumbnail">
                 <img src="<?= $item->get_thumbnail_url() ?>">

@@ -77,7 +77,7 @@ $this_module = $modules["posts"];
                 
             </div>
             
-            <h1><a href="<?= $post->get_permalink() ?>"><?= $post->get_processed_title() ?></a></h1>
+            <h1><a href="<?= $post->get_permalink() ?>"><?= $post->get_processed_title(false) ?></a></h1>
             
             <? if( ! empty($post->featured_image_thumbnail) ): ?>
                 <div class="post_featured_image thumbnail">

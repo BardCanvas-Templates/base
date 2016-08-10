@@ -22,7 +22,7 @@ use hng2_modules\posts\posts_data;
         ?>
         <a class="featured_post <?= $pinned ?>" href="<?= $post->get_permalink() ?>">
             <? if( ! empty($src) ): ?><span class="thumbnail"><img src="<?= $src ?>"></span><? endif; ?>
-            <h3><?= $post->get_processed_title() ?></h3>
+            <h3><?= $post->get_processed_title(false) ?></h3>
         </a>
     <? endforeach; ?>
 </div>
