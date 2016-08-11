@@ -206,7 +206,7 @@ body#tinymce .comment_quote *                { margin-top: 2px; margin-bottom: 2
 
 .simple_entries_listing .date        { color: grey; }
 .simple_entries_listing .date:before { content: '[' }
-.simple_entries_listing .date:after  { content: ']' }
+.simple_entries_listing .date:after  { content: ']:' }
 
 /* Quick posts form */
 
@@ -223,4 +223,8 @@ body#tinymce .comment_quote *                { margin-top: 2px; margin-bottom: 2
 
 /* Etc */
 
-article.pinned, .featured_post.pinned { border: 2px solid #990d0d; border-left: 6px solid #990d0d; }
+article.pinned, .featured_post.pinned { border: 2px solid #990d0d; border-left: 6px solid #990d0d;
+                                        background-color: whitesmoke; }
+ul.post_comments { padding-left: 22px; font-family: 'Roboto Condensed', 'Arial Narrow', sans-serif;
+                   font-size: 11pt; line-height: 1.1em; }
+ul.post_comments .emojione { height: 1em; }

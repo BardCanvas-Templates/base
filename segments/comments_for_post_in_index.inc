@@ -34,15 +34,15 @@ if( empty($excerpt_length) ) $excerpt_length = 100;
         <? $author = $comment->get_author(); ?>
         
         <li>
-            [<?= time_elapsed_string($comment->creation_date) ?>]
             <? if($author->_exists): ?>
                 <a href="<?= $config->full_root_url ?>/user/<?= $author->user_name ?>/">
                     <span class="fa fa-user"></span>
-                    <?= $author->get_processed_display_name() ?>:</a>
+                    <?= $author->get_processed_display_name() ?></a>
             <? else: ?>
                 <span class="fa fa-user"></span>
                 <?= $comment->author_display_name ?>:            
             <? endif; ?>
+            [<?= time_elapsed_string($comment->creation_date) ?>]:
             <a href="<?= $post->get_permalink() ?>#comment_<?= $comment->id_comment ?>">
                 <?
                 $excerpt = make_excerpt_of($comment->content, $excerpt_length);
