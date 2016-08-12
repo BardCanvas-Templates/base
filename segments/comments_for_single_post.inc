@@ -43,16 +43,17 @@ list($find_params, $comments_count, $comments, $pagination) = $repository->get_f
     
     <? foreach($comments as $comment): ?>
         <?
-        $author    = $comment->get_author();
-        $max_level = $settings->get("modules:comments.max_indent_level"); if( empty($max_level) ) $max_level = 5;
-        $level     = $comment->indent_level <= $max_level ? $comment->indent_level : $max_level;
+        $author     = $comment->get_author();
+        $avatar_url = $author->get_avatar_url();
+        $max_level  = $settings->get("modules:comments.max_indent_level"); if( empty($max_level) ) $max_level = 5;
+        $level      = $comment->indent_level <= $max_level ? $comment->indent_level : $max_level;
         ?>
         <div class="comment_entry" id="comment_<?= $comment->id_comment ?>" data-id-comment="<?= $comment->id_comment ?>"
              data-parent-comment="<?= $comment->parent_comment ?>" data-indent-level="<?= $level ?>">
             
             <div class="comment_wrapper">
                 <div class="meta_box clearfix">
-                    <img class="user_avatar" src="<?= $author->get_avatar_url() ?>">
+                    <img class="user_avatar" src="<?= $avatar_url ?>">
                     
                     <div class="meta_section upper">
                         <? if($author->_exists): ?>
