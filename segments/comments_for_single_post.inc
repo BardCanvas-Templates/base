@@ -49,7 +49,8 @@ list($find_params, $comments_count, $comments, $pagination) = $repository->get_f
         $level      = $comment->indent_level <= $max_level ? $comment->indent_level : $max_level;
         ?>
         <div class="comment_entry" id="comment_<?= $comment->id_comment ?>" data-id-comment="<?= $comment->id_comment ?>"
-             data-parent-comment="<?= $comment->parent_comment ?>" data-indent-level="<?= $level ?>">
+             data-parent-comment="<?= $comment->parent_comment ?>" data-indent-level="<?= $level ?>"
+             data-post-id="<?= $post->id_post ?>">
             
             <div class="comment_wrapper">
                 <div class="meta_box clearfix">
