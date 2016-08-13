@@ -98,3 +98,6 @@ list($find_params, $comments_count, $comments, $pagination) = $repository->get_f
         $browser->render_pagination_links($template->get("pagination_url_prefix"), $pagination); ?>
     
 </div>
+
+<div id="comments_edit_form" style="display: none;" data-title-template="<?= $this_module->language->form->edit ?>"></div>
+<div id="comments_edit_target" style="display: none;"></div>
