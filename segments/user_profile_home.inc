@@ -87,12 +87,14 @@ $author = $template->get("user_profile_account");
                         <span class="fa fa-paper-plane"></span>
                         <?= replace_escaped_vars( $language->contact->pm->title, '{$website_name}', $settings->get("engine.website_name") ) ?>
                     </li>
-                    <li>
-                        <a href="<?= $config->full_root_path ?>/contact/?target=<?= urlencode($author->user_name) ?>">
-                            <span class="fa fa-envelope"></span>
-                            <?= $language->contact->email->title ?>
-                        </a>
-                    </li>
+                    <? if($author->get_engine_pref("@contact:disable_user_emails", "false") != "true"): ?>
+                        <li>
+                            <a href="<?= $config->full_root_path ?>/contact/?target=<?= urlencode($author->user_name) ?>">
+                                <span class="fa fa-envelope"></span>
+                                <?= $language->contact->email->title ?>
+                            </a>
+                        </li>
+                    <? endif; ?>
                 </ul>
             </div>
         </section>

@@ -39,10 +39,12 @@ $author = $template->get("user_profile_account");
                             <span class="fa fa-paper-plane"></span>
                             <?= $language->contact->pm->caption ?>
                         </button>
-                        <button title="<?= $language->contact->email->title ?>" onclick="location.href = '<?= $config->full_root_path ?>/contact/?target=<?= urlencode($author->user_name) ?>'">
-                            <span class="fa fa-envelope"></span>
-                            <?= $language->contact->email->caption ?>
-                        </button>
+                        <? if($author->get_engine_pref("@contact:disable_user_emails", "false") != "true"): ?>
+                            <button title="<?= $language->contact->email->title ?>" onclick="location.href = '<?= $config->full_root_path ?>/contact/?target=<?= urlencode($author->user_name) ?>'">
+                                <span class="fa fa-envelope"></span>
+                                <?= $language->contact->email->caption ?>
+                            </button>
+                        <? endif; ?>
                     </span>
                 <? endif; ?>
                 <?= $config->user_levels_by_level[$author->level] ?>
