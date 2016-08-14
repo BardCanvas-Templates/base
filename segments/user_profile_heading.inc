@@ -39,7 +39,8 @@ $author = $template->get("user_profile_account");
                             <span class="fa fa-paper-plane"></span>
                             <?= $language->contact->pm->caption ?>
                         </button>
-                        <? if($author->get_engine_pref("@contact:disable_user_emails", "false") != "true"): ?>
+                        <? if( $author->get_engine_pref("@contact:disable_user_emails", "false") != "true"
+                               || $account->level >= config::MODERATOR_USER_LEVEL ): ?>
                             <button title="<?= $language->contact->email->title ?>" onclick="location.href = '<?= $config->full_root_path ?>/contact/?target=<?= urlencode($author->user_name) ?>'">
                                 <span class="fa fa-envelope"></span>
                                 <?= $language->contact->email->caption ?>
