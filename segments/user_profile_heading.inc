@@ -33,13 +33,13 @@ $author = $template->get("user_profile_account");
                         <span class="fa fa-pencil"></span>
                         <?= $language->edit_profile ?>
                     </button>
-                <? else: ?>
+                <? elseif($modules["contact"]->enabled): ?>
                     <span class="pull-right">
-                        <button disabled title="<?= $language->contact->pm->title ?>">
-                            <span class="fa fa-inbox"></span>
+                        <button disabled title="<?= replace_escaped_vars( $language->contact->pm->title, '{$website_name}', $settings->get("engine.website_name") ) ?>">
+                            <span class="fa fa-paper-plane"></span>
                             <?= $language->contact->pm->caption ?>
                         </button>
-                        <button disabled title="<?= replace_escaped_vars( $language->contact->pm->title, '{$website_name}', $settings->get("engine.website_name") ) ?>">
+                        <button title="<?= $language->contact->email->title ?>" onclick="location.href = '<?= $config->full_root_path ?>/contact/?target=<?= urlencode($author->user_name) ?>'">
                             <span class="fa fa-envelope"></span>
                             <?= $language->contact->email->caption ?>
                         </button>

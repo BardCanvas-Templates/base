@@ -60,39 +60,42 @@ $author = $template->get("user_profile_account");
         </form>
     </section>
     
-    <section>
-        <h2><?= $current_module->language->user_profile_page->signature->title ?></h2>
-        <div class="framed_content user_signature">
-            <?= $author->get_processed_signature() ?>
-        </div>
-    </section>
+    <? if( ! empty($author->signature) ): ?>
+        <section>
+            <h2><?= $current_module->language->user_profile_page->signature->title ?></h2>
+            <div class="framed_content user_signature">
+                <?= $author->get_processed_signature() ?>
+            </div>
+        </section>
+    <? endif; ?>
     
-    <section>
-        <h2><?= $current_module->language->user_profile_page->bio->title ?></h2>
-        <div class="framed_content user_bio">
-            <?= $author->bio ?>
-        </div>
-    </section>
+    <? if( ! empty($author->bio) ): ?>
+        <section>
+            <h2><?= $current_module->language->user_profile_page->bio->title ?></h2>
+            <div class="framed_content user_bio">
+                <?= $author->bio ?>
+            </div>
+        </section>
+    <? endif; ?>
+    
+    <? if( $modules["contact"]->enabled && $author->id_account != $account->id_account ): ?>
+        <section>
+            <h2><?= replace_escaped_vars($language->contact->contact_user, '{$display_name}', $author->get_processed_display_name()) ?></h2>
+            <div class="framed_content">
+                <ul>
+                    <li>
+                        <span class="fa fa-paper-plane"></span>
+                        <?= replace_escaped_vars( $language->contact->pm->title, '{$website_name}', $settings->get("engine.website_name") ) ?>
+                    </li>
+                    <li>
+                        <a href="<?= $config->full_root_path ?>/contact/?target=<?= urlencode($author->user_name) ?>">
+                            <span class="fa fa-envelope"></span>
+                            <?= $language->contact->email->title ?>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    <? endif; ?>
     
 </div>
-
-<? if( $author->id_account != $account->id_account ): ?>
-    <section>
-        <h2><?= replace_escaped_vars($language->contact->contact_user, '{$display_name}', $author->get_processed_display_name()) ?></h2>
-        <div class="framed_content">
-            <ul>
-                <li>
-                    <span class="pseudo_link disabled">
-                        <?= replace_escaped_vars( $language->contact->pm->title, '{$website_name}', $settings->get("engine.website_name") ) ?>
-                    </span>
-                </li>
-                <li>
-                    <span class="pseudo_link disabled">
-                        <?= $language->contact->email->title ?>
-                    </span>
-                </li>
-            </ul>
-        </div>
-    </section>
-<? endif; ?>
-
