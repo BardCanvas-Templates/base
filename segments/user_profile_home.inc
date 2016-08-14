@@ -87,7 +87,7 @@ $author = $template->get("user_profile_account");
                         <span class="fa fa-paper-plane"></span>
                         <?= replace_escaped_vars( $language->contact->pm->title, '{$website_name}', $settings->get("engine.website_name") ) ?>
                     </li>
-                    <? if( $author->get_engine_pref("@contact:disable_user_emails", "false") != "true"
+                    <? if( $author->get_engine_pref("@contact:allow_emails") != "false"
                            || $account->level >= config::MODERATOR_USER_LEVEL ): ?>
                         <li>
                             <a href="<?= $config->full_root_path ?>/contact/?target=<?= urlencode($author->user_name) ?>">
