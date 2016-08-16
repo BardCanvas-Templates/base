@@ -6,15 +6,16 @@
 #content                        { width: calc(100% - 150px); float: left; }
 
 #left_sidebar .group            { margin-bottom: 20px; }
-#left_sidebar .group .title     { display: block; margin: 0 0 0 2px; padding: 2px 6px; color: grey;
+#left_sidebar .group .title     { display: block; margin: 0 0 0 2px; padding: 2px 6px; color: darkslategray;
                                   font-weight: bold; font-size: 8pt; line-height: normal; text-transform: uppercase; }
 
 #left_sidebar .item             { display: block; margin: 0 0 0 10px; padding: 4px 6px; }
 #left_sidebar .item.selected    { background-color: rgba(255, 255, 255, .5); }
 #left_sidebar .item.highlighted { background-color: rgba(173, 255, 47, .25) }
+#left_sidebar .item.important   { color: #990d0d; }
 
 #left_sidebar a                                    ,
-#left_sidebar .pseudo_link                         { text-decoration: none; color: #990d0d; }
+#left_sidebar .pseudo_link                         { text-decoration: none; color: grey; }
 #left_sidebar a.item:hover                         ,
 #left_sidebar .pseudo_link:hover                   { background-color: white; }
 #left_sidebar a.item.highlighted:hover             ,
