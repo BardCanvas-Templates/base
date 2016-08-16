@@ -10,6 +10,7 @@
 use hng2_tools\internals;
 
 $template->init(__FILE__);
+$account->ping();
 
 foreach($modules as $this_module)
     if( ! empty($this_module->template_includes->pre_rendering) )

@@ -21,6 +21,7 @@ use hng2_tools\internals;
 include __DIR__ . "/functions.inc";
 $template->init(__FILE__);
 $template->set("page_tag", "home"); # This is a very specific case
+$account->ping();
 
 foreach($modules as $this_module)
     if( ! empty($this_module->template_includes->pre_rendering) )

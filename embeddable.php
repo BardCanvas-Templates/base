@@ -10,6 +10,7 @@
 use hng2_tools\internals;
 
 $template->init(__FILE__);
+$account->ping();
 
 header("Content-Type: text/html; charset=utf-8"); ?>
 
