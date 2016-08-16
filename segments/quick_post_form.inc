@@ -43,10 +43,10 @@ use hng2_modules\posts\posts_data;
         
             $tree_filter = array(
                 "id_category <> '0000000000000'",
-                "( visibility = 'public' or visibility = 'users' or (visibility  = 'level_based' and '{$account->level}' >= min_level) )"
+                # "( visibility = 'public' or visibility = 'users' or (visibility  = 'level_based' and '{$account->level}' >= min_level) )"
             );
-            $categories_count = $categories_repository->get_record_count($tree_filter);
             $categories = $categories_repository->get_as_tree_for_select($tree_filter, "", true);
+            $categories_count = count($categories);
             $style = $categories_count == 0 ? "display: none" : "";
             ?>
             <div class="field" id="main_category_selector_container" data-field="category" style="<?= $style ?>">
