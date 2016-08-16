@@ -83,10 +83,14 @@ $author = $template->get("user_profile_account");
             <h2><?= replace_escaped_vars($language->contact->contact_user, '{$display_name}', $author->get_processed_display_name()) ?></h2>
             <div class="framed_content">
                 <ul>
-                    <li>
-                        <span class="fa fa-paper-plane"></span>
-                        <?= replace_escaped_vars( $language->contact->pm->title, '{$website_name}', $settings->get("engine.website_name") ) ?>
-                    </li>
+                    <? if( $account->_exists ): ?>
+                        <li>
+                            <span class="pseudo_link" style="white-space: normal" onclick="send_pm(this, '<?= $author->user_name ?>', '<?= replace_escaped_vars($language->contact->pm->send_to, '{$recipient}', htmlspecialchars($author->display_name)) ?>')">
+                                <span class="fa fa-inbox"></span>
+                                <?= replace_escaped_vars( $language->contact->pm->title, '{$website_name}', $settings->get("engine.website_name") ) ?>
+                            </span>
+                        </li>
+                    <? endif; ?>
                     <? if( $author->get_engine_pref("@contact:allow_emails") != "false"
                            || $account->level >= config::MODERATOR_USER_LEVEL ): ?>
                         <li>

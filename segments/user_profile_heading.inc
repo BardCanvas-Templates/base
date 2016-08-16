@@ -35,10 +35,13 @@ $author = $template->get("user_profile_account");
                     </button>
                 <? elseif($modules["contact"]->enabled): ?>
                     <span class="pull-right">
-                        <button disabled title="<?= replace_escaped_vars( $language->contact->pm->title, '{$website_name}', $settings->get("engine.website_name") ) ?>">
-                            <span class="fa fa-paper-plane"></span>
-                            <?= $language->contact->pm->caption ?>
-                        </button>
+                        <? if( $account->_exists ): ?>
+                            <button onclick="send_pm(this, '<?= $author->user_name ?>', '<?= replace_escaped_vars($language->contact->pm->send_to, '{$recipient}', htmlspecialchars($author->display_name)) ?>')"
+                                    title="<?= replace_escaped_vars( $language->contact->pm->title, '{$website_name}', $settings->get("engine.website_name") ) ?>">
+                                <span class="fa fa-inbox"></span>
+                                <?= $language->contact->pm->caption ?>
+                            </button>
+                        <? endif; ?>
                         <? if( $author->get_engine_pref("@contact:allow_emails") != "false"
                                || $account->level >= config::MODERATOR_USER_LEVEL ): ?>
                             <button title="<?= $language->contact->email->title ?>" onclick="location.href = '<?= $config->full_root_path ?>/contact/?target=<?= urlencode($author->user_name) ?>'">
