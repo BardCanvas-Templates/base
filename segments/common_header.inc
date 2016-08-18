@@ -59,6 +59,7 @@ use hng2_base\template;
 <script type="text/javascript" src="<?= $config->full_root_path ?>/lib/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="<?= $config->full_root_path ?>/lib/jquery-migrate-1.2.1.js"></script>
 <script type="text/javascript" src="<?= $config->full_root_path ?>/lib/jquery.cookie.js"></script>
+<script type="text/javascript" src="<?= $config->full_root_path ?>/lib/jquery.scrollTo.js"></script>
 
 <!-- jQuery UI -->
 <script type="text/javascript"          src="<?= $config->full_root_path ?>/lib/jquery-ui-1.10.4.custom.min.js"></script>
