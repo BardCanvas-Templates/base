@@ -37,6 +37,7 @@ use hng2_base\template;
     var $_CURRENT_USER_LANGUAGE   = '<?= $_COOKIE["{$config->website_key}_UL"] ?>';
     var $_CURRENT_USER_LEVEL      = parseInt('<?= $account->level ?>');
     var $_CURRENT_USER_IS_ADMIN   = <?= $account->_is_admin ? "true" : "false" ?>;
+    var $_CURRENT_USER_IS_MOD     = <?= $account->level >= config::MODERATOR_USER_LEVEL ? "true" : "false" ?>;
     var $_TEMPLATE_URL            = '<?= $template->url ?>';
     var $_SCRIPTS_VERSION         = '<?= $config->scripts_version ?>';
     
