@@ -6,6 +6,7 @@
  * @var posts_data $posts_data
  * @var template   $template
  * @var module[]   $modules
+ * @var module     $this_module
  */
 
 use hng2_base\config;
@@ -28,7 +29,7 @@ $this_module = $modules["posts"];
 <? if( in_array($template->get("page_tag"), array("post_category_index", "home"))
        && $account->level >= config::NEWCOMER_USER_LEVEL ): ?>
     <div id="quick_post_form_container">
-        <? include __DIR__ . "/quick_post_form.inc"; ?>
+        <? include "{$this_module->abspath}/contents/quick_post_form.inc"; ?>
     </div>
 <? endif; ?>
 
