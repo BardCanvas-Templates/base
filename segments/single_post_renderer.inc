@@ -51,6 +51,7 @@ $author = $post->get_author();
     
     <div class="post_contents">
         <?= $post->get_processed_content() ?>
+        <? $current_module->load_extensions("front", "single_post_content_additions"); ?>
     </div>
     
     <? if( ! empty($author->signature) ): ?>
