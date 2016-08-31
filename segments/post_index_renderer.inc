@@ -37,7 +37,11 @@ $this_module = $modules["posts"];
 
 <div id="posts_index" class="posts_index clearfix">
     
-    <? foreach( $posts_data->posts as $post ):
+    <?
+    $config->globals["modules:posts.working_posts_set"] =& $posts_data->posts;
+    $this_module->load_extensions("front", "index_renderer_before_loop_start");
+    
+    foreach( $posts_data->posts as $post ):
         $author = $post->get_author();
         if( $template->get("page_tag") == "home" && $post->pin_to_home == 1 )
             $pinned = "pinned";
