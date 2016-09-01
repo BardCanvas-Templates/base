@@ -47,7 +47,7 @@ $author = $item->get_author();
         
         <? if($item->type == "image"): ?>
             <p>
-                <img src="<?= $item->get_item_url() ?>" style="width: 100%; height: auto;">
+                <img src="<?= $item->get_item_url() ?>" style="max-width: 100%; height: auto;">
             </p>
         <? elseif($item->type == "video"): ?>
             <p>

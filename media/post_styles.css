@@ -105,7 +105,7 @@ article.single_post, .content_frame {
 .single_post .meta_box  { margin-bottom: 20px; }
 
 .single_post img   { max-width: 100%; }
-.single_post video { max-width: 100%; }
+.single_post video { max-width: 100%; max-height: 90vh; }
 
 /* ======= */
 /* INDEXES */
