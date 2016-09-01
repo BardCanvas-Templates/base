@@ -53,10 +53,13 @@ function remove_attachment_from_quick_post(trigger)
 
 $(document).ready(function()
 {
-    $('#post_form').ajaxForm({
+    var $form = $('#post_form');
+    $form.ajaxForm({
         target:       '#post_form_target',
         beforeSerialize: prepare_post_form_serialization,
         beforeSubmit:    prepare_post_form_submission,
         success:         process_post_form_response
     });
+    
+    $form.find('.expandible_textarea').expandingTextArea();
 });
