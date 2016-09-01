@@ -174,7 +174,8 @@ article.single_post, .content_frame {
 /* Archives: Two columns for large displays */
 
 @media all and (min-width: 1281px) {
-    body[data-listing-type="archive"] .posts_index article {
+    body[data-listing-type="archive"] .posts_index article ,
+    .posts_index[data-is-front-page="false"] article {
         float: left;
         width: calc(50% - 5px);
         margin-right: 10px;
@@ -182,7 +183,8 @@ article.single_post, .content_frame {
         vertical-align: top;
     }
 
-    body[data-listing-type="archive"] .posts_index article:nth-child(even) {
+    body[data-listing-type="archive"] .posts_index article:nth-child(even) ,
+    .posts_index[data-is-front-page="false"] article:nth-child(even) {
         margin-right: 0;
     }
 }

@@ -35,7 +35,9 @@ $this_module = $modules["posts"];
 
 <? if( $posts_data->count == 0 ) return; ?>
 
-<div id="posts_index" class="posts_index clearfix">
+<? $is_front_page = $posts_data->pagination["this_page_number"] <= 1 ? "true" : "false"; ?>
+<div id="posts_index" class="posts_index clearfix" data-is-front-page="<?= $is_front_page ?>"
+     data-page-number="<?= $posts_data->pagination["this_page_number"] ?>">
     
     <?
     $config->globals["modules:posts.working_posts_set"] =& $posts_data->posts;
