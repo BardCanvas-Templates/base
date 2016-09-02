@@ -9,6 +9,7 @@
 /* Slider, for the home page */
 
 #posts_slider {
+    font-family: 'Roboto Condensed', 'Arial Narrow', sans-serif;
     margin-bottom: 20px; background-color: white;
     -webkit-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.25);
     -moz-box-shadow:    1px 1px 5px 0 rgba(0, 0, 0, 0.25);

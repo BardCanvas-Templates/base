@@ -17,14 +17,8 @@ use hng2_modules\posts\posts_data;
 $this_module = $modules["posts"];
 ?>
 
-<? if( $template->get("page_tag") == "home" 
-       && $posts_data->pagination["this_page_number"] == 1 ): ?>
-    <div id="posts_slider">
-        <div align="center" style="margin: 10px; color: maroon;">
-            This is the posts slider and should be shown only at the page 1 of the home.
-        </div>
-    </div>
-<? endif; ?>
+<? if( $template->get("page_tag") == "home" && $settings->get("modules:posts.slider_categories") != "" 
+       && $posts_data->pagination["this_page_number"] == 1 ) include __DIR__ . "/home_slider.inc"; ?>
 
 <? if( in_array($template->get("page_tag"), array("post_category_index", "home"))
        && $account->level >= config::NEWCOMER_USER_LEVEL ): ?>
