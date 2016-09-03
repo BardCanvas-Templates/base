@@ -63,6 +63,9 @@ header("Content-Type: text/html; charset=utf-8"); ?>
         <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/right_sidebar_addon~v<?=$config->scripts_version?>.css">
     <? endif; ?>
     
+    <!-- Always-on -->
+    <? $template->render_always_on_files(); ?>
+    
     <!-- Per module loads -->
     <?
     foreach($modules as $this_module)

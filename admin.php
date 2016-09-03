@@ -57,6 +57,9 @@ header("Content-Type: text/html; charset=utf-8"); ?>
         <script type="text/javascript"          src="<?= $template->url ?>/media/left_sidebar_addon~v<?=$config->scripts_version?>.js"></script>
     <? endif; ?>
     
+    <!-- Always-on -->
+    <? $template->render_always_on_files(); ?>
+    
     <!-- Per module loads -->
     <?
     foreach($modules as $this_module)
