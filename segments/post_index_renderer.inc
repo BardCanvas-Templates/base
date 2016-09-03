@@ -15,21 +15,18 @@ use hng2_base\template;
 use hng2_modules\posts\posts_data;
 
 $this_module = $modules["posts"];
+
+if( in_array($template->get("page_tag"), array("post_category_index", "home"))
+    && $account->level >= config::NEWCOMER_USER_LEVEL )
+    include "{$this_module->abspath}/contents/quick_post_form.inc";
+
+if( $posts_data->count == 0 ) return;
+
+$is_front_page = $posts_data->pagination["this_page_number"] <= 1 ? "true" : "false";
+
+$this_module->load_extensions("front", "index_renderer_before_internal_wrapper");
 ?>
 
-<? if( $template->get("page_tag") == "home" && $settings->get("modules:posts.slider_categories") != "" 
-       && $posts_data->pagination["this_page_number"] == 1 ) include __DIR__ . "/home_slider.inc"; ?>
-
-<? if( in_array($template->get("page_tag"), array("post_category_index", "home"))
-       && $account->level >= config::NEWCOMER_USER_LEVEL ): ?>
-    <div id="quick_post_form_container">
-        <? include "{$this_module->abspath}/contents/quick_post_form.inc"; ?>
-    </div>
-<? endif; ?>
-
-<? if( $posts_data->count == 0 ) return; ?>
-
-<? $is_front_page = $posts_data->pagination["this_page_number"] <= 1 ? "true" : "false"; ?>
 <div id="posts_index" class="posts_index clearfix" data-is-front-page="<?= $is_front_page ?>"
      data-page-number="<?= $posts_data->pagination["this_page_number"] ?>">
     
