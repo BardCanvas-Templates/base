@@ -24,11 +24,11 @@ $column_size   = floor(100 / $columns_count);
     @media all and (min-width: 1024px) {
         #hashtag_entries_index .column {
             display: inline-block;
-            width: calc(<?= $column_size ?>% - 10px);
+            width: <?= "calc({$column_size}% - 10px)" ?>;
             margin-right: 10px;
             vertical-align: top;
         }
-    
+        
         #hashtag_entries_index .column:last-child {
             margin-right: 0;
         }

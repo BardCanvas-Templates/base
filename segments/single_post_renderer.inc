@@ -16,7 +16,7 @@ $author = $post->get_author();
 
 <article class="post single_post clearfix" data-post-id="<?= $post->id_post ?>"
          data-main-category="<?= $post->main_category_slug ?>"
-         data-author-role="<?= $author->get_role() ?>">
+         data-author-role="<?= $author->get_role(true) ?>" data-author-level="<?= $author->level ?>">
     
     <h1><?= $post->get_processed_title() ?></h1>
     

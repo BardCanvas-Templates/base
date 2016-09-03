@@ -23,7 +23,7 @@ $this_module = $modules["gallery"];
         
         <article class="post clearfix" data-post-id="<?= $item->id_post ?>"
                  data-main-category="<?= $item->main_category_slug ?>"
-                 data-author-role="<?= $author->get_role() ?>">
+                 data-author-role="<?= $author->get_role(true) ?>" data-author-level="<?= $author->level ?>">
             
             <div class="meta_box clearfix">
                 

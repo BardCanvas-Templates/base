@@ -16,7 +16,7 @@ $author = $item->get_author();
 
 <article class="post single_post media_item single_media_item clearfix" data-item-id="<?= $item->id_media ?>"
          data-main-category="<?= $item->main_category_slug ?>"
-         data-author-role="<?= $author->get_role() ?>">
+         data-author-role="<?= $author->get_role(true) ?>" data-author-level="<?= $author->level ?>">
     
     <h1><?= $item->get_processed_title() ?></h1>
     
