@@ -87,7 +87,7 @@ if( empty($posts_data->slider_posts) ) return;
             <a href="<?= $post->get_permalink() ?>" style="background-image: url('<?= $post_image ?>');">
                 <span class="title"><?= $post->get_processed_title() ?></span>
                 <span class="image"></span>
-                <span class="description"><?= $post->get_processed_excerpt() ?></span>
+                <span class="description"><?= $post->get_processed_excerpt(true) ?></span>
                 <span class="details">
                     <span class="author"><?= $post->get_processed_author_display_name() ?></span>
                     •
