@@ -198,14 +198,17 @@ article.single_post, .content_frame {
                                                border-top: none; }
 #post_comments .comment_entry:first-child    { margin-top: 0; }
 #post_comments .comment_entry .content       { margin-left: 67px; }
-#post_comments .comment_entry .content *     ,
-body#tinymce .comment_quote *                { margin-top: 2px; margin-bottom: 2px; }
 #post_comments .comment_entry .comment_reply { margin-left: 67px; margin-top: 10px; }
 
 #post_comments .comment_entry[data-indent-level="2"] { margin-left:  66px; }
 #post_comments .comment_entry[data-indent-level="3"] { margin-left: 132px; }
 #post_comments .comment_entry[data-indent-level="4"] { margin-left: 198px; }
 #post_comments .comment_entry[data-indent-level="5"] { margin-left: 264px; }
+
+#post_comments .comment_entry .content p     ,
+body#tinymce .comment_quote p                { margin-top: 2px; margin-bottom: 2px; }
+
+#post_comments .comment_entry .content img { max-width: 100%; }
 
 /* Generic elements */
 
