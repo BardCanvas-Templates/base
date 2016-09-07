@@ -104,7 +104,7 @@ header("Content-Type: text/html; charset=utf-8"); ?>
                 </span>
             <? endif; ?>
             
-            <a class="main_menu_item always_visible pull-left" href="<?= $config->full_root_path ?>/">
+            <a id="home_menu_button" class="main_menu_item always_visible pull-left" href="<?= $config->full_root_path ?>/">
                 <span class="fa fa-home fa-fw"></span>
             </a>
             
