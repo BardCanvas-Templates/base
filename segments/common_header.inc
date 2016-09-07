@@ -34,7 +34,7 @@ use hng2_base\template;
     var $_FULL_ROOT_PATH          = '<?= $config->full_root_path ?>';
     var $_PHP_SELF                = '<?= $_SERVER["PHP_SELF"] ?>';
     var $_CURRENT_USER_ID_ACCOUNT = '<?= $account->id_account ?>';
-    var $_CURRENT_USER_LANGUAGE   = '<?= $_COOKIE["{$config->website_key}_UL"] ?>';
+    var $_CURRENT_USER_LANGUAGE   = '<?= $_COOKIE[$config->language_cookie_var] ?>';
     var $_CURRENT_USER_LEVEL      = parseInt('<?= $account->level ?>');
     var $_CURRENT_USER_IS_ADMIN   = <?= $account->_is_admin ? "true" : "false" ?>;
     var $_CURRENT_USER_IS_MOD     = <?= $account->level >= config::MODERATOR_USER_LEVEL ? "true" : "false" ?>;
