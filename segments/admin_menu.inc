@@ -47,7 +47,8 @@
     </span>
     
     <?
-    $menu = "";
+    $menu = array();
+    $index = 0;
     foreach($modules as $module_name => $this_module)
     {
         if(is_array($this_module->menu_items) || is_object($this_module->menu_items))
@@ -59,12 +60,14 @@
                 $url         = "{$config->full_root_path}/$module_name/$item_url";
                 $caption     = $this_module->language->admin->menu_items->{$this_menu_item->caption_language_var};
                 $icon        = empty($this_module->language->icon) ? "" : ("<span class='fa " . trim($this_module->language->icon) . "'></span>");
-                $menu       .= "<a class='item $added_class' href='$url'>$icon $caption</a>";
+                $key         = strtolower($caption).sprintf("%05.0f", $index);
+                $menu[$key]  = "<a class='item $added_class' href='$url'>$icon $caption</a>";
             }
         }
     }
     
-    echo $menu;
+    ksort($menu);
+    echo implode("", $menu);
     ?>
 
 </div>
