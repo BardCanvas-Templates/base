@@ -51,6 +51,7 @@ if( empty($posts_data->slider_posts) ) return;
     #posts_slider li .image       { height: 213px; display: block; }
     #posts_slider li .description { font-size: 20px; line-height: 30px; height: 30px; padding-bottom: 5px; display: block; font-style: italic; overflow: hidden; background-color: rgba(0, 0, 0, .25); }
     #posts_slider li .details     { line-height: 20px; padding-bottom: 5px; display: block; background-color: rgba(0, 0, 0, .25); }
+    #posts_slider li .expires     { color: yellow; }
     
     #posts_slider li   ,
     #posts_slider li a { color: white; font-weight: bold; text-shadow: 1px 1px 10px rgba(0, 0, 0, 1); text-decoration: none; }
@@ -87,11 +88,17 @@ if( empty($posts_data->slider_posts) ) return;
             <a href="<?= $post->get_permalink() ?>" style="background-image: url('<?= $post_image ?>');">
                 <span class="title"><?= $post->get_processed_title() ?></span>
                 <span class="image"></span>
-                <span class="description"><?= $post->get_processed_excerpt(true) ?></span>
+                <span class="description"><?= convert_emojis($post->excerpt) ?></span>
                 <span class="details">
                     <span class="author"><?= $post->get_processed_author_display_name() ?></span>
                     •
                     <span class="published"><?= get_minimized_date($post->publishing_date) ?></span>
+                    <? if($post->expiration_date != "0000-00-00 00:00:00"): ?>
+                        <span class="expires">
+                            <span class="fa fa-clock-o fa-fw"></span>
+                            <?= preg_replace('/\d+s/', "", time_remaining_string($post->expiration_date)) ?>
+                        </span>
+                    <? endif; ?>
                 </span>
             </a>
         </li>

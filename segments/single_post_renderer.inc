@@ -40,7 +40,7 @@ $author = $post->get_author();
                 <?= time_elapsed_string($post->publishing_date) ?>
             </a>
             <? if($post->expiration_date != "0000-00-00 00:00:00"): ?>
-                <span class="meta_field dimmed">
+                <span class="meta_field important">
                     <span class="fa fa-clock-o fa-fw"></span>
                     <?= preg_replace('/\d+s/', "", time_remaining_string($post->expiration_date)) ?>
                 </span>
