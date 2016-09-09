@@ -185,7 +185,8 @@ header("Content-Type: text/html; charset=utf-8"); ?>
         <div class="footer_contents">
             
             <div align="center">
-                <?= $settings->get("engine.website_name") ?> v<?= $config->engine_version ?>
+                <?= $settings->get("engine.website_name") ?>
+                <?= replace_escaped_vars($language->powered_by, '{$version}', $config->engine_version) ?>
             </div>
             
         </div>
