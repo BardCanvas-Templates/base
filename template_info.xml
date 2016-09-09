@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template>
+    
+    <name>Base template</name>
+    
+    <version>1.3</version>
+    
+    <description>
+        Distributed with BardCanvas.
+    </description>
+    
+    <group>BardCanvas</group>
+    
+    <tags>responsive, facebook clone, wordpress clone, mobile, desktop, multpile columns</tags>
+    
+    <author>
+        <company>LAVA SoftWorks</company>
+        <name>Alejandro Caballero</name>
+        <email>lava.caballero@gmail.com</email>
+    </author>
+    
+</template>
