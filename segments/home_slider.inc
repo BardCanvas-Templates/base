@@ -80,7 +80,10 @@ if( empty($posts_data->slider_posts) ) return;
         }
         else
         {
-            $back_image = "{$config->full_root_path}/media/default_user_banner.jpg";
+            $default = $settings->get("modules:accounts.default_profile_banner");
+            if( empty($default) ) $default = "media/default_user_banner.jpg";
+            
+            $back_image = "{$config->full_root_path}{$default}";
             $post_image = "{$config->full_root_path}/media/default_avatar.jpg";
         }
         ?>
