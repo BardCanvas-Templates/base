@@ -75,13 +75,14 @@ $this_module->load_extensions("front", "index_renderer_before_internal_wrapper")
                 
             </div>
             
-            <h1><a href="<?= $post->get_permalink() ?>"><?= $post->get_processed_title(false) ?></a></h1>
-            
-            <? if( ! empty($post->featured_image_thumbnail) ): ?>
-                <div class="post_featured_image thumbnail">
-                    <img src="<?= $post->featured_image_thumbnail ?>">
-                </div>
-            <? endif; ?>
+            <a href="<?= $post->get_permalink() ?>">
+                <h1><?= $post->get_processed_title(false) ?></h1>
+                <? if( ! empty($post->featured_image_thumbnail) ): ?>
+                    <div class="post_featured_image thumbnail">
+                        <img src="<?= $post->featured_image_thumbnail ?>">
+                    </div>
+                <? endif; ?>
+            </a>
             
             <div class="post_contents post_excerpt">
                 <?= $post->get_processed_excerpt() ?>

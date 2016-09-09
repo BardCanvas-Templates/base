@@ -263,5 +263,5 @@ body#tinymce .comment_quote p                { margin-top: 2px; margin-bottom: 2
 article.pinned, .featured_post.pinned { border: 2px solid #990d0d; border-left: 6px solid #990d0d;
                                         background-color: whitesmoke; }
 ul.post_comments { padding-left: 22px; font-family: 'Roboto Condensed', 'Arial Narrow', sans-serif;
-                   font-size: 11pt; line-height: 1.1em; margin-top: 10px; }
+                   font-size: 11pt; line-height: 1.1em; margin-top: 10px !important; }
 ul.post_comments .emojione { height: 1em; }
