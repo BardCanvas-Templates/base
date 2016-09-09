@@ -169,16 +169,40 @@ article.single_post, .content_frame {
     #content { width: 100%; }
 }
 
+/* Here goes two columns for small displays */
 @media all and (min-width: 260px) and (max-width: 768px)
 {
+    #featured_posts_column {
+        -webkit-column-count: 2; -webkit-column-gap: 10px;
+        -moz-column-count:    2; -moz-column-gap:    10px;
+        column-count:         2; column-gap:         10px;
+    }
+    .featured_post { display: inline-block; width: 100%; }
+    
+    /* old ways:
     .featured_post              { display: inline-block; vertical-align: top; 
                                   width: calc(50% - 8px); margin-right: 10px; }
     .featured_post:nth-child(2) { margin-right: 0; }
+    */
 }
 
 /* Archives: Two columns for large displays */
 
 @media all and (min-width: 1281px) {
+
+    body[data-listing-type="archive"] .posts_index ,
+    .posts_index[data-is-front-page="false"] {
+        -webkit-column-count: 2; -webkit-column-gap: 10px;
+        -moz-column-count:    2; -moz-column-gap:    10px;
+        column-count:         2; column-gap:         10px;
+    }
+
+    body[data-listing-type="archive"] .posts_index article ,
+    .posts_index[data-is-front-page="false"] article {
+        display: inline-block; width: 100%;
+    }
+    
+    /* old ways:
     body[data-listing-type="archive"] .posts_index article ,
     .posts_index[data-is-front-page="false"] article {
         float: left;
@@ -192,6 +216,7 @@ article.single_post, .content_frame {
     .posts_index[data-is-front-page="false"] article:nth-child(even) {
         margin-right: 0;
     }
+    */
 }
 
 /* Comments on single posts */
