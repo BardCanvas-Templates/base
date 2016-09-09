@@ -11,15 +11,18 @@
 
 #left_sidebar .item             { display: block; margin: 0 0 0 10px; padding: 4px 6px; }
 #left_sidebar .item.selected    { background-color: rgba(255, 255, 255, .5); }
-#left_sidebar .item.highlighted { background-color: rgba(173, 255, 47, .25) }
+#left_sidebar .item.highlighted { background-color: rgba(255, 255, 0, 0.25); }
 #left_sidebar .item.important   { color: #990d0d; }
+#left_sidebar .item.critical    { background-color: rgba(128, 0, 0, 0.25); border: 1px solid #990d0d; }
 
 #left_sidebar a                                    ,
 #left_sidebar .pseudo_link                         { text-decoration: none; color: grey; }
 #left_sidebar a.item:hover                         ,
 #left_sidebar .pseudo_link:hover                   { background-color: white; }
 #left_sidebar a.item.highlighted:hover             ,
-#left_sidebar  .item.pseudo_link.highlighted:hover { background-color: rgba(173, 255, 47, .75) }
+#left_sidebar  .item.pseudo_link.highlighted:hover { background-color: rgba(255, 255, 0, 0.51); }
+#left_sidebar a.item.critical:hover                ,
+#left_sidebar  .item.pseudo_link.critical:hover    { color: white; background-color: rgba(128, 0, 0, 0.51); }
 
 
 #left_sidebar .group .title:empty { display: none; }
