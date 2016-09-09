@@ -18,8 +18,6 @@ $author = $post->get_author();
          data-main-category="<?= $post->main_category_slug ?>"
          data-author-role="<?= $author->get_role(true) ?>" data-author-level="<?= $author->level ?>">
     
-    <h1><?= $post->get_processed_title() ?></h1>
-    
     <div class="meta_box clearfix">
         
         <img class="user_avatar" src="<?= $author->get_avatar_url() ?>">
@@ -48,6 +46,13 @@ $author = $post->get_author();
         </div>
     
     </div>
+    
+    <h1>
+        <?= $post->get_processed_title() ?>
+        <a class="permalink" href="<?= $post->get_permalink(true) ?>">
+            <span class="fa fa-link fa-border"></span>
+        </a>
+    </h1>
     
     <div class="post_contents">
         <?= $post->get_processed_content() ?>

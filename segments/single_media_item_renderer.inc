@@ -18,8 +18,6 @@ $author = $item->get_author();
          data-main-category="<?= $item->main_category_slug ?>"
          data-author-role="<?= $author->get_role(true) ?>" data-author-level="<?= $author->level ?>">
     
-    <h1><?= $item->get_processed_title() ?></h1>
-    
     <div class="meta_box clearfix">
         
         <img class="user_avatar" src="<?= $author->get_avatar_url() ?>">
@@ -43,11 +41,20 @@ $author = $item->get_author();
     
     </div>
     
+    <h1>
+        <?= $item->get_processed_title() ?>
+        <a class="permalink" href="<?= $item->get_page_url(true) ?>">
+            <span class="fa fa-link fa-border"></span>
+        </a>
+    </h1>
+    
     <div class="post_contents">
         
         <? if($item->type == "image"): ?>
             <p>
-                <img src="<?= $item->get_item_url() ?>" style="max-width: 100%; height: auto;">
+                <a href="<?= $item->get_item_url() ?>" target="_blank">
+                    <img src="<?= $item->get_item_url() ?>" style="max-width: 100%; height: auto;">
+                </a>
             </p>
         <? elseif($item->type == "video"): ?>
             <p>
