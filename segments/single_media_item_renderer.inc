@@ -37,6 +37,10 @@ $author = $item->get_author();
                 <span class="fa fa-calendar fa-fw"></span>
                 <?= time_elapsed_string($item->publishing_date) ?>
             </a>
+            <span class="meta_field">
+                <span class="fa fa-eye fa-fw"></span>
+                <?= number_format($item->views); ?>
+            </span>
         </div>
     
     </div>

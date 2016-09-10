@@ -37,6 +37,10 @@ $author = $post->get_author();
                 <span class="fa fa-calendar fa-fw"></span>
                 <?= time_elapsed_string($post->publishing_date) ?>
             </a>
+            <span class="meta_field">
+                <span class="fa fa-eye fa-fw"></span>
+                <?= number_format($post->views); ?>
+            </span>
             <? if($post->expiration_date != "0000-00-00 00:00:00"): ?>
                 <span class="meta_field important">
                     <span class="fa fa-clock-o fa-fw"></span>
