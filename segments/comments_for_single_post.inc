@@ -88,6 +88,11 @@ list($find_params, $comments_count, $comments, $pagination) = $repository->get_f
                         <span class="fa fa-reply"></span>
                         <?= $this_module->language->list->reply_comment ?>
                     </span>
+                    &nbsp;
+                    <span class="pseudo_link" onclick="prepare_comment_reply(this, true)">
+                        <span class="fa fa-quote-right"></span>
+                        <?= $this_module->language->list->quote_comment ?>
+                    </span>
                 </div>
                 <div class="target"></div>
             </div>

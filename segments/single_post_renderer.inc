@@ -33,14 +33,14 @@ $author = $post->get_author();
             </a>
             <? if( $post->main_category_visibility == "level_based" && ! empty($post->main_category_min_level) ): ?>
                 <span class="meta_field important">
-                            <span class="fa fa-users"></span>
+                    <span class="fa fa-users"></span>
                     <?= $config->user_levels_by_level[$post->main_category_min_level]; ?>
-                        </span>
+                </span>
             <? elseif( $post->visibility == "level_based" ): ?>
                 <span class="meta_field important">
-                            <span class="fa fa-users"></span>
+                    <span class="fa fa-users"></span>
                     <?= $config->user_levels_by_level[$post->author_level]; ?>
-                        </span>
+                </span>
             <? endif; ?>
         </div>
         <div class="meta_section">
