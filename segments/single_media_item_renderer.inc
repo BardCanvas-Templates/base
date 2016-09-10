@@ -31,6 +31,17 @@ $author = $item->get_author();
                 <span class="fa fa-folder fa-fw"></span>
                 <?= $item->main_category_title ?>
             </a>
+            <? if( $item->main_category_visibility == "level_based" && ! empty($item->main_category_min_level) ): ?>
+                <span class="meta_field important">
+                    <span class="fa fa-users"></span>
+                    <?= $config->user_levels_by_level[$item->main_category_min_level]; ?>
+                </span>
+            <? elseif( $item->visibility == "level_based" ): ?>
+                <span class="meta_field important">
+                    <span class="fa fa-users"></span>
+                    <?= $config->user_levels_by_level[$item->author_level]; ?>
+                </span>
+            <? endif; ?>
         </div>
         <div class="meta_section">
             <a class="meta_field dimmed" href="<?= $config->full_root_url ?>/date/<?= date("Y/m/d", strtotime($item->publishing_date)) ?>/">

@@ -40,10 +40,14 @@ $this_module->load_extensions("front", "index_renderer_before_internal_wrapper")
             $pinned = "pinned";
         elseif( $template->get("page_tag") == "post_category_index" && $post->pin_to_main_category_index == 1 )
             $pinned = "pinned";
-        else $pinned = ""; ?>
+        else $pinned = "";
         
-        <article class="post clearfix <?= $pinned ?>" data-post-id="<?= $post->id_post ?>"
-                 data-main-category="<?= $post->main_category_slug ?>"
+        $special = "";
+        if( $post->visibility == "level_based" || $post->main_category_visibility == "level_based" ) $special = " special";
+        ?>
+        
+        <article class="post clearfix <?= $pinned ?><?= $special ?>" data-post-id="<?= $post->id_post ?>"
+                 data-main-category="<?= $post->main_category_slug ?>" data-main-category-min-level="<?= $post->main_category_min_level ?>"
                  data-author-role="<?= $author->get_role(true) ?>" data-author-level="<?= $author->level ?>">
             
             <div class="meta_box clearfix">
@@ -59,6 +63,17 @@ $this_module->load_extensions("front", "index_renderer_before_internal_wrapper")
                         <span class="fa fa-folder fa-fw"></span>
                         <?= $post->main_category_title ?>
                     </a>
+                    <? if( $post->main_category_visibility == "level_based" && ! empty($post->main_category_min_level) ): ?>
+                        <span class="meta_field important">
+                            <span class="fa fa-users"></span>
+                            <?= $config->user_levels_by_level[$post->main_category_min_level]; ?>
+                        </span>
+                    <? elseif( $post->visibility == "level_based" ): ?>
+                        <span class="meta_field important">
+                            <span class="fa fa-users"></span>
+                            <?= $config->user_levels_by_level[$post->author_level]; ?>
+                        </span>
+                    <? endif; ?>
                 </div>
                 <div class="meta_section">
                     <a class="meta_field dimmed" href="<?= $config->full_root_url ?>/date/<?= date("Y/m/d", strtotime($post->publishing_date)) ?>/">
@@ -72,7 +87,6 @@ $this_module->load_extensions("front", "index_renderer_before_internal_wrapper")
                         </span>
                     <? endif; ?>
                 </div>
-                
             </div>
             
             <a href="<?= $post->get_permalink() ?>">

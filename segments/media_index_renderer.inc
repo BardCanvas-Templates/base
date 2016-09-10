@@ -18,10 +18,13 @@ $this_module = $modules["gallery"];
 
 <div id="posts_index" class="posts_index clearfix">
     
-    <? foreach( $items_data->items as $item): ?>
-        <? $author = $item->get_author(); ?>
+    <? foreach( $items_data->items as $item):
+        $author = $item->get_author();
+        $special = "";
+        if( $item->visibility == "level_based" || $item->main_category_visibility == "level_based" ) $special = " special";
+        ?>
         
-        <article class="post clearfix" data-post-id="<?= $item->id_post ?>"
+        <article class="post <?= $special ?> clearfix" data-post-id="<?= $item->id_post ?>"
                  data-main-category="<?= $item->main_category_slug ?>"
                  data-author-role="<?= $author->get_role(true) ?>" data-author-level="<?= $author->level ?>">
             
@@ -38,6 +41,17 @@ $this_module = $modules["gallery"];
                         <span class="fa fa-folder fa-fw"></span>
                         <?= $item->main_category_title ?>
                     </a>
+                    <? if( $item->main_category_visibility == "level_based" && ! empty($item->main_category_min_level) ): ?>
+                        <span class="meta_field important">
+                            <span class="fa fa-users"></span>
+                            <?= $config->user_levels_by_level[$item->main_category_min_level]; ?>
+                        </span>
+                    <? elseif( $item->visibility == "level_based" ): ?>
+                        <span class="meta_field important">
+                            <span class="fa fa-users"></span>
+                            <?= $config->user_levels_by_level[$item->author_level]; ?>
+                        </span>
+                    <? endif; ?>
                 </div>
                 <div class="meta_section">
                     <a class="meta_field dimmed" href="<?= $config->full_root_url ?>/date/<?= date("Y/m/d", strtotime($item->publishing_date)) ?>/">

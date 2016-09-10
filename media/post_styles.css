@@ -27,55 +27,19 @@
 
 /* Common meta areas */
 
-.meta_box { padding: 10px 10px 5px 10px; }
-
-.meta_box .user_avatar {
-    float: left;
-    margin-right: 10px;
-    width: 42px;
-    height: 42px;
-    /*border-radius: 42px;*/
-}
-
-.meta_box .meta_field {
-    display: inline-block; padding: 2px 4px;
-}
-
-.meta_box .meta_field.dimmed {
-    color: dimgrey;
-}
-
-.meta_box .meta_field.important {
-    color: maroon;
-}
-
-.meta_box .meta_section {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 10pt;
-    line-height: 16px;
-    padding: 1px;
-}
-
-.meta_box .meta_section.upper {
-    font-size: 11pt;
-}
+.meta_box                       { padding: 10px 10px 5px 10px; }
+.meta_box .user_avatar          { float: left; margin-right: 10px; width: 42px; height: 42px; }
+.meta_box .meta_field           { display: inline-block; padding: 2px 4px; }
+.meta_box .meta_field.dimmed    { color: dimgrey; }
+.meta_box .meta_field.important { color: maroon; }
+.meta_box .meta_section         { font-family: Arial, Helvetica, sans-serif; font-size: 10pt; line-height: 16px; padding: 1px; }
+.meta_box .meta_section.upper   { font-size: 11pt; }
 
 /* Posts */
 
-#posts_pagination {
-    font-family: 'Lora', sans-serif;
-    font-size: 14pt;
-    line-height: 1em;
-}
-
-#posts_pagination a {
-    text-decoration: none;
-}
-
-#posts_pagination a[disabled] {
-    cursor: default;
-    color:  grey;
-}
+#posts_pagination             { font-family: 'Lora', sans-serif; font-size: 14pt; line-height: 1em; }
+#posts_pagination a           { text-decoration: none; }
+#posts_pagination a[disabled] { cursor: default; color:  grey; }
 
 .posts_index article                          { margin-bottom: 20px; background-color: white;
                                                -webkit-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.25);
@@ -119,7 +83,7 @@ article.single_post, .content_frame {
 
 /* Featured posts, only on the home */
 
-.featured_post                { display: block;
+.featured_post                { display: block; text-decoration: none;
                                 background-color: white; margin-bottom: 10px;
                                 -webkit-box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.25);
                                 -moz-box-shadow:    1px 1px 5px 0 rgba(0, 0, 0, 0.25);
@@ -259,10 +223,13 @@ body#tinymce .comment_quote p                { margin-top: 2px; margin-bottom: 2
     white-space: nowrap; margin: 0 5px 5px 0;
 }
 
-/* Etc */
+/* Pinned posts and special posts */
 
-article.pinned, .featured_post.pinned { border: 2px solid #990d0d; border-left: 6px solid #990d0d;
-                                        background-color: whitesmoke; }
+article.pinned,  .featured_post.pinned  { border: 2px solid #990d0d;    border-left: 6px solid #990d0d;    background-color: whitesmoke; }
+article.special, .featured_post.special { border: 2px solid darkorange; border-left: 6px solid darkorange; background-color: lightyellow; }
+
+/* Post comments */
+
 ul.post_comments { padding-left: 22px; font-family: 'Roboto Condensed', 'Arial Narrow', sans-serif;
                    font-size: 11pt; line-height: 1.1em; margin-top: 10px !important; }
 ul.post_comments .emojione { height: 1em; }
