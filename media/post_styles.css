@@ -70,12 +70,46 @@ article.single_post, .content_frame {
 
 /* Single post overrides */
 
-.single_post h1           { font-size: 16pt; line-height: 18pt; }
-.single_post h1 .emojione { height: 16pt;  }
+.single_post h1           { font-size: 18pt; line-height: 20pt; }
+.single_post h1 .emojione { height: 18pt;  }
 .single_post .meta_box    { margin-bottom: 20px; }
 
 .single_post img   { max-width: 100%; }
 .single_post video { max-width: 100%; max-height: 90vh; }
+
+.single_item_actions { margin-top: 0; }
+
+.single_item_actions .item  {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 0 5px 5px 0;
+    border-radius: 5px;
+    text-decoration: none;
+    font-family: arial, helvetica, sans-serif;
+    font-size: 10pt;
+    line-height: normal;
+    font-weight: bold;
+}
+
+.single_item_actions .item  {
+    border:           1px solid #990d0d;
+    color:            #990d0d;
+    background-color: white;
+}
+
+.single_item_actions .action {
+    cursor:           pointer;
+    color:            white;
+    background-color: #990d0d;
+}
+
+.single_item_actions .warning {
+    color:            #990d0d;
+    background-color: yellow;
+    border-color:     #990d0d;
+}
+
+.single_item_actions .action:hover { background-color: red; }
 
 /* ======= */
 /* INDEXES */

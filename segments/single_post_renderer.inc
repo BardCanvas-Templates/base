@@ -64,10 +64,62 @@ $author = $post->get_author();
     
     <h1>
         <?= $post->get_processed_title() ?>
-        <a class="permalink" href="<?= $post->get_permalink(true) ?>">
-            <span class="fa fa-link fa-border"></span>
-        </a>
     </h1>
+    
+    <p class="single_item_actions">
+        <a class="item action" href="<?= $post->get_permalink(true) ?>">
+            <span class="fa fa-link"></span>
+            <?= $language->permalink ?>
+        </a>
+        
+        <? if( $post->can_be_edited() ): ?>
+            <a class="item action" href="<?= $config->full_root_path ?>/posts/?edit_post=<?= $post->id_post ?>&wasuuup=<?= md5(mt_rand(1, 65535)) ?>">
+                <span class="fa fa-pencil"></span>
+                <?= $language->edit ?>
+            </a>
+        <? endif; ?>
+        
+        <? if($account->_exists): ?>
+            <span class="item action" onclick="send_pm(this, '<?= $author->user_name ?>', '<?= replace_escaped_vars($language->contact->pm->send_to, '{$recipient}', htmlspecialchars($author->display_name)) ?>')"
+                  title="<?= replace_escaped_vars( $language->contact->pm->title, '{$website_name}', $settings->get("engine.website_name") ) ?>">
+                <span class="fa fa-inbox"></span>
+                <?= $language->pm_author ?>
+            </span>
+        <? else: ?>
+            <? if( $author->get_engine_pref("@contact:allow_emails") != "false"
+                   || $account->level >= config::MODERATOR_USER_LEVEL ): ?>
+                <a class="item action" href="<?= $config->full_root_path ?>/contact/?target=<?= urlencode($author->user_name) ?>">
+                    <span class="fa fa-envelope"></span>
+                    <?= $language->email_author ?>
+                </a>
+            <? endif; ?>
+        <? endif; ?>
+        
+        <? if( $account->level < config::MODERATOR_USER_LEVEL ): ?>
+            <a class="item action" href="<?= $config->full_root_path ?>/contact/?action=report&type=post&id=<?= $post->id_post ?>">
+                <span class="fa fa-warning"></span>
+                <?= $language->report_as_spam ?>
+            </a>
+        <? else: ?>
+            <span class="item warning">
+                <span class="fa fa-cloud"></span>
+                <?= $post->creation_ip ?>
+            </span>
+            <?
+            $parts   = explode("; ", $post->creation_location);
+            $isp      = array_pop($parts);
+            $location = implode("; ", $parts);
+            ?>
+            <span class="item warning">
+                <span class="fa fa-map-marker"></span>
+                <?= $location ?>
+            </span>
+            <span class="item warning">
+                <span class="fa fa-building"></span>
+                <?= $isp ?>
+            </span>
+        <? endif; ?>
+    </p>
     
     <div class="post_contents">
         <?= $post->get_processed_content() ?>
