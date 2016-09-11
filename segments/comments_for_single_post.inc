@@ -74,6 +74,26 @@ list($find_params, $comments_count, $comments, $pagination) = $repository->get_f
                             <span class="fa fa-calendar fa-fw"></span>
                             <?= time_elapsed_string($comment->creation_date) ?>
                         </span>
+                        
+                        <? if( $account->level >= config::MODERATOR_USER_LEVEL ): ?>
+                            <span class="meta_field critical">
+                                <span class="fa fa-cloud"></span>
+                                <?= $comment->creation_ip ?>
+                            </span>
+                            <?
+                            $parts   = explode("; ", $comment->creation_location);
+                            $isp      = array_pop($parts);
+                            $location = implode("; ", $parts);
+                            ?>
+                            <span class="meta_field critical">
+                                <span class="fa fa-map-marker"></span>
+                                <?= $location ?>
+                            </span>
+                            <span class="meta_field critical">
+                                <span class="fa fa-building"></span>
+                                <?= $isp ?>
+                            </span>
+                        <? endif; ?>
                     </div>
                 </div>
                 
