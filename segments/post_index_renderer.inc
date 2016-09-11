@@ -74,6 +74,13 @@ $this_module->load_extensions("front", "index_renderer_before_internal_wrapper")
                             <?= $config->user_levels_by_level[$post->author_level]; ?>
                         </span>
                     <? endif; ?>
+                    
+                    <? if( ! empty($post->tags_list) ) foreach($post->tags_list as $tag): ?>
+                        <a class="meta_field" href="<?= $config->full_root_path ?>/tag/<?= $tag ?>" target="_blank">
+                            <span class="fa fa-hashtag"></span>
+                            <?= $tag ?>
+                        </a>
+                    <? endforeach; ?>
                 </div>
                 <div class="meta_section">
                     <a class="meta_field dimmed" href="<?= $config->full_root_url ?>/date/<?= date("Y/m/d", strtotime($post->publishing_date)) ?>/">
