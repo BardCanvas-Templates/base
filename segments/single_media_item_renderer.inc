@@ -61,10 +61,12 @@ $author = $item->get_author();
     </h1>
     
     <p class="single_item_actions">
-        <a class="item action" href="<?= $item->get_page_url(true) ?>">
-            <span class="fa fa-link"></span>
+        <a class="item action clipboard-copy seamless_right" href="<?= $item->get_page_url(true) ?>">
             <?= $language->permalink ?>
-        </a>
+        </a><span class="item action clipboard-copy seamless_left"
+                  data-clipboard-text="<?= $item->get_page_url(true) ?>" style="">
+            <span class="fa fa-clipboard"></span>
+        </span>
         
         <? if( $item->can_be_edited() ): ?>
             <a class="item action" href="<?= $config->full_root_path ?>/gallery/?edit_item=<?= $item->id_media ?>&wasuuup=<?= md5(mt_rand(1, 65535)) ?>">

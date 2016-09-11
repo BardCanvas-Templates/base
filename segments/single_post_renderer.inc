@@ -67,10 +67,12 @@ $author = $post->get_author();
     </h1>
     
     <p class="single_item_actions">
-        <a class="item action" href="<?= $post->get_permalink(true) ?>">
-            <span class="fa fa-link"></span>
+        <a class="item action clipboard-copy seamless_right" href="<?= $post->get_permalink(true) ?>">
             <?= $language->permalink ?>
-        </a>
+        </a><span class="item action clipboard-copy seamless_left"
+                  data-clipboard-text="<?= $post->get_permalink(true) ?>" style="">
+            <span class="fa fa-clipboard"></span>
+        </span>
         
         <? if( $post->can_be_edited() ): ?>
             <a class="item action" href="<?= $config->full_root_path ?>/posts/?edit_post=<?= $post->id_post ?>&wasuuup=<?= md5(mt_rand(1, 65535)) ?>">

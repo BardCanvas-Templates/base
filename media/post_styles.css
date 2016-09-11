@@ -109,6 +109,18 @@ article.single_post, .content_frame {
     border-color:     #990d0d;
 }
 
+.single_item_actions .seamless_right {
+    margin-right: 0; border-top-right-radius: 0; border-bottom-right-radius: 0;
+    border-right: none;
+}
+
+.single_item_actions .seamless_left {
+    margin-left: 0; border-top-left-radius: 0; border-bottom-left-radius: 0;
+    border-left: none;
+    color: yellow;
+    background-color: orangered;
+}
+
 .single_item_actions .action:hover { background-color: red; }
 
 /* ======= */

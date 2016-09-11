@@ -62,6 +62,23 @@ use hng2_base\template;
 <script type="text/javascript" src="<?= $config->full_root_path ?>/lib/jquery.cookie.js"></script>
 <script type="text/javascript" src="<?= $config->full_root_path ?>/lib/jquery.scrollTo.js"></script>
 
+<script type="text/javascript" src="<?= $config->full_root_path ?>/lib/clipboard.js"></script>
+<script type="text/javascript">
+    var $_CLIPBOARD_COPIED = '<?= addslashes($language->clipboard->copied) ?>';
+    var $_CLIPBOARD_UNABLE = '<?= addslashes($language->clipboard->unable_to_copy) ?>';
+    $(document).ready(function()
+    {
+        var clipboard = new Clipboard('.clipboard-copy');
+        
+        clipboard.on('success', function(e) { alert($_CLIPBOARD_COPIED); });
+        
+        clipboard.on('error', function(e) {
+            var text = e.text; if( ! text ) text = $(e.trigger).attr('data-clipboard-text');
+            prompt($_CLIPBOARD_UNABLE, text);
+        });
+    });
+</script>
+
 <!-- jQuery UI -->
 <script type="text/javascript"          src="<?= $config->full_root_path ?>/lib/jquery-ui-1.10.4.custom.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<?= $config->full_root_path ?>/lib/jquery-ui-themes-1.10.4/blitzer/jquery-ui.css">
