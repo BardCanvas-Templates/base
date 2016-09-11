@@ -113,6 +113,58 @@ list($find_params, $comments_count, $comments, $pagination) = $repository->get_f
                         <span class="fa fa-quote-right"></span>
                         <?= $this_module->language->list->quote_comment ?>
                     </span>
+                    
+                    <? if( $account->_exists ): ?>
+                        &nbsp;
+                        <a href="<?= "{$config->full_root_url}/comments/?flag_as_spam={$comment->id_comment}" ?>" target="_blank">
+                            <span class="fa fa-flag"></span>
+                            <?= $language->flag_as_spam ?>
+                        </a>
+                        <? if($account->level < config::MODERATOR_USER_LEVEL): ?>
+                            &nbsp;
+                            <a href="<?= "{$config->full_root_url}/contact/?action=report&type=comment&id={$comment->id_comment}" ?>" target="_blank">
+                                <span class="fa fa-exclamation-circle"></span>
+                                <?= $language->report_to_webmaster ?>
+                            </a>
+                        <? endif; ?>
+                    <? endif; ?>
+                    
+                    <? if( ! is_null($author) && $account->id_account != $author->id_account ): ?>
+                        <? if($account->_exists): ?>
+                            &nbsp;
+                            <span class="pseudo_link" onclick="send_pm(this, '<?= $author->user_name ?>', '<?= replace_escaped_vars($language->contact->pm->send_to, '{$recipient}', htmlspecialchars($author->display_name)) ?>')"
+                                  title="<?= replace_escaped_vars( $language->contact->pm->title, '{$website_name}', $settings->get("engine.website_name") ) ?>">
+                                <span class="fa fa-inbox"></span>
+                                <?= $language->pm_author ?>
+                            </span>
+                        <? else: ?>
+                            <? if( $author->get_engine_pref("@contact:allow_emails") != "false"
+                                   || $account->level >= config::MODERATOR_USER_LEVEL ): ?>
+                                &nbsp;
+                                <a href="<?= $config->full_root_path ?>/contact/?target=<?= urlencode($author->user_name) ?>">
+                                    <span class="fa fa-envelope"></span>
+                                    <?= $language->email_author ?>
+                                </a>
+                            <? endif; ?>
+                        <? endif; ?>
+                    <? endif; ?>
+                    
+                    <? if( is_comment_editable($comment) ): ?>
+                        &nbsp;
+                        <a href="<?= $config->full_root_path ?>/comments/?edit=<?= $comment->id_comment ?>">
+                            <span class="fa fa-pencil"></span>
+                            <?= $this_module->language->record_nav->actions->edit ?>
+                        </a>
+                    <? endif; ?>
+    
+                    <? if( ! is_null($author) && $account->id_account == $author->id_account ): ?>
+                        &nbsp;
+                        <a href="<?= "{$config->full_root_url}/comments/?delete={$comment->id_comment}" ?>" target="_blank">
+                            <span class="fa fa-trash"></span>
+                            <?= $this_module->language->record_nav->actions->trash ?>
+                        </a>
+                    <? endif; ?>
+                    
                 </div>
                 <div class="target"></div>
             </div>

@@ -239,7 +239,9 @@ article.single_post, .content_frame {
                                                border-top: none; }
 #post_comments .comment_entry:first-child    { margin-top: 0; }
 #post_comments .comment_entry .content       { margin-left: 67px; }
-#post_comments .comment_entry .comment_reply { margin-left: 67px; margin-top: 10px; }
+#post_comments .comment_entry .comment_reply { margin-left: 67px; }
+
+#post_comments .comment_entry .comment_reply .trigger { margin-top: 10px; font-family: Arial, Helvetica, sans-serif; }
 
 #post_comments .comment_entry[data-indent-level="2"] { margin-left:  66px; }
 #post_comments .comment_entry[data-indent-level="3"] { margin-left: 132px; }

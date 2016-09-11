@@ -126,8 +126,8 @@ $author = $post->get_author();
         
         <? if( $account->level < config::MODERATOR_USER_LEVEL ): ?>
             <a class="item action" href="<?= $config->full_root_path ?>/contact/?action=report&type=post&id=<?= $post->id_post ?>">
-                <span class="fa fa-warning"></span>
-                <?= $language->report_as_spam ?>
+                <span class="fa fa-exclamation-circle"></span>
+                <?= $language->report_to_webmaster ?>
             </a>
         <? endif; ?>
     </p>
