@@ -65,8 +65,28 @@ $author = $post->get_author();
                     <?= preg_replace('/\d+s/', "", time_remaining_string($post->expiration_date)) ?>
                 </span>
             <? endif; ?>
+            
+            <? if( $account->level >= config::MODERATOR_USER_LEVEL ): ?>
+                <span class="meta_field critical">
+                    <span class="fa fa-cloud"></span>
+                    <?= $post->creation_ip ?>
+                </span>
+                <?
+                $parts   = explode("; ", $post->creation_location);
+                $isp      = array_pop($parts);
+                $location = implode("; ", $parts);
+                ?>
+                <span class="meta_field critical">
+                    <span class="fa fa-map-marker"></span>
+                    <?= $location ?>
+                </span>
+                <span class="meta_field critical">
+                    <span class="fa fa-building"></span>
+                    <?= $isp ?>
+                </span>
+            <? endif; ?>
         </div>
-    
+        
     </div>
     
     <h1>
@@ -109,24 +129,6 @@ $author = $post->get_author();
                 <span class="fa fa-warning"></span>
                 <?= $language->report_as_spam ?>
             </a>
-        <? else: ?>
-            <span class="item warning">
-                <span class="fa fa-cloud"></span>
-                <?= $post->creation_ip ?>
-            </span>
-            <?
-            $parts   = explode("; ", $post->creation_location);
-            $isp      = array_pop($parts);
-            $location = implode("; ", $parts);
-            ?>
-            <span class="item warning">
-                <span class="fa fa-map-marker"></span>
-                <?= $location ?>
-            </span>
-            <span class="item warning">
-                <span class="fa fa-building"></span>
-                <?= $isp ?>
-            </span>
         <? endif; ?>
     </p>
     

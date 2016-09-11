@@ -59,8 +59,28 @@ $author = $item->get_author();
                 <span class="fa fa-eye fa-fw"></span>
                 <?= number_format($item->views); ?>
             </span>
+            
+            <? if( $account->level >= config::MODERATOR_USER_LEVEL ): ?>
+                <span class="meta_field critical">
+                    <span class="fa fa-cloud"></span>
+                    <?= $item->creation_ip ?>
+                </span>
+                <?
+                $parts   = explode("; ", $item->creation_location);
+                $isp      = array_pop($parts);
+                $location = implode("; ", $parts);
+                ?>
+                <span class="meta_field critical">
+                    <span class="fa fa-map-marker"></span>
+                    <?= $location ?>
+                </span>
+                <span class="meta_field critical">
+                    <span class="fa fa-building"></span>
+                    <?= $isp ?>
+                </span>
+            <? endif; ?>
         </div>
-    
+        
     </div>
     
     <h1>
@@ -103,24 +123,6 @@ $author = $item->get_author();
                 <span class="fa fa-warning"></span>
                 <?= $language->report_as_spam ?>
             </a>
-        <? else: ?>
-            <span class="item warning">
-                <span class="fa fa-cloud"></span>
-                <?= $item->creation_ip ?>
-            </span>
-            <?
-            $parts   = explode("; ", $item->creation_location);
-            $isp      = array_pop($parts);
-            $location = implode("; ", $parts);
-            ?>
-            <span class="item warning">
-                <span class="fa fa-map-marker"></span>
-                <?= $location ?>
-            </span>
-            <span class="item warning">
-                <span class="fa fa-building"></span>
-                <?= $isp ?>
-            </span>
         <? endif; ?>
     </p>
     
