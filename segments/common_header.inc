@@ -16,6 +16,9 @@ use hng2_base\account;
 use hng2_base\config;
 use hng2_base\settings;
 use hng2_base\template;
+
+$favicon = $template->get("favicon");
+if( empty($favicon) ) $favicon = "{$template->url}/media/favicon.ico";
 ?>
 
 <!-- Base metas -->
@@ -26,8 +29,8 @@ use hng2_base\template;
 
 <title><?= $template->get_page_title() ?></title>
 
-<link rel="icon"          type="image/x-icon" href="<?= $template->url ?>/media/favicon.ico">
-<link rel="shortcut icon" type="image/x-icon" href="<?= $template->url ?>/media/favicon.ico">
+<link rel="icon"          type="image/x-icon" href="<?= $favicon ?>">
+<link rel="shortcut icon" type="image/x-icon" href="<?= $favicon ?>">
 
 <!-- Defaults -->
 <script type="text/javascript">
