@@ -32,7 +32,7 @@
 .meta_box .meta_field           { display: inline-block; padding: 2px 4px; }
 .meta_box .meta_field.dimmed    { color: dimgrey; }
 .meta_box .meta_field.important { color: blue; }
-.meta_box .meta_field.critical  { color: #cd3100; }
+.meta_box .meta_field.critical  { color: #FF0080; }
 .meta_box .meta_section         { font-family: Arial, Helvetica, sans-serif; font-size: 10pt; line-height: 16px; padding: 1px; }
 .meta_box .meta_section.upper   { font-size: 11pt; }
 
