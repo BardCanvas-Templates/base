@@ -36,19 +36,19 @@ if( empty($posts_data->slider_posts) ) return;
     });
 </script>
 <style type="text/css">
-    #posts_slider { display: block; margin: 0; padding: 0; width: auto; height: 300px;
-                    overflow: hidden; background-color: white;
+    #posts_slider { display: block; margin: 0; padding: 0; width: auto; position: relative;
+                    overflow: hidden; background-color: white; height: 300px;
                     border: 1px solid #757575; box-shadow: 1px 1px 2px #808080; }
     
     #posts_slider li              ,
-    #posts_slider li a            { width: 100%; height: 300px; display: block; margin: 0; padding: 0;
+    #posts_slider li a            { width: 100%; display: block; margin: 0; padding: 0; height: 100%;
                                     text-align: center; overflow: hidden; background: none center center no-repeat; }
     
     #posts_slider li              { background-color: white; background-size: cover; }
     #posts_slider li a            { background-color: rgba(0, 0, 0, .75); background-size: contain; background-repeat: no-repeat; }
     
     #posts_slider li .title       { line-height: 30px; height: 30px; overflow: hidden; padding-bottom: 5px; display: block; font-size: 24px; font-weight: bold; background-color: rgba(0, 0, 0, .25); }
-    #posts_slider li .image       { height: 213px; display: block; }
+    #posts_slider li .image       { height: calc(100% - 86px); display: block; }
     #posts_slider li .description { font-size: 20px; line-height: 30px; height: 30px; padding-bottom: 5px; display: block; font-style: italic; overflow: hidden; background-color: rgba(0, 0, 0, .25); }
     #posts_slider li .details     { line-height: 20px; padding-bottom: 5px; display: block; background-color: rgba(0, 0, 0, .25); }
     #posts_slider li .expires     { color: yellow; }
