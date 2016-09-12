@@ -35,8 +35,9 @@ if( empty($excerpt_length) ) $excerpt_length = 100;
         
         <li>
             <? if($author->_exists): ?>
-                <a href="<?= $config->full_root_url ?>/user/<?= $author->user_name ?>/">
-                    <span class="fa fa-user"></span>
+                <a href="<?= $config->full_root_url ?>/user/<?= $author->user_name ?>/" class="user_display_name"
+                   data-user-level="<?= $author->level ?>">
+                    <span class="fa fa-user fa-fw"></span>
                     <?= $author->get_processed_display_name() ?></a>
             <? else: ?>
                 <span class="fa fa-user"></span>
