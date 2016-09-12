@@ -44,7 +44,7 @@ $author = $item->get_author();
                 </span>
             <? endif; ?>
             
-            <? if( ! empty($item->tags_list) ) foreach($item->tags_list as $tag): ?>
+            <? foreach( $item->get_filtered_tags_list() as $tag): ?>
                 <a class="meta_field" href="<?= $config->full_root_path ?>/tag/<?= $tag ?>/media" target="_blank">
                     <span class="fa fa-hashtag"></span>
                     <?= $tag ?>

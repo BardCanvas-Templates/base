@@ -44,7 +44,7 @@ $author = $post->get_author();
                 </span>
             <? endif; ?>
             
-            <? if( ! empty($post->tags_list) ) foreach($post->tags_list as $tag): ?>
+            <? foreach( $post->get_filtered_tags_list() as $tag): ?>
                 <a class="meta_field" href="<?= $config->full_root_path ?>/tag/<?= $tag ?>" target="_blank">
                     <span class="fa fa-hashtag"></span>
                     <?= $tag ?>
