@@ -241,12 +241,78 @@ article.single_post, .content_frame {
 #post_comments .comment_entry .content       { margin-left: 67px; }
 #post_comments .comment_entry .comment_reply { margin-left: 67px; }
 
+#post_comments .comment_entry .comment_reply .target  form { margin-top: 10px; }
 #post_comments .comment_entry .comment_reply .trigger { margin-top: 10px; font-family: Arial, Helvetica, sans-serif; }
+
+#post_comments .comment_entry .comment_reply .trigger a,
+#post_comments .comment_entry .comment_reply .trigger span.pseudo_link { display: inline-block; margin-right: 5px; margin-bottom: 5px; }
 
 #post_comments .comment_entry[data-indent-level="2"] { margin-left:  66px; }
 #post_comments .comment_entry[data-indent-level="3"] { margin-left: 132px; }
 #post_comments .comment_entry[data-indent-level="4"] { margin-left: 198px; }
 #post_comments .comment_entry[data-indent-level="5"] { margin-left: 264px; }
+
+@media all and (max-width: 1024px) {
+
+    #post_comments .comment_entry .content       { margin-left: 5px; }
+    #post_comments .comment_entry .comment_reply { margin-left: 5px; }
+    
+    #post_comments .comment_entry[data-indent-level="2"] { margin-left: 0; }
+    #post_comments .comment_entry[data-indent-level="3"] { margin-left: 0; }
+    #post_comments .comment_entry[data-indent-level="4"] { margin-left: 0; }
+    #post_comments .comment_entry[data-indent-level="5"] { margin-left: 0; }
+
+    #post_comments .comment_entry[data-indent-level="2"] .content { margin-left: 10px; }
+    #post_comments .comment_entry[data-indent-level="3"] .content { margin-left: 10px; }
+    #post_comments .comment_entry[data-indent-level="4"] .content { margin-left: 10px; }
+    #post_comments .comment_entry[data-indent-level="5"] .content { margin-left: 10px; }
+    
+    #post_comments .comment_entry[data-indent-level="2"] .comment_wrapper { padding-left:  5px; }
+    #post_comments .comment_entry[data-indent-level="3"] .comment_wrapper { padding-left: 10px; }
+    #post_comments .comment_entry[data-indent-level="4"] .comment_wrapper { padding-left: 15px; }
+    #post_comments .comment_entry[data-indent-level="5"] .comment_wrapper { padding-left: 20px; }
+    
+    #post_comments .comment_entry[data-indent-level="2"] .comment_reply  { padding-left:  5px; margin-left: 10px; }
+    #post_comments .comment_entry[data-indent-level="3"] .comment_reply  { padding-left: 10px; margin-left: 10px; }
+    #post_comments .comment_entry[data-indent-level="4"] .comment_reply  { padding-left: 15px; margin-left: 10px; }
+    #post_comments .comment_entry[data-indent-level="5"] .comment_reply  { padding-left: 20px; margin-left: 10px; }
+    
+    #post_comments .comment_entry[data-indent-level="2"] .comment_wrapper {
+        background: -moz-linear-gradient(   left, silver 0, silver 1px, white 2px);
+        background: -webkit-linear-gradient(left, silver 0, silver 1px, white 2px);
+        background: -o-linear-gradient(     left, silver 0, silver 1px, white 2px);
+        background: -ms-linear-gradient(    left, silver 0, silver 1px, white 2px);
+        background: linear-gradient(    to right, silver 0, silver 1px, white 2px);
+    }
+    
+    #post_comments .comment_entry[data-indent-level="3"] .comment_wrapper {
+        background: -moz-linear-gradient(   left, silver 0, silver 1px, white 3px, white 4px, silver 5px, silver 6px, white 7px);
+        background: -webkit-linear-gradient(left, silver 0, silver 1px, white 3px, white 4px, silver 5px, silver 6px, white 7px);
+        background: -o-linear-gradient(     left, silver 0, silver 1px, white 3px, white 4px, silver 5px, silver 6px, white 7px);
+        background: -ms-linear-gradient(    left, silver 0, silver 1px, white 3px, white 4px, silver 5px, silver 6px, white 7px);
+        background: linear-gradient(    to right, silver 0, silver 1px, white 3px, white 4px, silver 5px, silver 6px, white 7px);
+    }
+    
+    #post_comments .comment_entry[data-indent-level="4"] .comment_wrapper {
+        background: -moz-linear-gradient(   left, silver 0, silver 1px, white 3px, white 4px, silver 5px, silver 6px, white 7px, white 9px, silver 10px, silver 11px, white 12px);
+        background: -webkit-linear-gradient(left, silver 0, silver 1px, white 3px, white 4px, silver 5px, silver 6px, white 7px, white 9px, silver 10px, silver 11px, white 12px);
+        background: -o-linear-gradient(     left, silver 0, silver 1px, white 3px, white 4px, silver 5px, silver 6px, white 7px, white 9px, silver 10px, silver 11px, white 12px);
+        background: -ms-linear-gradient(    left, silver 0, silver 1px, white 3px, white 4px, silver 5px, silver 6px, white 7px, white 9px, silver 10px, silver 11px, white 12px);
+        background: linear-gradient(    to right, silver 0, silver 1px, white 3px, white 4px, silver 5px, silver 6px, white 7px, white 9px, silver 10px, silver 11px, white 12px);
+    }
+    
+    #post_comments .comment_entry[data-indent-level="5"] .comment_wrapper {
+        background: -moz-linear-gradient(   left, silver 0, silver 1px, white 3px, white 4px, silver 5px, silver 6px, white 7px, white 9px, silver 10px, silver 11px, white 12px, white 14px, silver 15px, silver 16px, white 17px);
+        background: -webkit-linear-gradient(left, silver 0, silver 1px, white 3px, white 4px, silver 5px, silver 6px, white 7px, white 9px, silver 10px, silver 11px, white 12px, white 14px, silver 15px, silver 16px, white 17px);
+        background: -o-linear-gradient(     left, silver 0, silver 1px, white 3px, white 4px, silver 5px, silver 6px, white 7px, white 9px, silver 10px, silver 11px, white 12px, white 14px, silver 15px, silver 16px, white 17px);
+        background: -ms-linear-gradient(    left, silver 0, silver 1px, white 3px, white 4px, silver 5px, silver 6px, white 7px, white 9px, silver 10px, silver 11px, white 12px, white 14px, silver 15px, silver 16px, white 17px);
+        background: linear-gradient(    to right, silver 0, silver 1px, white 3px, white 4px, silver 5px, silver 6px, white 7px, white 9px, silver 10px, silver 11px, white 12px, white 14px, silver 15px, silver 16px, white 17px);
+    }
+
+    #post_comments .comment_entry .comment_reply[data-is-reply-active="true"] {
+        margin-left:0; padding-left: 0;
+    }
+}
 
 #post_comments .comment_entry .content p     ,
 body#tinymce .comment_quote p                { margin-top: 2px; margin-bottom: 2px; }

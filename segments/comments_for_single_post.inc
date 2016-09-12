@@ -41,13 +41,12 @@ list($find_params, $comments_count, $comments, $pagination) = $repository->get_f
         <?= replace_escaped_vars($this_module->language->list->title, '{$amount}', $comments_count) ?>
     </h1>
     
-    <? foreach($comments as $comment): ?>
-        <?
+    <? foreach($comments as $comment):
         $author     = $comment->get_author();
         $avatar_url = $author->get_avatar_url();
         $max_level  = $settings->get("modules:comments.max_indent_level"); if( empty($max_level) ) $max_level = 5;
-        $level      = $comment->indent_level <= $max_level ? $comment->indent_level : $max_level;
-        ?>
+        $level      = $comment->indent_level <= $max_level ? $comment->indent_level : $max_level; ?>
+        
         <div class="comment_entry" id="comment_<?= $comment->id_comment ?>" data-id-comment="<?= $comment->id_comment ?>"
              data-parent-comment="<?= $comment->parent_comment ?>" data-indent-level="<?= $level ?>"
              data-post-id="<?= $post->id_post ?>">
@@ -104,24 +103,21 @@ list($find_params, $comments_count, $comments, $pagination) = $repository->get_f
             
             <div class="comment_reply">
                 <div class="trigger">
-                    <span class="pseudo_link" onclick="prepare_comment_reply(this)">
+                    <span class="pseudo_link" onclick="prepare_comment_reply(this, false, true)">
                         <span class="fa fa-reply"></span>
                         <?= $this_module->language->list->reply_comment ?>
                     </span>
-                    &nbsp;
-                    <span class="pseudo_link" onclick="prepare_comment_reply(this, true)">
+                    <span class="pseudo_link" onclick="prepare_comment_reply(this, true, true)">
                         <span class="fa fa-quote-right"></span>
                         <?= $this_module->language->list->quote_comment ?>
                     </span>
                     
                     <? if( $account->_exists ): ?>
-                        &nbsp;
                         <a href="<?= "{$config->full_root_url}/comments/?flag_as_spam={$comment->id_comment}" ?>" target="_blank">
                             <span class="fa fa-flag"></span>
                             <?= $language->flag_as_spam ?>
                         </a>
                         <? if($account->level < config::MODERATOR_USER_LEVEL): ?>
-                            &nbsp;
                             <a href="<?= "{$config->full_root_url}/contact/?action=report&type=comment&id={$comment->id_comment}" ?>" target="_blank">
                                 <span class="fa fa-exclamation-circle"></span>
                                 <?= $language->report_to_webmaster ?>
@@ -131,7 +127,6 @@ list($find_params, $comments_count, $comments, $pagination) = $repository->get_f
                     
                     <? if( ! is_null($author) && $account->id_account != $author->id_account ): ?>
                         <? if($account->_exists): ?>
-                            &nbsp;
                             <span class="pseudo_link" onclick="send_pm(this, '<?= $author->user_name ?>', '<?= replace_escaped_vars($language->contact->pm->send_to, '{$recipient}', htmlspecialchars($author->display_name)) ?>')"
                                   title="<?= replace_escaped_vars( $language->contact->pm->title, '{$website_name}', $settings->get("engine.website_name") ) ?>">
                                 <span class="fa fa-inbox"></span>
@@ -140,7 +135,6 @@ list($find_params, $comments_count, $comments, $pagination) = $repository->get_f
                         <? else: ?>
                             <? if( $author->get_engine_pref("@contact:allow_emails") != "false"
                                    || $account->level >= config::MODERATOR_USER_LEVEL ): ?>
-                                &nbsp;
                                 <a href="<?= $config->full_root_path ?>/contact/?target=<?= urlencode($author->user_name) ?>">
                                     <span class="fa fa-envelope"></span>
                                     <?= $language->email_author ?>
@@ -150,7 +144,6 @@ list($find_params, $comments_count, $comments, $pagination) = $repository->get_f
                     <? endif; ?>
                     
                     <? if( is_comment_editable($comment) ): ?>
-                        &nbsp;
                         <a href="<?= $config->full_root_path ?>/comments/?edit=<?= $comment->id_comment ?>">
                             <span class="fa fa-pencil"></span>
                             <?= $this_module->language->record_nav->actions->edit ?>
@@ -158,7 +151,6 @@ list($find_params, $comments_count, $comments, $pagination) = $repository->get_f
                     <? endif; ?>
     
                     <? if( ! is_null($author) && $account->id_account == $author->id_account ): ?>
-                        &nbsp;
                         <a href="<?= "{$config->full_root_url}/comments/?delete={$comment->id_comment}" ?>" target="_blank">
                             <span class="fa fa-trash"></span>
                             <?= $this_module->language->record_nav->actions->trash ?>
@@ -169,6 +161,7 @@ list($find_params, $comments_count, $comments, $pagination) = $repository->get_f
                 <div class="target"></div>
             </div>
         </div>
+        
     <? endforeach; ?>
     
     <? if( $comments_count > $find_params->limit )
@@ -178,3 +171,4 @@ list($find_params, $comments_count, $comments, $pagination) = $repository->get_f
 
 <div id="comments_edit_form" style="display: none;" data-title-template="<?= $this_module->language->form->edit ?>"></div>
 <div id="comments_edit_target" style="display: none;"></div>
+<div id="reply_target" style="display: none;"></div>
