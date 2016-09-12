@@ -6,6 +6,8 @@
  * @subpackage core
  * @author     Alejandro Caballero - lava.caballero@gmail.com
  */
+
+use hng2_base\config;
 ?>
 
 <script type="text/javascript">
@@ -55,6 +57,9 @@
         {
             foreach($this_module->menu_items->item as $this_menu_item)
             {
+                $strict_item_level = trim($this_menu_item["strict_admin_level"]);
+                if( ! empty($strict_item_level) &&  $account->level < $strict_item_level ) continue;
+                
                 $item_url    = trim($this_menu_item->url);
                 $added_class = ($module_name == $current_module->name && stristr($_SERVER["PHP_SELF"], "/$module_name/$item_url") !== false) ? "current" : "";
                 $url         = "{$config->full_root_path}/$module_name/$item_url";

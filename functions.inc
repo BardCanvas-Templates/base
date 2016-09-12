@@ -2,7 +2,7 @@
 
 function add_admin_menu_items_to_header_menu()
 {
-    global $modules, $current_module, $config, $template, $language;
+    global $modules, $current_module, $config, $template, $account;
     
     foreach($modules as $module_name => $this_module)
     {
@@ -10,6 +10,9 @@ function add_admin_menu_items_to_header_menu()
         {
             foreach($this_module->menu_items->item as $this_menu_item)
             {
+                $strict_item_level = trim($this_menu_item["strict_admin_level"]);
+                if( ! empty($strict_item_level) &&  $account->level < $strict_item_level ) continue;
+                
                 $item_url    = trim($this_menu_item->url);
                 $added_class = ($module_name == $current_module->name && stristr($_SERVER["PHP_SELF"], "/$module_name/$item_url") !== false) ? "current" : "";
                 $url         = "{$config->full_root_path}/$module_name/$item_url";
