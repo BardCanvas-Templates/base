@@ -31,13 +31,17 @@ $browser    = new record_browser("");
 $repository = new comments_repository();
 
 list($find_params, $comments_count, $comments, $pagination) = $repository->get_for_single_post($post->id_post);
+if( $comments_count == 0 && $post->allow_comments == 0 ) return;
 ?>
 
 <div id="post_comments" class="content_frame" data-post-id="<?= $post->id_post ?>">
     
     <h1>
-        <!--suppress HtmlUnknownAnchorTarget -->
-        <a href="#post_new_comment_form" class="pull-right"><?= $this_module->language->list->post_comment ?></a>
+        <? if( $post->allow_comments ): ?>
+            <!--suppress HtmlUnknownAnchorTarget -->
+            <a href="#post_new_comment_form" class="pull-right"><?= $this_module->language->list->post_comment ?></a>
+        <? endif; ?>
+        
         <?= replace_escaped_vars($this_module->language->list->title, '{$amount}', $comments_count) ?>
     </h1>
     
@@ -104,14 +108,16 @@ list($find_params, $comments_count, $comments, $pagination) = $repository->get_f
             
             <div class="comment_reply">
                 <div class="trigger">
-                    <span class="pseudo_link" onclick="prepare_comment_reply(this, false, true)">
-                        <span class="fa fa-reply"></span>
-                        <?= $this_module->language->list->reply_comment ?>
-                    </span>
-                    <span class="pseudo_link" onclick="prepare_comment_reply(this, true, true)">
-                        <span class="fa fa-quote-right"></span>
-                        <?= $this_module->language->list->quote_comment ?>
-                    </span>
+                    <? if($post->allow_comments): ?>
+                        <span class="pseudo_link" onclick="prepare_comment_reply(this, false, true)">
+                            <span class="fa fa-reply"></span>
+                            <?= $this_module->language->list->reply_comment ?>
+                        </span>
+                        <span class="pseudo_link" onclick="prepare_comment_reply(this, true, true)">
+                            <span class="fa fa-quote-right"></span>
+                            <?= $this_module->language->list->quote_comment ?>
+                        </span>
+                    <? endif; ?>
                     
                     <? if( $account->_exists ): ?>
                         <a href="<?= "{$config->full_root_url}/comments/?flag_as_spam={$comment->id_comment}" ?>" target="_blank">
