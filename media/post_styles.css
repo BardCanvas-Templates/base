@@ -138,6 +138,7 @@ article.single_post, .content_frame {
 .featured_post h3             { padding: 5px; margin: 0; font-size: 10pt; line-height: normal; }
 .featured_post .thumbnail     { display: block; border: none; }
 .featured_post .thumbnail img { width: 100%; border: none; }
+.featured_post .critical      { color: #FF0080; }
 
 /* By default, they're above the contents (For portrait mobiles) */
 

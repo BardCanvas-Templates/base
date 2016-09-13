@@ -8,6 +8,7 @@
  * @var module $this_module
  */
 
+use hng2_base\config;
 use hng2_base\module;
 use hng2_base\template;
 use hng2_modules\posts\posts_data;
@@ -19,6 +20,7 @@ $this_module = $modules["posts"];
     <?
     $config->globals["modules:posts.working_posts_set"] =& $posts_data->featured_posts;
     $this_module->load_extensions("front", "featured_posts_before_loop_start");
+    $ttl = $settings->get("modules:posts.featured_posts_ttl");
     
     foreach($posts_data->featured_posts as $post):
         $author = $post->get_author();
@@ -36,6 +38,19 @@ $this_module = $modules["posts"];
                         <span class="fa fa-clock-o fa-fw"></span>
                         <?= preg_replace('/\d+s/', "", time_remaining_string($post->expiration_date)) ?>
                     </span>
+                <? endif; ?>
+                <? if($account->level >= config::MODERATOR_USER_LEVEL ): ?>
+                    <hr>
+                    <span class="critical" style="display: inline-block;">
+                        <span class="fa fa-calendar fa-fw"></span>
+                        <?= time_elapsed_string($post->publishing_date) ?>
+                    </span>
+                    <? if( ! empty($ttl) ): ?>
+                        <span class="critical" style="display: inline-block;">
+                            <span class="fa fa-clock-o fa-fw"></span>
+                            <?= preg_replace('/\d+s/', "", time_remaining_string(date("Y-m-d H:i:s", strtotime("{$post->publishing_date} + $ttl hours")))) ?>
+                        </span>
+                    <? endif; ?>
                 <? endif; ?>
             </h3>
         </a>
