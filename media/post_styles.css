@@ -32,7 +32,7 @@
 .meta_box .meta_field           { display: inline-block; padding: 2px 4px; }
 .meta_box .meta_field.dimmed    { color: dimgrey; }
 .meta_box .meta_field.important { color: blue; }
-.meta_box .meta_field.critical  { color: #FF0080; }
+.meta_box .meta_field.critical  { color: #FF0080; text-shadow: none; }
 .meta_box .meta_section         { font-family: Arial, Helvetica, sans-serif; font-size: 10pt; line-height: 16px; padding: 1px; }
 .meta_box .meta_section.upper   { font-size: 11pt; }
 
@@ -380,8 +380,9 @@ body#tinymce .comment_quote p                { margin-top: 2px; margin-bottom: 2
 article.pinned,  .featured_post.pinned  { border: 2px solid #990d0d;    border-left: 6px solid #990d0d;    background-color: whitesmoke; }
 article.special, .featured_post.special { border: 2px solid darkorange; border-left: 6px solid darkorange; background-color: lightyellow; }
 
-/* Post comments */
+/* Post comments on indexes */
 
 ul.post_comments { padding-left: 22px; font-family: 'Roboto Condensed', 'Arial Narrow', sans-serif;
                    font-size: 11pt; line-height: 1.1em; margin-top: 10px !important; }
 ul.post_comments .emojione { height: 1em; }
+ul.post_comments li img { max-width: 100%; }

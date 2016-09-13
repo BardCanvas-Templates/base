@@ -28,6 +28,22 @@ $author = $item->get_author();
                 <span class="fa fa-user fa-fw"></span>
                 <?= $author->get_processed_display_name() ?>
             </a>
+            
+            <? if($account->level >= config::COADMIN_USER_LEVEL && $account->id_account != $author->id_account): ?>
+                <span class="meta_field critical pseudo_link" onclick="toggle_account('<?= $author->id_account ?>', 'disable', this, false)">
+                    <span class="fa fa-lock"></span>
+                    <?= $language->disable ?>
+                </span>
+                <span class="user_level_switcher">
+                    <span class="current meta_field critical pseudo_link"
+                          onclick="open_level_switcher(this, '<?= $author->id_account ?>', '<?= $author->level ?>', false)">
+                        <span class="fa fa-pencil fa-fw"></span>
+                        [<?= $author->level ?>] <?= $config->user_levels_by_level[$author->level] ?>
+                    </span>
+                    <span class="target" style="display: none;"></span>
+                </span>
+            <? endif; ?>
+            
             <a class="meta_field" href="<?= $config->full_root_url ?>/category/<?= $item->main_category_slug ?>/">
                 <span class="fa fa-folder fa-fw"></span>
                 <?= $item->main_category_title ?>
@@ -66,19 +82,40 @@ $author = $item->get_author();
                     <span class="fa fa-cloud"></span>
                     <?= $item->creation_ip ?>
                 </span>
+                <a class="meta_field critical" href="<?= $config->full_root_path ?>/?s=ip:<?= $item->creation_ip ?>">
+                    <span class="fa fa-search"></span>
+                    <?= $language->ip ?>
+                </a>
+                <? $parts = explode(".", $item->creation_ip); array_pop($parts); ?>
+                <a class="meta_field critical" href="<?= $config->full_root_path ?>/?s=ip:<?= implode(".", $parts) ?>.%25">
+                    <span class="fa fa-search"></span>
+                    <?= $language->segment ?>
+                </a>
+                
                 <?
-                $parts   = explode("; ", $item->creation_location);
+                $parts    = explode("; ", $item->creation_location);
                 $isp      = array_pop($parts);
-                $location = implode("; ", $parts);
-                ?>
-                <span class="meta_field critical">
-                    <span class="fa fa-map-marker"></span>
-                    <?= $location ?>
-                </span>
-                <span class="meta_field critical">
-                    <span class="fa fa-building"></span>
-                    <?= $isp ?>
-                </span>
+                $country  = array_pop($parts);
+                $city     = implode("; ", $parts);
+                
+                if( $city != "N/A; N/A") : ?>
+                    <a class="meta_field critical" href="<?= $config->full_root_path ?>/?s=city:<?= urlencode($city) ?>">
+                        <span class="fa fa-map-marker"></span>
+                        <?= $city ?>
+                    </a>
+                <? endif; ?>
+                <? if($country != "N/A"): ?>
+                    <a class="meta_field critical" href="<?= $config->full_root_path ?>/?s=country:<?= urlencode($country) ?>">
+                        <span class="fa fa-globe"></span>
+                        <?= $country ?>
+                    </a>
+                <? endif; ?>
+                <? if($isp != "N/A"): ?>
+                    <a class="meta_field critical" href="<?= $config->full_root_path ?>/?s=isp:<?= urlencode($isp) ?>">
+                        <span class="fa fa-building"></span>
+                        <?= $isp ?>
+                    </a>
+                <? endif; ?>
             <? endif; ?>
         </div>
         
