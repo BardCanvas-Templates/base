@@ -94,6 +94,26 @@ $this_module->load_extensions("front", "index_renderer_before_internal_wrapper")
                             <?= preg_replace('/\d+s/', "", time_remaining_string($post->expiration_date)) ?>
                         </span>
                     <? endif; ?>
+                    
+                    <? if( $account->level >= config::MODERATOR_USER_LEVEL ): ?>
+                        <span class="meta_field critical">
+                            <span class="fa fa-cloud"></span>
+                            <?= $post->creation_ip ?>
+                        </span>
+                        <?
+                        $parts   = explode("; ", $post->creation_location);
+                        $isp      = array_pop($parts);
+                        $location = implode("; ", $parts);
+                        ?>
+                        <span class="meta_field critical">
+                            <span class="fa fa-map-marker"></span>
+                            <?= $location ?>
+                        </span>
+                        <span class="meta_field critical">
+                            <span class="fa fa-building"></span>
+                            <?= $isp ?>
+                        </span>
+                    <? endif; ?>
                 </div>
             </div>
             
