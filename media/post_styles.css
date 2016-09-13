@@ -260,7 +260,17 @@ article.single_post, .content_frame {
 #post_comments .comment_entry .comment_reply .trigger { margin-top: 10px; font-family: Arial, Helvetica, sans-serif; }
 
 #post_comments .comment_entry .comment_reply .trigger a,
-#post_comments .comment_entry .comment_reply .trigger span.pseudo_link { display: inline-block; margin-right: 5px; margin-bottom: 5px; }
+#post_comments .comment_entry .comment_reply .trigger span.pseudo_link {
+    font-size: 11pt; line-height: 12pt;
+    display: inline-block; margin-right: 5px; margin-bottom: 5px;
+    color: darkgrey;
+    text-shadow: 1px 1px 3px silver;
+}
+#post_comments .comment_entry .comment_reply .trigger a:hover,
+#post_comments .comment_entry .comment_reply .trigger span.pseudo_link:hover {
+    color: #990d0d;
+    text-shadow: none;
+}
 
 #post_comments .comment_entry[data-indent-level="2"] { margin-left:  66px; }
 #post_comments .comment_entry[data-indent-level="3"] { margin-left: 132px; }
