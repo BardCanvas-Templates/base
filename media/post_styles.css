@@ -197,6 +197,24 @@ article.single_post, .content_frame {
     }
 }
 
+/* Last resort for huge displays with featured posts (two cols index) */
+@media all and (min-width: 1920px) and (max-width: 99999px)
+{
+    #home_index_wrapper[data-with-featured-posts="true"] #posts_index_wrapper   { width: 75%; }
+    #home_index_wrapper[data-with-featured-posts="true"] #featured_posts_column { width: 25%; display: block; float: right; padding-left: 10px; }
+    
+    #home_index_wrapper[data-with-featured-posts="true"] #posts_index {
+        -webkit-column-count: 2; -webkit-column-gap: 10px;
+        -moz-column-count:    2; -moz-column-gap:    10px;
+        column-count:         2; column-gap:         10px;
+    }
+    #home_index_wrapper[data-with-featured-posts="true"] #posts_index article {
+        display: inline-block;
+        width: 100%;
+    }
+}
+
+
 /* Here goes two columns for small displays */
 @media all and (min-width: 260px) and (max-width: 768px)
 {
