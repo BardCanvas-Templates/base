@@ -103,6 +103,13 @@ $author = $item->get_author();
             </a>
         <? endif; ?>
         
+        <? if($account->level >= config::MODERATOR_USER_LEVEL || $account->id_account == $post->id_author): ?>
+            <a class="item action" href="<?= $config->full_root_path ?>/gallery/?trash_item=<?= $item->id_media ?>&wasuuup=<?= md5(mt_rand(1, 65535)) ?>">
+                <span class="fa fa-trash"></span>
+                <?= $current_module->language->record_nav->actions->trash ?>
+            </a>
+        <? endif; ?>
+        
         <? if($account->_exists): ?>
             <? if( $account->id_account != $author->id_account ): ?>
                 <span class="item action" onclick="send_pm(this, '<?= $author->user_name ?>', '<?= replace_escaped_vars($language->contact->pm->send_to, '{$recipient}', htmlspecialchars($author->display_name)) ?>')"
@@ -121,7 +128,7 @@ $author = $item->get_author();
             <? endif; ?>
         <? endif; ?>
         
-        <? if( $account->level < config::MODERATOR_USER_LEVEL ): ?>
+        <? if( $account->level < config::MODERATOR_USER_LEVEL && $account->id_account != $author->id_account ): ?>
             <a class="item action" href="<?= $config->full_root_path ?>/contact/?action=report&type=media&id=<?= $item->id_media ?>">
                 <span class="fa fa-exclamation-circle"></span>
                 <?= $language->report_to_webmaster ?>
