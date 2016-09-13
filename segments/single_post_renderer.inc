@@ -109,7 +109,7 @@ $author = $post->get_author();
             </a>
         <? endif; ?>
         
-        <? if($account->level >= config::MODERATOR_USER_LEVEL || $account->id_account == $post->id_author): ?>
+        <? if($post->comments_count == 0 && ($account->level >= config::MODERATOR_USER_LEVEL || $account->id_account == $post->id_author)): ?>
             <a class="item action" href="<?= $config->full_root_path ?>/posts/?trash_post=<?= $post->id_post ?>&wasuuup=<?= md5(mt_rand(1, 65535)) ?>">
                 <span class="fa fa-trash"></span>
                 <?= $current_module->language->record_nav->actions->trash ?>
