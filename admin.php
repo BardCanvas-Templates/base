@@ -104,6 +104,12 @@ header("Content-Type: text/html; charset=utf-8"); ?>
                 </span>
             <? endif; ?>
             
+            <? if($config->display_performance_details && EMBED_INTERNALS): ?>
+                <span class="main_menu_item pseudo_link pull-left" onclick="$('.internals').show();">
+                    <span class="fa fa-info fa-fw"></span>
+                </span>
+            <? endif; ?>
+            
             <a id="home_menu_button" class="main_menu_item always_visible pull-left" href="<?= $config->full_root_path ?>/">
                 <span class="fa fa-home fa-fw"></span>
             </a>
@@ -118,7 +124,6 @@ header("Content-Type: text/html; charset=utf-8"); ?>
             
             echo $template->build_menu_items("priority");
             ?>
-            
         </div>
         
         <div class="header_bottom">

@@ -102,11 +102,17 @@ header("Content-Type: text/html; charset=utf-8"); ?>
             <span id="main_menu_trigger" class="main_menu_item" onclick="toggle_main_menu_items()">
                 <span class="fa fa-bars fa-fw"></span>
             </span>
-    
+            
             <? if( $template->count_left_sidebar_groups() > 0 ): ?>
                 <span id="left_sidebar_trigger" class="main_menu_item pull-left"
                       onclick="toggle_left_sidebar_items()">
                     <span class="fa fa-ellipsis-v fa-fw"></span>
+                </span>
+            <? endif; ?>
+            
+            <? if($config->display_performance_details && EMBED_INTERNALS): ?>
+                <span class="main_menu_item pseudo_link pull-left" onclick="$('.internals').show();">
+                    <span class="fa fa-info fa-fw"></span>
                 </span>
             <? endif; ?>
             
