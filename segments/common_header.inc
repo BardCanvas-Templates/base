@@ -45,10 +45,15 @@ if( empty($favicon) ) $favicon = "{$template->url}/media/favicon.ico";
     var $_SCRIPTS_VERSION         = '<?= $config->scripts_version ?>';
     
     var $_MAIN_MENU_AUTO_COLLAPSE_WIDTH = parseInt('<?= (int) $settings->get("engine.main_menu_auto_collapse_width", 700) ?>');
-
-    var tinymce_full_toolbar     = 'bold italic underline strikethrough forecolor backcolor fontsizeselect removeformat | blockquote hr alignleft aligncenter alignright | outdent indent bullist numlist | link unlink';
-    var tinymce_standard_toolbar = 'bold italic underline strikethrough forecolor backcolor removeformat | blockquote hr | outdent indent | link unlink';
+    
+    var tinymce_full_toolbar     = 'bold italic underline strikethrough forecolor backcolor fontsizeselect removeformat | undo redo | '
+                                 + 'blockquote hr alignleft aligncenter alignright alignjustify | outdent indent bullist numlist | link unlink';
+    
+    var tinymce_standard_toolbar = 'bold italic underline strikethrough forecolor backcolor fontsizeselect removeformat | blockquote hr | '
+                                 + 'outdent indent | link unlink';
+    
     var tinymce_minimal_toolbar  = 'bold italic underline strikethrough forecolor backcolor removeformat | hr | link unlink';
+    
     var tinymce_default_css_files = [
         $_FULL_ROOT_PATH  + '/media/styles~v' + $_SCRIPTS_VERSION + '.css',
         $_TEMPLATE_URL    + '/media/styles~v' + $_SCRIPTS_VERSION + '.css',
