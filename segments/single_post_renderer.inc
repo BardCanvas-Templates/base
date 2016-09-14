@@ -59,12 +59,21 @@ $author = $post->get_author();
                 </span>
             <? endif; ?>
             
-            <? foreach( $post->get_filtered_tags_list() as $tag): ?>
-                <a class="meta_field" href="<?= $config->full_root_path ?>/tag/<?= $tag ?>" target="_blank">
-                    <span class="fa fa-hashtag"></span>
-                    <?= $tag ?>
-                </a>
-            <? endforeach; ?>
+            <? if( $account->level < config::MODERATOR_USER_LEVEL ): ?>
+                <? foreach( $post->get_filtered_tags_list() as $tag): ?>
+                    <a class="meta_field" href="<?= $config->full_root_path ?>/tag/<?= $tag ?>" target="_blank">
+                        <span class="fa fa-hashtag"></span>
+                        <?= $tag ?>
+                    </a>
+                <? endforeach; ?>
+            <? else: ?>
+                <? if( is_array($post->tags_list) ) foreach( $post->tags_list as $tag): ?>
+                    <a class="meta_field" href="<?= $config->full_root_path ?>/tag/<?= $tag ?>" target="_blank">
+                        <span class="fa fa-hashtag"></span>
+                        <?= $tag ?>
+                    </a>
+                <? endforeach; ?>
+            <? endif; ?>
         </div>
         <div class="meta_section">
             <a class="meta_field dimmed" href="<?= $config->full_root_url ?>/date/<?= date("Y/m/d", strtotime($post->publishing_date)) ?>/">
