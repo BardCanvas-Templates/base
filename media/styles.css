@@ -11,10 +11,11 @@
 body     { font-family: 'Prompt', sans-serif; font-size: 12pt; background-color: #E5E5E5; }
 th       { font-family: 'Roboto', sans-serif; font-size: 11pt; }
 td       { font-family: 'Roboto Condensed', 'Arial Narrow', sans-serif; font-size: 11pt; }
-#header  { font-family: 'Roboto', sans-serif; font-size: 12pt; }
+#header  { font-family: Arial, Helvetica, sans-serif; font-size: 12pt; }
 #footer  { font-family: 'Roboto Condensed', 'Arial Narrow', sans-serif; font-size: 11pt; }
 #content { line-height: 1.2em; }
 
+.dropdown_menu { font-family: Arial, Helvetica, sans-serif; }
 body.popup { background-color: transparent; }
 
 textarea, pre, .fixed_font, code { font-family: 'Ubuntu Mono', 'Lucida Console', 'Courier new', 'Courier', monospace; font-size: 10pt; }
