@@ -14,7 +14,7 @@ use hng2_modules\posts\post_record;
 $author = $post->get_author();
 ?>
 
-<article class="post single_post clearfix" data-post-id="<?= $post->id_post ?>"
+<article class="post single_post <?= $post->status ?> clearfix" data-post-id="<?= $post->id_post ?>"
          data-main-category="<?= $post->main_category_slug ?>"
          data-author-role="<?= $author->get_role(true) ?>" data-author-level="<?= $author->level ?>">
     
@@ -137,6 +137,13 @@ $author = $post->get_author();
     <h1>
         <?= $post->get_processed_title() ?>
     </h1>
+    
+    <? if($post->status == "reviewing"): ?>
+        <div class="framed_content state_ko">
+            <span class="fa fa-warning"></span>
+            <?= $current_module->language->messages->post_being_reviewed ?>
+        </div>
+    <? endif; ?>
     
     <p class="single_item_actions">
         <a class="item action clipboard-copy seamless_right" href="<?= $post->get_permalink(true) ?>">

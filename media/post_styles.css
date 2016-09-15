@@ -69,6 +69,8 @@ article.single_post, .content_frame {
     box-shadow:         1px 1px 5px 0 rgba(0, 0, 0, 0.25);
 }
 
+article.single_post.reviewing { background-color: #ffe3e6; }
+
 /* Single post overrides */
 
 .single_post h1           { font-size: 18pt; line-height: 20pt; }
