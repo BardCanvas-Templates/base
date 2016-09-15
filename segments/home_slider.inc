@@ -16,6 +16,7 @@ use hng2_modules\posts\posts_data;
 
 $this_module = $modules["posts"];
 if( empty($posts_data->slider_posts) ) return;
+if( $template->get("exclude_home_slider") ) return;
 ?>
 
 <link rel="stylesheet" type="text/css" href="<?= $config->full_root_path ?>/lib/jquery-bxslider/jquery.bxslider.css">
