@@ -150,3 +150,13 @@ body#tinymce[data-id="account_signature"] { font-family: 'Roboto', sans-serif; f
 
 .records_browser.filter_links { font-family: Arial, Helvetica, sans-serif; font-size: 10pt; }
 .records_browser.filter_links .framed_content { cursor: pointer; padding: 2px 4px; line-height: 14pt; }
+
+/* Media lists on record browsers */
+
+.media_bullet         { padding: 0 0 4px 22px; margin-bottom: 2px; position: relative; color: rebeccapurple;
+                        border-bottom: 1px solid silver; }
+.media_bullet .bullet { position: absolute; margin-left: -22px; margin-top: 2px; }
+
+.media_bullet:last-child { border-bottom: none; margin-bottom: 0; }
+
+.media_bullet a, .media_bullet .pseudo_link { color: rebeccapurple; }
