@@ -25,6 +25,10 @@ h1 { font-family: 'Lora', sans-serif; font-size: 14pt; line-height: 16pt; }
 h2 { font-family: 'Lora', sans-serif; font-size: 13pt; line-height: 15pt; }
 h3 { font-family: 'Lora', sans-serif; font-size: 12pt; line-height: 14pt; }
 
+h1 a.small { font-family: arial, helvetica, sans-serif; font-size: 12pt; font-weight: bold; }
+h1 a.small:before { content: '[' }
+h1 a.small:after  { content: ']' }
+
 /* Forms */
 
 #post_form  textarea[name="title"]  { font-family: 'Lora', sans-serif;   font-size: 18pt; min-height: 34px; height: 34px; }
