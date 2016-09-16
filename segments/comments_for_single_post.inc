@@ -144,11 +144,11 @@ if( $comments_count == 0 && $post->allow_comments == 0 ) return;
             <div class="comment_reply">
                 <div class="trigger">
                     <? if($post->allow_comments): ?>
-                        <span class="pseudo_link" onclick="prepare_comment_reply(this, false, true)">
+                        <span class="pseudo_link reply_comment_trigger" onclick="prepare_comment_reply(this, false, true)">
                             <span class="fa fa-reply"></span>
                             <?= $this_module->language->list->reply_comment ?>
                         </span>
-                        <span class="pseudo_link" onclick="prepare_comment_reply(this, true, true)">
+                        <span class="pseudo_link quote_comment_trigger" onclick="prepare_comment_reply(this, true, true)">
                             <span class="fa fa-quote-right"></span>
                             <?= $this_module->language->list->quote_comment ?>
                         </span>
@@ -214,3 +214,18 @@ if( $comments_count == 0 && $post->allow_comments == 0 ) return;
 <div id="comments_edit_form" style="display: none;" data-title-template="<?= $this_module->language->form->edit ?>"></div>
 <div id="comments_edit_target" style="display: none;"></div>
 <div id="reply_target" style="display: none;"></div>
+
+<script type="text/javascript">
+    $(document).ready(function()
+    {
+        var comment_id = '<?= $_GET["reply_to"] ?>';
+    
+        if( comment_id == '' ) return;
+    
+        var $comment = $('.comment_entry[data-id-comment="' + comment_id + '"]');
+        if( $comment.length == 0 ) return;
+    
+        var $trigger = $comment.find('.comment_reply .reply_comment_trigger');
+        setTimeout(function() { prepare_comment_reply($trigger, false, true) }, 1000);
+    });
+</script>
