@@ -51,6 +51,7 @@
 .posts_index article .post_featured_image img { width: 100%; }
 .posts_index article .post_contents           { padding: 5px 10px 10px 10px; }
 .posts_index article .post_contents *         { margin-top: 1px; margin-bottom: 1px; }
+.posts_index article .post_excerpt img        { max-width: 100%; }
 
 body#tinymce blockquote,
 article .post_contents blockquote,

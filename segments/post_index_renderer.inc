@@ -162,7 +162,27 @@ $this_module->load_extensions("front", "index_renderer_before_internal_wrapper")
             </a>
             
             <div class="post_contents post_excerpt">
-                <?= $post->get_processed_excerpt() ?>
+                <?
+                # echo $post->get_processed_excerpt();
+                
+                $excerpt = $post->get_processed_excerpt();
+                if( ! empty($excerpt) )
+                {
+                    echo $excerpt;
+                }
+                else
+                {
+                    if( empty($post->featured_image_thumbnail) )
+                    {
+                        $contents = $post->get_processed_content();
+                        $pq = phpQuery::newDocumentHTML($contents);
+                        $img = $pq->find('img:first');
+                        $img->attr("height", "");
+                        $img->attr("width", "100%");
+                        echo "<a href=\"{$post->get_permalink()}\">$img</a>";
+                    }
+                }
+                ?>
                 <? $this_module->load_extensions("front", "indexes_after_excerpt"); ?>
             </div>
             

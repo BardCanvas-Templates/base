@@ -37,12 +37,12 @@ if( $template->get("exclude_home_slider") ) return;
     });
 </script>
 <style type="text/css">
-    #posts_slider { display: block; margin: 0; padding: 0; width: auto; position: relative;
+    #posts_slider { display: block; margin: 0; padding: 0; position: relative;
                     overflow: hidden; background-color: white; height: 300px;
                     border: 1px solid #757575; box-shadow: 1px 1px 2px #808080; }
     
     #posts_slider li              ,
-    #posts_slider li a            { width: 100%; display: block; margin: 0; padding: 0; height: 100%;
+    #posts_slider li a            { display: block; margin: 0; padding: 0; height: 100%;
                                     text-align: center; overflow: hidden; background: none center center no-repeat; }
     
     #posts_slider li              { background-color: white; background-size: cover; }

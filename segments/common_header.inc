@@ -25,6 +25,8 @@ if( empty($favicon) ) $favicon = "{$template->url}/media/favicon.ico";
 <meta name="viewport"              content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta http-equiv="Content-Type"    content="text/html; charset=utf-8">
+<!--suppress CssInvalidPropertyValue -->
+<style type="text/css">@-ms-viewport{ width: device-width; }</style>
 <meta charset="UTF-8">
 
 <title><?= $template->get_page_title() ?></title>
