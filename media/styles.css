@@ -150,6 +150,8 @@ body#tinymce[data-id="account_signature"] { font-family: 'Roboto', sans-serif; f
 
 .records_browser.filter_links { font-family: Arial, Helvetica, sans-serif; font-size: 10pt; }
 .records_browser.filter_links .framed_content { cursor: pointer; padding: 2px 4px; line-height: 14pt; text-decoration: none; }
+.records_browser.filter_links .framed_content.seamless_right { border-right: none; border-top-right-radius: 0; border-bottom-right-radius: 0; margin-right: 0; }
+.records_browser.filter_links .framed_content.seamless_left  { border-left:  none; border-top-left-radius:  0; border-bottom-left-radius:  0; margin-left:  0; }
 
 /* Media lists on record browsers */
 

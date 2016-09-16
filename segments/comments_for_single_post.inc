@@ -154,7 +154,7 @@ if( $comments_count == 0 && $post->allow_comments == 0 ) return;
                         </span>
                     <? endif; ?>
                     
-                    <? if( $account->_exists ): ?>
+                    <? if( $account->_exists && $account->id_account != $comment->id_author ): ?>
                         <a href="<?= "{$config->full_root_url}/comments/?flag_as_spam={$comment->id_comment}" ?>" target="_blank">
                             <span class="fa fa-flag"></span>
                             <?= $language->flag_as_spam ?>
