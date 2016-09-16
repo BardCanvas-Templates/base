@@ -149,7 +149,7 @@ body#tinymce[data-id="account_signature"] { font-family: 'Roboto', sans-serif; f
 /* ETC */
 
 .records_browser.filter_links { font-family: Arial, Helvetica, sans-serif; font-size: 10pt; }
-.records_browser.filter_links .framed_content { cursor: pointer; padding: 2px 4px; line-height: 14pt; }
+.records_browser.filter_links .framed_content { cursor: pointer; padding: 2px 4px; line-height: 14pt; text-decoration: none; }
 
 /* Media lists on record browsers */
 
