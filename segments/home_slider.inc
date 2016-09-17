@@ -19,48 +19,34 @@ if( empty($posts_data->slider_posts) ) return;
 if( $template->get("exclude_home_slider") ) return;
 ?>
 
-<link rel="stylesheet" type="text/css" href="<?= $config->full_root_path ?>/lib/jquery-bxslider/jquery.bxslider.css">
-<script type="text/javascript"          src="<?= $config->full_root_path ?>/lib/jquery-bxslider/jquery.bxslider.js"></script>
-<script type="text/javascript">
-    $(document).ready(function()
-    {
-        $('#posts_slider').bxSlider({
-            auto:                true,
-            pause:               15000,
-            autoHover:           true,
-            autoControls:        true,
-            autoControlsCombine: true,
-            adaptiveHeight:      false,
-            touchEnabled:        true,
-            randomStart:         true
-        });
-    });
-</script>
+<link rel="stylesheet" type="text/css" href="<?= $config->full_root_path ?>/lib/slippry-1.3.1/dist/slippry.css?v=2">
+<script type="text/javascript"          src="<?= $config->full_root_path ?>/lib/slippry-1.3.1/dist/slippry.min.js"></script>
+<script type="text/javascript">$(document).ready(function() { $('#posts_slider').slippry({start: 'random', captions: false, adaptiveHeight: false}); });</script>
+
 <style type="text/css">
-    #posts_slider { display: block; margin: 0; padding: 0; position: relative;
-                    overflow: hidden; background-color: white; height: 300px;
-                    border: 1px solid #757575; box-shadow: 1px 1px 2px #808080; }
+    #posts_slider    { margin: 0 0 20px 0; padding: 0; height: 300px; overflow: hidden; }
+    #posts_slider li { margin: 0; padding: 0; }
     
-    #posts_slider li              ,
-    #posts_slider li a            { display: block; margin: 0; padding: 0; height: 100%;
-                                    text-align: center; overflow: hidden; background: none center center no-repeat; }
+    #posts_slider .outer          ,
+    #posts_slider .inner          { display: block; margin: 0; padding: 0; height: 300px; overflow: hidden;
+                                    text-align: center; background: none center center no-repeat; }
     
-    #posts_slider li              { background-color: white; background-size: cover; }
-    #posts_slider li a            { background-color: rgba(0, 0, 0, .75); background-size: contain; background-repeat: no-repeat; }
+    #posts_slider .outer              { background-size: cover; }
+    #posts_slider .inner              { background-color: rgba(0, 0, 0, .75); background-size: contain; background-repeat: no-repeat; }
     
-    #posts_slider li .title       { line-height: 30px; height: 30px; overflow: hidden; padding-bottom: 5px; display: block; font-size: 24px; font-weight: bold; background-color: rgba(0, 0, 0, .25); }
-    #posts_slider li .image       { height: calc(100% - 86px); display: block; }
-    #posts_slider li .description { font-size: 20px; line-height: 30px; height: 30px; padding-bottom: 5px; display: block; font-style: italic; overflow: hidden; background-color: rgba(0, 0, 0, .25); }
-    #posts_slider li .details     { line-height: 20px; padding-bottom: 5px; display: block; background-color: rgba(0, 0, 0, .25); }
-    #posts_slider li .expires     { color: yellow; }
+    #posts_slider .outer              { color: white; font-weight: bold; text-shadow: 1px 1px 10px rgba(0, 0, 0, 1); text-decoration: none; }
+    #posts_slider .inner .title       { line-height: 30px; height: 30px; overflow: hidden; padding-bottom: 5px; display: block; font-size: 24px; font-weight: bold; background-color: rgba(0, 0, 0, .25); }
+    #posts_slider .inner .image       { height: calc(100% - 85px); display: block; }
+    #posts_slider .inner .description { font-size: 20px; line-height: 30px; height: 30px; padding-bottom: 5px; display: block; font-style: italic; overflow: hidden; background-color: rgba(0, 0, 0, .25); }
+    #posts_slider .inner .details     { line-height: 20px; padding-bottom: 5px; display: block; background-color: rgba(0, 0, 0, .25); }
+    #posts_slider .inner .expires     { color: yellow; }
+    #posts_slider .inner img.emojione { display: inline; }
     
-    #posts_slider li   ,
-    #posts_slider li a { color: white; font-weight: bold; text-shadow: 1px 1px 10px rgba(0, 0, 0, 1); text-decoration: none; }
-    
-    .bx-wrapper img.emojione { display: inline; }
+    .sy-slides-wrap { border: 1px solid #757575; box-shadow: 1px 1px 2px #808080; height: 300px; }
+    .sy-pager       { margin-top: 10px; margin-bottom: 15px; padding-bottom: 5px; }
 </style>
 
-<div id="posts_slider">
+<ul id="posts_slider">
     
     <?
     $config->globals["modules:posts.working_posts_set"] =& $posts_data->slider_posts;
@@ -88,24 +74,26 @@ if( $template->get("exclude_home_slider") ) return;
             $post_image = "{$config->full_root_path}/media/default_avatar.jpg";
         }
         ?>
-        <li style="background-image: url('<?= $back_image ?>');">
-            <a href="<?= $post->get_permalink() ?>" style="background-image: url('<?= $post_image ?>');">
-                <span class="title"><?= $post->get_processed_title() ?></span>
-                <span class="image"></span>
-                <span class="description"><?= convert_emojis($post->excerpt) ?></span>
-                <span class="details">
-                    <span class="author"><?= $post->get_processed_author_display_name() ?></span>
-                    •
-                    <span class="published"><?= get_minimized_date($post->publishing_date) ?></span>
-                    <? if($post->expiration_date != "0000-00-00 00:00:00"): ?>
-                        <span class="expires">
-                            <span class="fa fa-clock-o fa-fw"></span>
-                            <?= preg_replace('/\d+s/', "", time_remaining_string($post->expiration_date)) ?>
-                        </span>
-                    <? endif; ?>
-                </span>
+        <li>
+            <a class="outer" href="<?= $post->get_permalink() ?>" style="background-image: url('<?= $back_image ?>');">
+                <div class="inner" style="background-image: url('<?= $post_image ?>');">
+                    <span class="title"><?= $post->get_processed_title() ?></span>
+                    <span class="image"></span>
+                    <span class="description"><?= convert_emojis($post->excerpt) ?></span>
+                    <span class="details">
+                        <span class="author"><?= $post->get_processed_author_display_name() ?></span>
+                        •
+                        <span class="published"><?= get_minimized_date($post->publishing_date) ?></span>
+                        <? if($post->expiration_date != "0000-00-00 00:00:00"): ?>
+                            <span class="expires">
+                                <span class="fa fa-clock-o fa-fw"></span>
+                                <?= preg_replace('/\d+s/', "", time_remaining_string($post->expiration_date)) ?>
+                            </span>
+                        <? endif; ?>
+                    </span>
+                </div>
             </a>
         </li>
     <? endforeach; ?>
     
-</div>
+</ul>
