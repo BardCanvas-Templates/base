@@ -46,6 +46,9 @@ use hng2_base\config;
         <? else: ?>
             <?= $language->admin->bar_title ?> <?= $config->engine_version ?>
         <? endif; ?>
+        •
+        <span class="fa fa-server"></span>
+        #<?= $config->numeric_server_id ?> (<?= current(explode(".", gethostname())) ?>)
     </span>
     
     <?
