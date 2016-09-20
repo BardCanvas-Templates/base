@@ -17,7 +17,7 @@ $collection =& $config->globals["search_by_tag_collections"];
 
 $this_module   = $modules["search"];
 $columns_count = count($config->globals["search_by_tag_collections"]);
-$column_size   = floor(100 / $columns_count);
+$column_size   = empty($columns_count) ? 100 : floor(100 / $columns_count);
 ?>
 <style type="text/css">
     
@@ -63,7 +63,7 @@ $column_size   = floor(100 / $columns_count);
 
 <div id="column_selector_tabs">
     <? foreach($collection as $segment_title => $search_items): ?>
-        <a class="framed_content tab" href="#<?=sanitize_file_name($segment_title)?>"
+        <a class="framed_content tab" href="#<?=wp_sanitize_filename($segment_title)?>"
            onmouseover="$(this).toggleClass('state_hover', true)"
            onmouseout="$(this).toggleClass('state_hover', false)">
             <?= $segment_title ?> (<?= count($search_items) ?>)
@@ -75,7 +75,7 @@ $column_size   = floor(100 / $columns_count);
     
     <? foreach($collection as $segment_title => $search_items): ?>
         
-        <a name="<?=sanitize_file_name($segment_title)?>"></a>
+        <a name="<?=wp_sanitize_filename($segment_title)?>"></a>
         <div class="column">
             
             <h2><?= $segment_title ?> (<?= count($search_items) ?>)</h2>
