@@ -211,7 +211,7 @@ if( $comments_count == 0 && $post->allow_comments == 0 ) return;
     
 </div>
 
-<div id="comments_edit_form" style="display: none;" data-title-template="<?= $this_module->language->form->edit ?>"></div>
+<div id="comments_edit_form" style="display: none;" data-title-template="<?= htmlspecialchars($this_module->language->form->edit) ?>"></div>
 <div id="comments_edit_target" style="display: none;"></div>
 <div id="reply_target" style="display: none;"></div>
 
