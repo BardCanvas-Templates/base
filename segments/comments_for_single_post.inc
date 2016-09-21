@@ -16,6 +16,7 @@
  * Trailing vars:
  * @var post_record      $post
  * @var comment_record[] $comments
+ * @var boolean          $allow_new_comments
  */
 
 use hng2_base\config;
@@ -37,7 +38,7 @@ if( $comments_count == 0 && $post->allow_comments == 0 ) return;
 <div id="post_comments" class="content_frame" data-post-id="<?= $post->id_post ?>">
     
     <h1>
-        <? if( $post->allow_comments ): ?>
+        <? if( $post->allow_comments && $allow_new_comments ): ?>
             <!--suppress HtmlUnknownAnchorTarget -->
             <a href="#post_new_comment_form" class="pull-right"><?= $this_module->language->list->post_comment ?></a>
         <? endif; ?>
@@ -143,7 +144,7 @@ if( $comments_count == 0 && $post->allow_comments == 0 ) return;
             
             <div class="comment_reply">
                 <div class="trigger">
-                    <? if($post->allow_comments): ?>
+                    <? if($post->allow_comments && $allow_new_comments): ?>
                         <span class="pseudo_link reply_comment_trigger" onclick="prepare_comment_reply(this, false, true)">
                             <span class="fa fa-reply"></span>
                             <?= $this_module->language->list->reply_comment ?>
