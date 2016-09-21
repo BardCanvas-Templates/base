@@ -25,6 +25,9 @@
     padding: 10px;
 }
 
+/* Space added when the slider has only one item */
+#quick_post_form_container.spaced { margin-top: 20px; }
+
 /* Common meta areas */
 
 .meta_box                       { padding: 10px 10px 5px 10px; }
