@@ -23,7 +23,6 @@ $this_module = $modules["posts"];
     $ttl = $settings->get("modules:posts.featured_posts_ttl");
     
     foreach($posts_data->featured_posts as $post):
-        $author = $post->get_author();
         $src = $post->featured_image_thumbnail;
         if( empty($post->featured_image_thumbnail) ) $src = $settings->get("modules:posts.default_featured_image");
         $pinned = $post->pin_to_home == 1 ? "pinned" : "";
@@ -38,7 +37,7 @@ $this_module = $modules["posts"];
             <? if( ! empty($src) ): ?><span class="thumbnail"><img src="<?= $src ?>"></span><? endif; ?>
             <h3>
                 <?= $post->get_processed_title(false) ?>
-                [<?= $author->get_processed_display_name() ?>, <?= $post->main_category_title ?>]
+                [<?= $post->get_processed_author_display_name() ?>, <?= $post->main_category_title ?>]
                 <? if($post->expiration_date != "0000-00-00 00:00:00"): ?>
                     <span style="display: inline-block">
                         <span class="fa fa-clock-o fa-fw"></span>
