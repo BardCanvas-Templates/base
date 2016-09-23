@@ -23,18 +23,20 @@ use hng2_base\module;
 use hng2_base\settings;
 use hng2_base\template;
 use hng2_modules\comments\comment_record;
+use hng2_modules\comments\comments_repository;
 use hng2_modules\posts\post_record;
 
 $excerpt_length = $settings->get("modules:comments.excerpt_lengt_for_indexes");
 if( empty($excerpt_length) ) $excerpt_length = 100;
+
+$comments_repository = new comments_repository();
+$authors = $comments_repository->get_all_authors($comments);
 ?>
 
 <ul class="post_comments">
     <? foreach($comments as $comment): ?>
-        <? $author = $comment->get_author(); ?>
-        
         <li>
-            <? if($author->_exists): ?>
+            <? if( ! empty($comment->id_author) ): $author = $authors[$comment->id_author]; ?>
                 <a href="<?= $config->full_root_url ?>/user/<?= $author->user_name ?>/" class="user_display_name"
                    data-user-level="<?= $author->level ?>">
                     <span class="fa fa-user fa-fw"></span>
