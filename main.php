@@ -203,12 +203,10 @@ header("Content-Type: text/html; charset=utf-8"); ?>
                 include "{$this_module->abspath}/contents/{$this_module->template_includes->footer_top}";
         ?>
         
-        <div class="footer_contents">
-            
-            <div align="center">
-                <?= $settings->get("engine.website_name") ?>
-                <?= replace_escaped_vars($language->powered_by, '{$version}', $config->engine_version) ?>
-            </div>
+        <div class="footer_contents" align="center">
+            <?= $settings->get("engine.website_name") ?>
+            <?= replace_escaped_vars($language->powered_by, '{$version}', $config->engine_version) ?>
+        </div>
             
         </div>
         

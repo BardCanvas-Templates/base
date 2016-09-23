@@ -44,20 +44,21 @@ $this_module = $modules["posts"];
                         <?= preg_replace('/\d+s/', "", time_remaining_string($post->expiration_date)) ?>
                     </span>
                 <? endif; ?>
-                <? if($account->level >= config::MODERATOR_USER_LEVEL ): ?>
-                    <hr>
+            </h3>
+            <? if($account->level >= config::MODERATOR_USER_LEVEL ): ?>
+                <div class="admin_stuff">
                     <span class="critical" style="display: inline-block;">
-                        <span class="fa fa-calendar fa-fw"></span>
+                            <span class="fa fa-calendar fa-fw"></span>
                         <?= time_elapsed_string($post->publishing_date) ?>
-                    </span>
+                        </span>
                     <? if( ! empty($ttl) ): ?>
                         <span class="critical" style="display: inline-block;">
-                            <span class="fa fa-clock-o fa-fw"></span>
+                                <span class="fa fa-clock-o fa-fw"></span>
                             <?= preg_replace('/\d+s/', "", time_remaining_string(date("Y-m-d H:i:s", strtotime("{$post->publishing_date} + $ttl hours")))) ?>
-                        </span>
+                            </span>
                     <? endif; ?>
-                <? endif; ?>
-            </h3>
+                </div>
+            <? endif; ?>
         </a>
     <? endforeach; ?>
 </div>
