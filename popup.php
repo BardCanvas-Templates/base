@@ -12,9 +12,11 @@ use hng2_tools\internals;
 $template->init(__FILE__);
 $account->ping();
 
-foreach($modules as $this_module)
-    if( ! empty($this_module->template_includes->pre_rendering) )
-        include "{$this_module->abspath}/contents/{$this_module->template_includes->pre_rendering}";
+foreach($template->get_includes("pre_rendering") as $module => $include)
+{
+    $this_module = $modules[$module];
+    include "{$this_module->abspath}/contents/{$include}";
+}
 
 header("Content-Type: text/html; charset=utf-8"); ?>
 <!DOCTYPE html>
@@ -40,9 +42,11 @@ header("Content-Type: text/html; charset=utf-8"); ?>
     
     <!-- Per module loads -->
     <?
-    foreach($modules as $this_module)
-        if( ! empty($this_module->template_includes->html_head) )
-            include "{$this_module->abspath}/contents/{$this_module->template_includes->html_head}";
+    foreach($template->get_includes("html_head") as $module => $include)
+    {
+        $this_module = $modules[$module];
+        include "{$this_module->abspath}/contents/{$include}";
+    }
     ?>
 </head>
 <body data-orientation="landscape" data-viewport-class="0" <?=$template->get("additional_body_attributes")?>  class="popup">
@@ -54,9 +58,11 @@ header("Content-Type: text/html; charset=utf-8"); ?>
     </div><!-- /#content -->
     
     <?
-    foreach($modules as $this_module)
-        if( ! empty($this_module->template_includes->post_footer) )
-            include "{$this_module->abspath}/contents/{$this_module->template_includes->post_footer}";
+    foreach($template->get_includes("post_footer") as $module => $include)
+    {
+        $this_module = $modules[$module];
+        include "{$this_module->abspath}/contents/{$include}";
+    }
     ?>
     
 </div><!-- /#body_wrapper -->

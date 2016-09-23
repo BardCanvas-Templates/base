@@ -22,9 +22,11 @@ include __DIR__ . "/functions.inc";
 $template->init(__FILE__);
 $account->ping();
 
-foreach($modules as $this_module)
-    if( ! empty($this_module->template_includes->pre_rendering) )
-        include "{$this_module->abspath}/contents/{$this_module->template_includes->pre_rendering}";
+foreach($template->get_includes("pre_rendering") as $module => $include)
+{
+    $this_module = $modules[$module];
+    include "{$this_module->abspath}/contents/{$include}";
+}
 
 header("Content-Type: text/html; charset=utf-8"); ?>
 <!DOCTYPE html>
@@ -67,9 +69,11 @@ header("Content-Type: text/html; charset=utf-8"); ?>
     
     <!-- Per module loads -->
     <?
-    foreach($modules as $this_module)
-        if( ! empty($this_module->template_includes->html_head) )
-            include "{$this_module->abspath}/contents/{$this_module->template_includes->html_head}";
+    foreach($template->get_includes("html_head") as $module => $include)
+    {
+        $this_module = $modules[$module];
+        include "{$this_module->abspath}/contents/{$include}";
+    }
     ?>
 </head>
 <body data-orientation="landscape" data-viewport-class="0" <?=$template->get("additional_body_attributes")?>
@@ -79,9 +83,11 @@ header("Content-Type: text/html; charset=utf-8"); ?>
 <div id="body_wrapper">
     
     <?
-    foreach($modules as $this_module)
-        if( ! empty($this_module->template_includes->pre_header) )
-            include "{$this_module->abspath}/contents/{$this_module->template_includes->pre_header}";
+    foreach($template->get_includes("pre_header") as $module => $include)
+    {
+        $this_module = $modules[$module];
+        include "{$this_module->abspath}/contents/{$include}";
+    }
     ?>
     
     <div id="header">
@@ -91,9 +97,11 @@ header("Content-Type: text/html; charset=utf-8"); ?>
             if( $account->_is_admin && $settings->get("engine.show_admin_menu_in_header_menu") != "true" )
                 include "{$template->abspath}/segments/admin_menu.inc";
             
-            foreach($modules as $this_module)
-                if( ! empty($this_module->template_includes->header_top) )
-                    include "{$this_module->abspath}/contents/{$this_module->template_includes->header_top}";
+            foreach($template->get_includes("header_top") as $module => $include)
+            {
+                $this_module = $modules[$module];
+                include "{$this_module->abspath}/contents/{$include}";
+            }
             ?>
         </div>
         
@@ -125,9 +133,11 @@ header("Content-Type: text/html; charset=utf-8"); ?>
             if( $account->_is_admin && $settings->get("engine.show_admin_menu_in_header_menu") == "true" )
                 add_admin_menu_items_to_header_menu();
             
-            foreach($modules as $this_module)
-                if( ! empty($this_module->template_includes->header_menu) )
-                    include "{$this_module->abspath}/contents/{$this_module->template_includes->header_menu}";
+            foreach($template->get_includes("header_menu") as $module => $include)
+            {
+                $this_module = $modules[$module];
+                include "{$this_module->abspath}/contents/{$include}";
+            }
             
             echo $template->build_menu_items("priority");
             ?>
@@ -135,9 +145,11 @@ header("Content-Type: text/html; charset=utf-8"); ?>
         
         <div class="header_bottom">
             <?
-            foreach($modules as $this_module)
-                if( ! empty($this_module->template_includes->header_bottom) )
-                    include "{$this_module->abspath}/contents/{$this_module->template_includes->header_bottom}";
+            foreach($template->get_includes("header_bottom") as $module => $include)
+            {
+                $this_module = $modules[$module];
+                include "{$this_module->abspath}/contents/{$include}";
+            }
             ?>
         </div>
         
@@ -152,9 +164,11 @@ header("Content-Type: text/html; charset=utf-8"); ?>
         <? endif; ?>
         
         <?
-        foreach($modules as $this_module)
-            if( ! empty($this_module->template_includes->pre_content) )
-                include "{$this_module->abspath}/contents/{$this_module->template_includes->pre_content}";
+        foreach($template->get_includes("pre_content") as $module => $include)
+        {
+            $this_module = $modules[$module];
+            include "{$this_module->abspath}/contents/{$include}";
+        }
         ?>
         
         <div id="content">
@@ -164,22 +178,28 @@ header("Content-Type: text/html; charset=utf-8"); ?>
             ?>
             
             <?
-            foreach($modules as $this_module)
-                if( ! empty($this_module->template_includes->content_top) )
-                    include "{$this_module->abspath}/contents/{$this_module->template_includes->content_top}";
+            foreach($template->get_includes("content_top") as $module => $include)
+            {
+                $this_module = $modules[$module];
+                include "{$this_module->abspath}/contents/{$include}";
+            }
             
             include "{$current_module->abspath}/contents/{$template->page_contents_include}";
             
-            foreach($modules as $this_module)
-                if( ! empty($this_module->template_includes->content_bottom) )
-                    include "{$this_module->abspath}/contents/{$this_module->template_includes->content_bottom}";
+            foreach($template->get_includes("content_bottom") as $module => $include)
+            {
+                $this_module = $modules[$module];
+                include "{$this_module->abspath}/contents/{$include}";
+            }
             ?>
         </div><!-- /#content -->
         
         <?
-        foreach($modules as $this_module)
-            if( ! empty($this_module->template_includes->post_content) )
-                include "{$this_module->abspath}/contents/{$this_module->template_includes->post_content}";
+        foreach($template->get_includes("post_content") as $module => $include)
+        {
+            $this_module = $modules[$module];
+            include "{$this_module->abspath}/contents/{$include}";
+        }
         ?>
         
         <? if( $template->count_right_sidebar_items() > 0 ): ?>
@@ -191,16 +211,20 @@ header("Content-Type: text/html; charset=utf-8"); ?>
     </div>
     
     <?
-    foreach($modules as $this_module)
-        if( ! empty($this_module->template_includes->pre_footer) )
-            include "{$this_module->abspath}/contents/{$this_module->template_includes->pre_footer}";
+    foreach($template->get_includes("pre_footer") as $module => $include)
+    {
+        $this_module = $modules[$module];
+        include "{$this_module->abspath}/contents/{$include}";
+    }
     ?>
     
     <div id="footer">
         <?
-        foreach($modules as $this_module)
-            if( ! empty($this_module->template_includes->footer_top) )
-                include "{$this_module->abspath}/contents/{$this_module->template_includes->footer_top}";
+        foreach($template->get_includes("footer_top") as $module => $include)
+        {
+            $this_module = $modules[$module];
+            include "{$this_module->abspath}/contents/{$include}";
+        }
         ?>
         
         <div class="footer_contents" align="center">
@@ -218,21 +242,23 @@ header("Content-Type: text/html; charset=utf-8"); ?>
             ";
             ?>
         </div>
-            
-        </div>
         
         <?
-        foreach($modules as $this_module)
-            if( ! empty($this_module->template_includes->footer_bottom) )
-                include "{$this_module->abspath}/contents/{$this_module->template_includes->footer_bottom}";
+        foreach($template->get_includes("footer_bottom") as $module => $include)
+        {
+            $this_module = $modules[$module];
+            include "{$this_module->abspath}/contents/{$include}";
+        }
         ?>
         
     </div><!-- /#footer -->
     
     <?
-    foreach($modules as $this_module)
-        if( ! empty($this_module->template_includes->post_footer) )
-            include "{$this_module->abspath}/contents/{$this_module->template_includes->post_footer}";
+    foreach($template->get_includes("post_footer") as $module => $include)
+    {
+        $this_module = $modules[$module];
+        include "{$this_module->abspath}/contents/{$include}";
+    }
     ?>
     
 </div><!-- /#body_wrapper -->
@@ -251,9 +277,11 @@ header("Content-Type: text/html; charset=utf-8"); ?>
 </script>
 
 <?
-foreach($modules as $this_module)
-    if( ! empty($this_module->template_includes->pre_eof) )
-        include "{$this_module->abspath}/contents/{$this_module->template_includes->pre_eof}";
+foreach($template->get_includes("pre_eof") as $module => $include)
+{
+    $this_module = $modules[$module];
+    include "{$this_module->abspath}/contents/{$include}";
+}
 
 internals::render(__FILE__);
 ?>
@@ -261,7 +289,9 @@ internals::render(__FILE__);
 </body>
 </html>
 <?
-foreach($modules as $this_module)
-    if( ! empty($this_module->template_includes->post_rendering) )
-        include "{$this_module->abspath}/contents/{$this_module->template_includes->post_rendering}";
+foreach($template->get_includes("post_rendering") as $module => $include)
+{
+    $this_module = $modules[$module];
+    include "{$this_module->abspath}/contents/{$include}";
+}
 ?>
