@@ -81,7 +81,10 @@ if( $template->get("exclude_home_slider") ) return;
                     <span class="image"></span>
                     <span class="description"><?= convert_emojis($post->excerpt) ?></span>
                     <span class="details">
-                        <span class="author"><?= $post->get_processed_author_display_name() ?></span>
+                        <span class="author user_display_name" data-user-level="<?= $post->author_level ?>">
+                            <span class="fa fa-user"></span>
+                            <?= $post->get_processed_author_display_name() ?>
+                        </span>
                         •
                         <span class="published"><?= get_minimized_date($post->publishing_date) ?></span>
                         <? if($post->expiration_date != "0000-00-00 00:00:00"): ?>
