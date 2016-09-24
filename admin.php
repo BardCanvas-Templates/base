@@ -149,6 +149,14 @@ header("Content-Type: text/html; charset=utf-8"); ?>
     
     </div><!-- /#header -->
     
+    <?
+    foreach($template->get_includes("pre_content") as $module => $include)
+    {
+        $this_module = $modules[$module];
+        include "{$this_module->abspath}/contents/{$include}";
+    }
+    ?>
+    
     <div id="content_wrapper" class="clearfix">
         
         <? if( $settings->get("engine.hide_left_sidebar_on_admin_pages") != "true" && $template->count_left_sidebar_groups() > 0 ): ?>
