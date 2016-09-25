@@ -36,11 +36,17 @@ $authors = $comments_repository->get_all_authors($comments);
 <ul class="post_comments">
     <? foreach($comments as $comment): ?>
         <li>
-            <? if( ! empty($comment->id_author) ): $author = $authors[$comment->id_author]; ?>
+            <? if( ! empty($comment->id_author) ):
+                $author = $authors[$comment->id_author];
+                if( ! empty($author) ): ?>
                 <a href="<?= $config->full_root_url ?>/user/<?= $author->user_name ?>/" class="user_display_name"
                    data-user-level="<?= $author->level ?>">
                     <span class="fa fa-user fa-fw"></span>
                     <?= $author->get_processed_display_name() ?></a>
+                <? else: ?>
+                    <span class="fa fa-user"></span>
+                    <?= $language->unknown ?>:
+                <? endif; ?>
             <? else: ?>
                 <span class="fa fa-user"></span>
                 <?= $comment->author_display_name ?>:            
