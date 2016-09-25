@@ -84,7 +84,7 @@ if( $comments_count == 0 && $post->allow_comments == 0 ) return;
                             <? endif; ?>
                         <? else: ?>
                             <span class="meta_field">
-                                <span class="fa fa-user fa-fw"></span>
+                                <span class="fa fa-question-circle-o fa-fw"></span>
                                 <?= $comment->author_display_name ?>
                             </span>
                         <? endif; ?>

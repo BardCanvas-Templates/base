@@ -44,11 +44,11 @@ $authors = $comments_repository->get_all_authors($comments);
                     <span class="fa fa-user fa-fw"></span>
                     <?= $author->get_processed_display_name() ?></a>
                 <? else: ?>
-                    <span class="fa fa-user"></span>
+                    <span class="fa fa-question-circle-o fa-fw"></span>
                     <?= $language->unknown ?>:
                 <? endif; ?>
             <? else: ?>
-                <span class="fa fa-user"></span>
+                <span class="fa fa-question-circle-o fa-fw"></span>
                 <?= $comment->author_display_name ?>:            
             <? endif; ?>
             [<?= time_elapsed_string($comment->creation_date) ?>]:
@@ -57,8 +57,7 @@ $authors = $comments_repository->get_all_authors($comments);
                 $excerpt = make_excerpt_of($comment->content, $excerpt_length);
                 if( empty($excerpt) ) echo "<span class='ellipsis'>...</span>";
                 else                  echo convert_emojis($excerpt);
-                ?>
-            </a>
+                ?></a>
         </li>
     <? endforeach; ?>
 </ul>
