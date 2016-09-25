@@ -52,8 +52,8 @@ $author = $template->get("user_profile_account");
                     </span>
                 <? endif; ?>
                 <?= $config->user_levels_by_level[$author->level] ?>
-                &bull;
-                <?= $language->last_seen . " " . $author->get_last_activity(true) ?>
+                <? $last_seen = $author->get_last_activity();
+                   if( ! empty($last_seen) ) echo "&bull; " . $language->last_seen . " " . $author->get_last_activity(true) ?>
             </div>
         </div>
     </div>
