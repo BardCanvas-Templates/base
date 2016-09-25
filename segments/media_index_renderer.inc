@@ -80,7 +80,7 @@ $this_module = $modules["gallery"];
                 <div class="meta_section">
                     <a class="meta_field dimmed" href="<?= $config->full_root_url ?>/date/<?= date("Y/m/d", strtotime($item->publishing_date)) ?>/">
                         <span class="fa fa-calendar fa-fw"></span>
-                        <?= time_elapsed_string($item->publishing_date) ?>
+                        <?= render_datetime($item->publishing_date) . " (" . time_elapsed_string($item->publishing_date) . ")" ?>
                     </a>
                 </div>
             

@@ -78,7 +78,7 @@ $author = $post->get_author();
         <div class="meta_section">
             <a class="meta_field dimmed" href="<?= $config->full_root_url ?>/date/<?= date("Y/m/d", strtotime($post->publishing_date)) ?>/">
                 <span class="fa fa-calendar fa-fw"></span>
-                <?= time_elapsed_string($post->publishing_date) ?>
+                <?= render_datetime($post->publishing_date) . " (" . time_elapsed_string($post->publishing_date) . ")" ?>
             </a>
             <span class="meta_field">
                 <span class="fa fa-eye fa-fw"></span>

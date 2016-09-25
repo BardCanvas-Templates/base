@@ -92,7 +92,7 @@ if( $comments_count == 0 && $post->allow_comments == 0 ) return;
                     <div class="meta_section">
                         <span class="meta_field dimmed">
                             <span class="fa fa-calendar fa-fw"></span>
-                            <?= time_elapsed_string($comment->creation_date) ?>
+                            <?= render_datetime($comment->creation_date) . " (" . time_elapsed_string($comment->creation_date) . ")" ?>
                         </span>
                         
                         <? if( $account->level >= config::MODERATOR_USER_LEVEL ): ?>
