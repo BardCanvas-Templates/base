@@ -101,7 +101,7 @@ $this_module->load_extensions("front", "index_renderer_before_internal_wrapper")
                 <div class="meta_section">
                     <a class="meta_field dimmed" href="<?= $config->full_root_url ?>/date/<?= date("Y/m/d", strtotime($post->publishing_date)) ?>/">
                         <span class="fa fa-calendar fa-fw"></span>
-                        <?= render_datetime($post->publishing_date) . " (" . time_elapsed_string($post->publishing_date) . ")" ?>
+                        <?= time_today_string($post->publishing_date) . " (" . time_elapsed_string($post->publishing_date) . ")" ?>
                     </a>
                     <? if($post->expiration_date != "0000-00-00 00:00:00"): ?>
                         <span class="meta_field dimmed">

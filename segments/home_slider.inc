@@ -86,7 +86,7 @@ if( $template->get("exclude_home_slider") ) return;
                             <?= $post->get_processed_author_display_name() ?>
                         </span>
                         •
-                        <span class="published"><?= get_minimized_date($post->publishing_date) ?></span>
+                        <span class="published"><?= time_mini_string($post->publishing_date) ?></span>
                         <? if($post->expiration_date != "0000-00-00 00:00:00"): ?>
                             <span class="expires">
                                 <span class="fa fa-clock-o fa-fw"></span>
