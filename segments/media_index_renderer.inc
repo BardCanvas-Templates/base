@@ -95,6 +95,13 @@ $this_module = $modules["gallery"];
             
             <div class="post_contents post_excerpt">
                 <?= $item->get_description_excerpt() ?>
+                <? if( $account->level >= config::MODERATOR_USER_LEVEL ): ?>
+                    <a class="greengo inline-block" href="<?= $config->full_root_path ?>/gallery/?edit_item=<?= $item->id_media ?>&wasuuup=<?= md5(mt_rand(1, 65535)) ?>"
+                       ><span class="fa fa-pencil fa-fw"></span><?= $language->edit ?></a>
+                    <a class="critical inline-block" href="<?= $config->full_root_path ?>/gallery/?trash_item=<?= $item->id_media ?>&wasuuup=<?= md5(mt_rand(1, 65535)) ?>"
+                       onclick="return confirm('<?= $language->confirm_action ?>')"
+                       ><span class="fa fa-trash fa-fw"></span><?= $current_module->language->record_nav->actions->trash ?></a>
+                <? endif; ?>
             </div>
             
         </article>

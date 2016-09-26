@@ -150,6 +150,7 @@ $this_module->load_extensions("front", "index_renderer_before_internal_wrapper")
                         <? endif; ?>
                     <? endif; ?>
                 </div>
+                
             </div>
             
             <a href="<?= $post->get_permalink() ?>">
@@ -183,7 +184,19 @@ $this_module->load_extensions("front", "index_renderer_before_internal_wrapper")
                     }
                 }
                 ?>
+                
+                <? if( $account->level >= config::MODERATOR_USER_LEVEL ): ?>
+                    <a class="greengo inline-block" 
+                       href="<?= $config->full_root_path ?>/posts/?edit_post=<?= $post->id_post ?>&wasuuup=<?= md5(mt_rand(1, 65535)) ?>"
+                       ><span class="fa fa-pencil fa-fw"></span><?= $language->edit ?></a>
+                    <a class="critical inline-block" 
+                       href="<?= $config->full_root_path ?>/posts/?trash_post=<?= $post->id_post ?>&wasuuup=<?= md5(mt_rand(1, 65535)) ?>"
+                       onclick="return confirm('<?= $language->confirm_action ?>')"
+                       ><span class="fa fa-trash fa-fw"></span><?= $this_module->language->record_nav->actions->trash ?></a>
+                <? endif; ?>
+                
                 <? $this_module->load_extensions("front", "indexes_after_excerpt"); ?>
+                
             </div>
             
         </article>
