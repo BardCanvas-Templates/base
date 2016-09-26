@@ -82,6 +82,13 @@ $this_module = $modules["gallery"];
                         <span class="fa fa-calendar fa-fw"></span>
                         <?= time_today_string($item->publishing_date) . " (" . time_elapsed_string($item->publishing_date) . ")" ?>
                     </a>
+                    
+                    <? if( $account->level >= config::MODERATOR_USER_LEVEL ): ?>
+                        <span class="meta_field critical">
+                            <span class="fa fa-eye fa-fw"></span>
+                            <?= number_format($item->views); ?>
+                        </span>
+                    <? endif; ?>
                 </div>
             
             </div>

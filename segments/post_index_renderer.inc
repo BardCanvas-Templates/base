@@ -103,6 +103,14 @@ $this_module->load_extensions("front", "index_renderer_before_internal_wrapper")
                         <span class="fa fa-calendar fa-fw"></span>
                         <?= time_today_string($post->publishing_date) . " (" . time_elapsed_string($post->publishing_date) . ")" ?>
                     </a>
+                    
+                    <? if( $account->level >= config::MODERATOR_USER_LEVEL ): ?>
+                        <span class="meta_field critical">
+                            <span class="fa fa-eye fa-fw"></span>
+                            <?= number_format($post->views); ?>
+                        </span>
+                    <? endif; ?>
+                    
                     <? if($post->expiration_date != "0000-00-00 00:00:00"): ?>
                         <span class="meta_field dimmed">
                             <span class="fa fa-clock-o fa-fw"></span>
