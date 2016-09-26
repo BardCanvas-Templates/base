@@ -70,7 +70,7 @@ $author = $item->get_author();
         <div class="meta_section">
             <a class="meta_field dimmed" href="<?= $config->full_root_url ?>/date/<?= date("Y/m/d", strtotime($item->publishing_date)) ?>/">
                 <span class="fa fa-calendar fa-fw"></span>
-                <?= render_datetime($item->publishing_date) . " (" . time_elapsed_string($item->publishing_date) . ")" ?>
+                <?= time_complete_string($item->publishing_date) . " (" . time_elapsed_string($item->publishing_date) . ")" ?>
             </a>
             <span class="meta_field">
                 <span class="fa fa-eye fa-fw"></span>
@@ -139,9 +139,10 @@ $author = $item->get_author();
                 <?= $language->edit ?>
             </a>
         <? endif; ?>
-        
-        <? if($account->level >= config::MODERATOR_USER_LEVEL || $account->id_account == $post->id_author): ?>
-            <a class="item action" href="<?= $config->full_root_path ?>/gallery/?trash_item=<?= $item->id_media ?>&wasuuup=<?= md5(mt_rand(1, 65535)) ?>">
+    
+        <? if( $item->can_be_deleted() ): ?>
+            <a class="item action" href="<?= $config->full_root_path ?>/gallery/?trash_item=<?= $item->id_media ?>&wasuuup=<?= md5(mt_rand(1, 65535)) ?>"
+               onclick="return confirm('<?= $language->confirm_action ?>')">
                 <span class="fa fa-trash"></span>
                 <?= $current_module->language->record_nav->actions->trash ?>
             </a>

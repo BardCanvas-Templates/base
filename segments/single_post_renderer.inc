@@ -78,7 +78,7 @@ $author = $post->get_author();
         <div class="meta_section">
             <a class="meta_field dimmed" href="<?= $config->full_root_url ?>/date/<?= date("Y/m/d", strtotime($post->publishing_date)) ?>/">
                 <span class="fa fa-calendar fa-fw"></span>
-                <?= render_datetime($post->publishing_date) . " (" . time_elapsed_string($post->publishing_date) . ")" ?>
+                <?= time_complete_string($post->publishing_date) . " (" . time_elapsed_string($post->publishing_date) . ")" ?>
             </a>
             <span class="meta_field">
                 <span class="fa fa-eye fa-fw"></span>
@@ -160,8 +160,9 @@ $author = $post->get_author();
             </a>
         <? endif; ?>
         
-        <? if($post->comments_count == 0 && ($account->level >= config::MODERATOR_USER_LEVEL || $account->id_account == $post->id_author)): ?>
-            <a class="item action" href="<?= $config->full_root_path ?>/posts/?trash_post=<?= $post->id_post ?>&wasuuup=<?= md5(mt_rand(1, 65535)) ?>">
+        <? if( $post->can_be_deleted() ): ?>
+            <a class="item action" href="<?= $config->full_root_path ?>/posts/?trash_post=<?= $post->id_post ?>&wasuuup=<?= md5(mt_rand(1, 65535)) ?>"
+               onclick="return confirm('<?= $language->confirm_action ?>')">
                 <span class="fa fa-trash"></span>
                 <?= $current_module->language->record_nav->actions->trash ?>
             </a>

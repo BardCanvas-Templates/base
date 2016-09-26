@@ -193,8 +193,10 @@ if( $comments_count == 0 && $post->allow_comments == 0 ) return;
                         </a>
                     <? endif; ?>
     
-                    <? if( ! is_null($author) && $account->id_account == $author->id_account ): ?>
-                        <a href="<?= "{$config->full_root_url}/comments/?delete={$comment->id_comment}" ?>" target="_blank">
+                    <? if( $comment->can_be_deleted() ): ?>
+                        <a href="<?= "{$config->full_root_url}/comments/?delete={$comment->id_comment}" ?>"
+                           target="_blank"
+                           onclick="return confirm('<?= $language->confirm_action ?>')">
                             <span class="fa fa-trash"></span>
                             <?= $this_module->language->record_nav->actions->trash ?>
                         </a>
