@@ -47,16 +47,17 @@ $this_module = $modules["posts"];
             </h3>
             <? if($account->level >= config::MODERATOR_USER_LEVEL ): ?>
                 <div class="admin_stuff">
-                    <span class="critical" style="display: inline-block;">
-                            <span class="fa fa-calendar fa-fw"></span>
-                        <?= time_elapsed_string($post->publishing_date) ?>
-                        </span>
+                    <span class="critical inline-block"><span
+                          class="fa fa-calendar fa-fw"></span><?= time_elapsed_string($post->publishing_date) ?></span>
                     <? if( ! empty($ttl) ): ?>
-                        <span class="critical" style="display: inline-block;">
-                                <span class="fa fa-clock-o fa-fw"></span>
-                            <?= preg_replace('/\d+s/', "", time_remaining_string(date("Y-m-d H:i:s", strtotime("{$post->publishing_date} + $ttl hours")))) ?>
-                            </span>
+                        <span class="critical inline-block"><span 
+                              class="fa fa-clock-o fa-fw"></span><?= 
+                            preg_replace('/\d+s/', "", time_remaining_string(date("Y-m-d H:i:s", strtotime("{$post->publishing_date} + $ttl hours")))) 
+                            ?></span>
                     <? endif; ?>
+                    <? foreach($post->get_filtered_tags_list() as $tag): ?>
+                        <span class="critical inline-block"><span class="fa fa-hashtag"></span><?= $tag ?></span>
+                    <? endforeach; ?>
                 </div>
             <? endif; ?>
         </a>
