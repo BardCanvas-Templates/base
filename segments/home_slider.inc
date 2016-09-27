@@ -32,7 +32,7 @@ if( $template->get("exclude_home_slider") ) return;
                                     text-align: center; background: none center center no-repeat; }
     
     #posts_slider .outer              { background-size: cover; }
-    #posts_slider .inner              { background-color: rgba(0, 0, 0, .75); background-size: contain; background-repeat: no-repeat; }
+    #posts_slider .inner              { display: inline-block; background-color: rgba(0, 0, 0, .75); background-size: contain; background-repeat: no-repeat; }
     
     #posts_slider .outer              { color: white; font-weight: bold; text-shadow: 1px 1px 10px rgba(0, 0, 0, 1); text-decoration: none; }
     #posts_slider .inner .title       { line-height: 30px; height: 30px; overflow: hidden; padding-bottom: 5px; display: block; font-size: 24px; font-weight: bold; background-color: rgba(0, 0, 0, .25); }
@@ -76,8 +76,8 @@ if( $template->get("exclude_home_slider") ) return;
         ?>
         <li>
             <a class="outer" href="<?= $post->get_permalink() ?>" style="background-image: url('<?= $back_image ?>');">
-                <div class="inner" style="background-image: url('<?= $post_image ?>');">
-                    <span class="title"><?= $post->get_processed_title() ?></span>
+                <span class="inner" style="background-image: url('<?= $post_image ?>');">
+                    <span class="title"><?= $post->get_processed_title(false) ?></span>
                     <span class="image"></span>
                     <span class="description"><?= convert_emojis($post->excerpt) ?></span>
                     <span class="details">
@@ -94,7 +94,7 @@ if( $template->get("exclude_home_slider") ) return;
                             </span>
                         <? endif; ?>
                     </span>
-                </div>
+                </span>
             </a>
         </li>
     <? endforeach; ?>
