@@ -36,7 +36,7 @@ $author = $template->get("user_profile_account");
                 <? elseif($modules["contact"]->enabled): ?>
                     <span class="pull-right">
                         <? if( $account->_exists ): ?>
-                            <button onclick="send_pm(this, '<?= $author->user_name ?>', '<?= replace_escaped_vars($language->contact->pm->send_to, '{$recipient}', htmlspecialchars($author->display_name)) ?>')"
+                            <button onclick="send_pm(this, '<?= $author->user_name ?>', '<?= htmlspecialchars($author->display_name) ?>')"
                                     title="<?= replace_escaped_vars( $language->contact->pm->title, '{$website_name}', $settings->get("engine.website_name") ) ?>">
                                 <span class="fa fa-inbox"></span>
                                 <?= $language->contact->pm->caption ?>

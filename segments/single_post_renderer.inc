@@ -170,7 +170,7 @@ $author = $post->get_author();
         
         <? if($account->_exists): ?>
             <? if( $account->id_account != $author->id_account ): ?>
-                <span class="item action" onclick="send_pm(this, '<?= $author->user_name ?>', '<?= replace_escaped_vars($language->contact->pm->send_to, '{$recipient}', htmlspecialchars($author->display_name)) ?>')"
+                <span class="item action" onclick="send_pm(this, '<?= $author->user_name ?>', '<?= htmlspecialchars($author->display_name) ?>')"
                       title="<?= replace_escaped_vars( $language->contact->pm->title, '{$website_name}', $settings->get("engine.website_name") ) ?>">
                     <span class="fa fa-inbox"></span>
                     <?= $language->pm_author ?>
