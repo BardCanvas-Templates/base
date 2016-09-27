@@ -72,7 +72,8 @@ header("Content-Type: text/html; charset=utf-8"); ?>
     ?>
 </head>
 <body data-orientation="landscape" data-viewport-class="0" <?=$template->get("additional_body_attributes")?> 
-      data-page-tag="<?= $template->get("page_tag") ?>" class="admin">
+      data-page-tag="<?= $template->get("page_tag") ?>" class="admin"
+      data-is-mobile="<?= is_mobile() ? "true" : "false" ?>">
 
 <div id="body_wrapper">
     
