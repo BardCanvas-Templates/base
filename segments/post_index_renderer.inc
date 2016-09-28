@@ -61,7 +61,7 @@ $this_module->load_extensions("front", "index_renderer_before_internal_wrapper")
                         <?= $author->get_processed_display_name() ?>
                     </a>
                     <? if($account->level >= config::COADMIN_USER_LEVEL && $account->id_account != $author->id_account): ?>
-                        <span class="meta_field critical pseudo_link" onclick="toggle_account('<?= $author->id_account ?>', 'disable', this, false)">
+                        <span class="meta_field critical pseudo_link" onclick="toggle_account( '<?= $author->id_account ?>', 'disable', this )">
                             <span class="fa fa-lock"></span>
                             <?= $language->disable ?>
                         </span>
@@ -194,13 +194,16 @@ $this_module->load_extensions("front", "index_renderer_before_internal_wrapper")
                 ?>
                 
                 <? if( $account->level >= config::MODERATOR_USER_LEVEL ): ?>
-                    <a class="greengo inline-block" 
+                    <br><a class="greengo inline-block" 
                        href="<?= $config->full_root_path ?>/posts/?edit_post=<?= $post->id_post ?>&wasuuup=<?= md5(mt_rand(1, 65535)) ?>"
                        ><span class="fa fa-pencil fa-fw"></span><?= $language->edit ?></a>
-                    <a class="critical inline-block" 
-                       href="<?= $config->full_root_path ?>/posts/?trash_post=<?= $post->id_post ?>&wasuuup=<?= md5(mt_rand(1, 65535)) ?>"
-                       onclick="return confirm('<?= $language->confirm_action ?>')"
-                       ><span class="fa fa-trash fa-fw"></span><?= $this_module->language->record_nav->actions->trash ?></a>
+                    <span class="critical inline-block pseudo_link" 
+                       onclick="change_post_status( '<?= $post->id_post ?>', 'trashed', this, function() { $('article[data-post-id=' + <?= $post->id_post ?> + ']').fadeOut('fast') } )"
+                       ><span class="fa fa-trash fa-fw"></span><?= $this_module->language->record_nav->actions->trash ?></span>
+                    <span class="important pseudo_link inline-block"
+                          onclick="change_post_status( '<?= $post->id_post ?>', 'reviewing', this, function() { $('article[data-post-id=' + <?= $post->id_post ?> + ']').fadeOut('fast') } )"
+                          ><span class="fa fa-flag fa-fw"></span><?= $this_module->language->record_nav->actions->flag_for_review ?>
+                    </span>
                 <? endif; ?>
                 
                 <? $this_module->load_extensions("front", "indexes_after_excerpt"); ?>

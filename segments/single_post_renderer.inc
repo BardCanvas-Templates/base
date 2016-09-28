@@ -29,7 +29,7 @@ $author = $post->get_author();
                 <?= $author->get_processed_display_name() ?>
             </a>
             <? if($account->level >= config::COADMIN_USER_LEVEL && $account->id_account != $author->id_account): ?>
-                <span class="meta_field critical pseudo_link" onclick="toggle_account('<?= $author->id_account ?>', 'disable', this, false)">
+                <span class="meta_field critical pseudo_link" onclick="toggle_account( '<?= $author->id_account ?>', 'disable', this )">
                     <span class="fa fa-lock"></span>
                     <?= $language->disable ?>
                 </span>
@@ -161,11 +161,10 @@ $author = $post->get_author();
         <? endif; ?>
         
         <? if( $post->can_be_deleted() ): ?>
-            <a class="item action" href="<?= $config->full_root_path ?>/posts/?trash_post=<?= $post->id_post ?>&wasuuup=<?= md5(mt_rand(1, 65535)) ?>"
-               onclick="return confirm('<?= $language->confirm_action ?>')">
+            <span class="item action" onclick="change_post_status( '<?= $post->id_post ?>', 'trashed', this, function() { location.href = $_FULL_ROOT_PATH + '/' } )">
                 <span class="fa fa-trash"></span>
                 <?= $current_module->language->record_nav->actions->trash ?>
-            </a>
+            </span>
         <? endif; ?>
         
         <? if($account->_exists): ?>
@@ -192,6 +191,23 @@ $author = $post->get_author();
                 <?= $language->report_to_webmaster ?>
             </a>
         <? endif; ?>
+        
+        <? if( $account->level >= config::MODERATOR_USER_LEVEL && $post->status == "published" ): ?>
+            <span class="item admin action"
+                  onclick="change_post_status( '<?= $post->id_post ?>', 'reviewing', this, function() { location.reload(); } )">
+                <span class="fa fa-flag"></span>
+                <?= $current_module->language->record_nav->actions->flag_for_review ?>
+            </span>
+        <? endif; ?>
+        
+        <? if( $account->level >= config::MODERATOR_USER_LEVEL && $post->status == "reviewing" ): ?>
+            <span class="item admin action"
+                  onclick="change_post_status( '<?= $post->id_post ?>', 'published', this, function() { location.reload(); } )">
+                <span class="fa fa-check"></span>
+                <?= $current_module->language->record_nav->actions->publish ?>
+            </span>
+        <? endif; ?>
+        
     </p>
     
     <div class="post_contents">

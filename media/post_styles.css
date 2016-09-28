@@ -130,6 +130,18 @@ article.single_post.reviewing { background-color: #ffe3e6; }
 
 .single_item_actions .action:hover { background-color: red; }
 
+.single_item_actions .action.admin {
+    border-color:     #bf005b;
+    color:            white;
+    background-color: #FF0080;
+}
+
+.single_item_actions .action.admin:hover {
+    border-color:     purple;
+    color:            white;
+    background-color: #bf00bf;
+}
+
 /* ======= */
 /* INDEXES */
 /* ======= */

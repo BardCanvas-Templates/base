@@ -69,7 +69,7 @@ if( $comments_count == 0 && $post->allow_comments == 0 ) return;
                             </a>
                             
                             <? if($account->level >= config::COADMIN_USER_LEVEL && $account->id_account != $author->id_account): ?>
-                                <span class="meta_field critical pseudo_link" onclick="toggle_account('<?= $author->id_account ?>', 'disable', this, false)">
+                                <span class="meta_field critical pseudo_link" onclick="toggle_account( '<?= $author->id_account ?>', 'disable', this )">
                                     <span class="fa fa-lock"></span>
                                     <?= $language->disable ?>
                                 </span>

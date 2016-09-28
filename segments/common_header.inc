@@ -47,6 +47,7 @@ if( empty($favicon) ) $favicon = "{$template->url}/media/favicon.ico";
     var $_TEMPLATE_URL            = '<?= $template->url ?>';
     var $_SCRIPTS_VERSION         = '<?= $config->scripts_version ?>';
     var $_IS_MOBILE               = <?= is_mobile() ? "true" : "false" ?>;
+    var $_GENERIC_CONFIRMATION    = '<?= $language->confirm_action ?>';
     
     var $_MAIN_MENU_AUTO_COLLAPSE_WIDTH = parseInt('<?= (int) $settings->get("engine.main_menu_auto_collapse_width", 700) ?>');
     
