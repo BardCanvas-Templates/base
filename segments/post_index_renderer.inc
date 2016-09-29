@@ -61,7 +61,7 @@ $this_module->load_extensions("front", "index_renderer_before_internal_wrapper")
                         <?= $author->get_processed_display_name() ?>
                     </a>
                     <? if($account->level >= config::COADMIN_USER_LEVEL && $account->id_account != $author->id_account): ?>
-                        <span class="meta_field critical pseudo_link" onclick="toggle_account( '<?= $author->id_account ?>', 'disable', this )">
+                        <span class="meta_field critical pseudo_link" onclick="if(confirm($_GENERIC_CONFIRMATION)) toggle_account( '<?= $author->id_account ?>', 'disable', this )">
                             <span class="fa fa-lock"></span>
                             <?= $language->disable ?>
                         </span>
@@ -164,7 +164,7 @@ $this_module->load_extensions("front", "index_renderer_before_internal_wrapper")
             <a href="<?= $post->get_permalink() ?>">
                 <h1><?= $post->get_processed_title(false) ?></h1>
                 <? if( ! empty($post->featured_image_thumbnail) ): ?>
-                    <div class="post_featured_image thumbnail">
+                    <div class="post_featured_image thumbnail <?= $post->featured_media_type ?>">
                         <img src="<?= $post->featured_image_thumbnail ?>">
                     </div>
                 <? endif; ?>

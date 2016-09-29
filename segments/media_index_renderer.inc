@@ -40,7 +40,7 @@ $this_module = $modules["gallery"];
                     </a>
                     
                     <? if($account->level >= config::COADMIN_USER_LEVEL && $account->id_account != $author->id_account): ?>
-                        <span class="meta_field critical pseudo_link" onclick="toggle_account( '<?= $author->id_account ?>', 'disable', this )">
+                        <span class="meta_field critical pseudo_link" onclick="if(confirm($_GENERIC_CONFIRMATION)) toggle_account( '<?= $author->id_account ?>', 'disable', this )">
                             <span class="fa fa-lock"></span>
                             <?= $language->disable ?>
                         </span>
@@ -95,7 +95,7 @@ $this_module = $modules["gallery"];
             
             <a href="<?= $item->get_page_url() ?>">
                 <h1><?= $item->get_processed_title(false) ?></h1>
-                <div class="post_featured_image thumbnail">
+                <div class="post_featured_image thumbnail <?= $item->type ?>">
                     <img src="<?= $item->get_thumbnail_url() ?>">
                 </div>
             </a>
