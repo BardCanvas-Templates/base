@@ -34,7 +34,8 @@ $this_module = $modules["posts"];
                       style="color: red; border-color: red; background-color: rgba(0, 0, 0, 0.5); position: absolute; z-index: 1; right: 5px; top: 5px;"
                       onclick="remove_tag_from_post($(this).closest('.featured_post'), '<?= $post->id_post ?>', '<?= $settings->get("modules:posts.featured_posts_tag") ?>'); return false;"></span>
             <? endif; ?>
-            <? if( ! empty($src) ): ?><span class="thumbnail <?= $post->featured_media_type ?>"><img src="<?= $src ?>"></span><? endif; ?>
+            <? if( ! empty($src) ): ?><span 
+                class="thumbnail <?= $post->featured_media_type ?>"><img src="<?= $src ?>"></span><? endif; ?>
             <h3>
                 <?= $post->get_processed_title(false) ?>
                 [<?= $post->get_processed_author_display_name() ?>, <?= $post->main_category_title ?>]

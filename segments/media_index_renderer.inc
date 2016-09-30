@@ -96,7 +96,12 @@ $this_module = $modules["gallery"];
             <a href="<?= $item->get_page_url() ?>">
                 <h1><?= $item->get_processed_title(false) ?></h1>
                 <div class="post_featured_image thumbnail <?= $item->type ?>">
-                    <img src="<?= $item->get_thumbnail_url() ?>">
+                    <? if( $item->type == "image"): ?>
+                        <img src="<?= $item->get_thumbnail_url() ?>">
+                    <? else: ?>
+                        <img class="windowed_image" src="<?= $config->full_root_path ?>/media_toolbox/render_blank_thumbnail"
+                             style="background-image: url('<?= $item->get_thumbnail_url() ?>')">
+                    <? endif; ?>
                 </div>
             </a>
             
