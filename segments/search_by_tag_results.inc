@@ -5,6 +5,7 @@
  * @var config     $config
  * @var template   $template
  * @var module[]   $modules
+ * @var string     $tag
  */
 
 use hng2_base\config;
@@ -43,11 +44,11 @@ $column_size   = empty($columns_count) ? 100 : floor(100 / $columns_count);
         box-shadow:         1px 1px 5px 0 rgba(0, 0, 0, 0.25);
         padding: 10px;
     }
-
+    
     #hashtag_entries_index article h3 {
         margin-top: 0; margin-bottom: 5px;
     }
-
+    
     #hashtag_entries_index article .hashtag_entry_thumbnail img {
         width: 100%;
     }
@@ -78,7 +79,7 @@ $column_size   = empty($columns_count) ? 100 : floor(100 / $columns_count);
         <a name="<?=wp_sanitize_filename($segment_title)?>"></a>
         <div class="column">
             
-            <h2><?= $segment_title ?> (<?= count($search_items) ?>)</h2>
+            <h2><?= $segment_title ?></h2>
             
             <? foreach($search_items as $item): ?>
                 
@@ -87,7 +88,9 @@ $column_size   = empty($columns_count) ? 100 : floor(100 / $columns_count);
                         <h3><?= $item->title ?></h3>
                         <? if( ! empty($item->thumbnail) ): ?>
                             <div class="hashtag_entry_thumbnail <?= $item->type ?>">
-                                <img src="<?= $item->thumbnail ?>">
+                                <img class="lazyload"
+                                     src="<?= $config->full_root_path ?>/media_toolbox/render_blank_thumbnail"
+                                     data-original="<?= $item->thumbnail ?>">
                             </div>
                         <? endif; ?>
                     </a>

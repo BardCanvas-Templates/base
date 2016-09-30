@@ -106,3 +106,4 @@ if( empty($favicon) ) $favicon = "{$template->url}/media/favicon.ico";
 <script type="text/javascript"          src="<?= $config->full_root_path ?>/lib/ion.sound-3.0.7/js/ion.sound.min.js"></script>
 <script type="text/javascript"          src="<?= $config->full_root_path ?>/lib/jquery.lazyload.js"></script>
 <script type="text/javascript"> $(document).ready(function() { $('.prettyPhoto').prettyPhoto({social_tools: false}); }); </script>
+<script type="text/javascript"> $(document).ready(function() { $('.lazyload').lazyload({effect: 'fadeIn', failure_limit : 99999}); }); </script>

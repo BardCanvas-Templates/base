@@ -257,6 +257,7 @@ article.single_post.reviewing { background-color: #ffe3e6; }
 
 @media all and (min-width: 1281px) {
 
+    body[data-page-tag="search_results"] .posts_index ,
     body[data-listing-type="archive"] .posts_index ,
     .posts_index[data-is-front-page="false"] {
         -webkit-column-count: 2; -webkit-column-gap: 10px;
@@ -264,6 +265,7 @@ article.single_post.reviewing { background-color: #ffe3e6; }
         column-count:         2; column-gap:         10px;
     }
 
+    body[data-page-tag="search_results"] .posts_index article ,
     body[data-listing-type="archive"] .posts_index article ,
     .posts_index[data-is-front-page="false"] article {
         display: inline-block; width: 100%;
