@@ -83,12 +83,14 @@ $column_size   = empty($columns_count) ? 100 : floor(100 / $columns_count);
             <? foreach($search_items as $item): ?>
                 
                 <article class="hashtag_entry clearfix">
-                    <h3><a href="<?= $item->url ?>"><?= $item->title ?></a></h3>
-                    <? if( ! empty($item->thumbnail) ): ?>
-                        <div class="hashtag_entry_thumbnail">
-                            <img src="<?= $item->thumbnail ?>">
-                        </div>
-                    <? endif; ?>
+                    <a href="<?= $item->url ?>">
+                        <h3><?= $item->title ?></h3>
+                        <? if( ! empty($item->thumbnail) ): ?>
+                            <div class="hashtag_entry_thumbnail <?= $item->type ?>">
+                                <img src="<?= $item->thumbnail ?>">
+                            </div>
+                        <? endif; ?>
+                    </a>
                     
                     <? if( ! empty($item->excerpt) ): ?>
                         <div class="hashtag_entry_contents">
