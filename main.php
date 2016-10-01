@@ -28,6 +28,8 @@ foreach($template->get_includes("pre_rendering") as $module => $include)
     include "{$this_module->abspath}/contents/{$include}";
 }
 
+if( $template->get("no_right_sidebar") ) $template->clear_right_sidebar_items();
+
 header("Content-Type: text/html; charset=utf-8"); ?>
 <!DOCTYPE html>
 <html>
