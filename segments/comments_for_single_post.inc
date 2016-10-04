@@ -135,12 +135,12 @@ foreach($comments as $comment)
                                 <span class="fa fa-cloud"></span>
                                 <?= $comment->creation_ip ?>
                             </span>
-                            <a class="meta_field critical" href="<?= $config->full_root_path ?>/?s=ip:<?= $comment->creation_ip ?>">
+                            <a class="meta_field critical" href="<?= $config->full_root_path ?>/comments/?search_for=<?= $comment->creation_ip ?>">
                                 <span class="fa fa-search"></span>
                                 <?= $language->ip ?>
                             </a>
                             <? $parts = explode(".", $comment->creation_ip); array_pop($parts); ?>
-                            <a class="meta_field critical" href="<?= $config->full_root_path ?>/?s=ip:<?= implode(".", $parts) ?>.%25">
+                            <a class="meta_field critical" href="<?= $config->full_root_path ?>/comments/?search_for=<?= implode(".", $parts) ?>.">
                                 <span class="fa fa-search"></span>
                                 <?= $language->segment ?>
                             </a>
@@ -151,19 +151,19 @@ foreach($comments as $comment)
                             $country  = array_pop($parts);
                             $city     = implode("; ", $parts);
                             if( $city != "N/A; N/A") : ?>
-                                <a class="meta_field critical" href="<?= $config->full_root_path ?>/?s=city:<?= urlencode($city) ?>">
+                                <a class="meta_field critical" href="<?= $config->full_root_path ?>/comments/?search_for=<?= urlencode($city) ?>">
                                     <span class="fa fa-map-marker"></span>
                                     <?= $city ?>
                                 </a>
                             <? endif; ?>
                             <? if($country != "N/A"): ?>
-                                <a class="meta_field critical" href="<?= $config->full_root_path ?>/?s=country:<?= urlencode($country) ?>">
+                                <a class="meta_field critical" href="<?= $config->full_root_path ?>/comments/?search_for=<?= urlencode($country) ?>">
                                     <span class="fa fa-globe"></span>
                                     <?= $country ?>
                                 </a>
                             <? endif; ?>
                             <? if($isp != "N/A"): ?>
-                                <a class="meta_field critical" href="<?= $config->full_root_path ?>/?s=isp:<?= urlencode($isp) ?>">
+                                <a class="meta_field critical" href="<?= $config->full_root_path ?>/comments/?search_for=<?= urlencode($isp) ?>">
                                     <span class="fa fa-building"></span>
                                     <?= $isp ?>
                                 </a>
