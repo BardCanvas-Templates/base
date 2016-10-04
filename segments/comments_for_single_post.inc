@@ -33,6 +33,11 @@ $repository = new comments_repository();
 
 list($find_params, $comments_count, $comments, $pagination) = $repository->get_for_single_post($post->id_post);
 if( $comments_count == 0 && $post->allow_comments == 0 ) return;
+/** @var comment_record[] $parents */
+$parents = array();
+foreach($comments as $comment)
+    if( empty($comment->parent_comment) )
+        $parents[$comment->id_comment] = $comment;
 ?>
 
 <div id="post_comments" class="content_frame" data-post-id="<?= $post->id_post ?>">
@@ -88,6 +93,36 @@ if( $comments_count == 0 && $post->allow_comments == 0 ) return;
                                 <?= $comment->author_display_name ?>
                             </span>
                         <? endif; ?>
+                        
+                        <?
+                        if( ! empty($comment->parent_comment) )
+                        {
+                            $parent = $parents[$comment->parent_comment];
+                            if( ! empty($parent) )
+                            {
+                                if( empty($parent->id_author) )
+                                {
+                                    echo "
+                                            <span class='fa fa-chevron-right fa-fw'></span>
+                                            <span class='fa fa-question-circle'></span>
+                                            {$parent->author_display_name}
+                                        ";
+                                }
+                                else
+                                {
+                                    $parent_author = $parent->get_author();
+                                    echo "
+                                            <span class='fa fa-chevron-right fa-fw'></span>
+                                            <a class='user_display_name inline-block' data-user-level='{$parent_author->level}'
+                                               href='{$config->full_root_path}/user/{$parent_author->user_name}'>
+                                                <span class='fa fa-user fa-fw'></span>
+                                                {$parent_author->get_processed_display_name()}
+                                            </a>
+                                        ";
+                                }
+                            }
+                        }
+                        ?>
                     </div>
                     <div class="meta_section">
                         <span class="meta_field dimmed">
