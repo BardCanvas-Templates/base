@@ -147,7 +147,7 @@ header("Content-Type: text/html; charset=utf-8"); ?>
             }
             ?>
         </div>
-    
+        
     </div><!-- /#header -->
     
     <?
@@ -179,6 +179,23 @@ header("Content-Type: text/html; charset=utf-8"); ?>
         include "{$this_module->abspath}/contents/{$include}";
     }
     ?>
+    
+    <? if($config->display_performance_details && EMBED_INTERNALS): ?>
+        <div id="footer">
+            <div class="footer_contents" align="center">
+                <?
+                if( $config->query_tracking_enabled ) echo "
+                    <span class='fa fa-database fa-fw'></span>" . number_format($database->get_tracked_queries_count()) . " •
+                    ";
+                echo "
+                    <span class='fa fa-clock-o fa-fw'></span>" . number_format(microtime(true) - $global_start_time, 3) . "s •
+                    <span class='fa fa-tachometer fa-fw'></span>" . number_format(memory_get_usage(true) / 1024 / 1024, 1) . "MiB •
+                    <span class='fa fa-plus fa-fw pseudo_link' onclick=\"$('.internals').show();\"></span>
+                ";
+                ?>
+            </div>
+        </div><!-- /#footer -->
+    <? endif; ?>
     
 </div><!-- /#body_wrapper -->
 

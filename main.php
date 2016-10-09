@@ -114,13 +114,6 @@ header("Content-Type: text/html; charset=utf-8"); ?>
                 <span class="fa fa-bars fa-fw"></span>
             </span>
             
-            <? if($config->display_performance_details && EMBED_INTERNALS): ?>
-                <span class="main_menu_item pseudo_link always_visible pull-right"
-                      onclick="$('.internals').show(); $.scrollTo('.internals:first', 500);">
-                    <span class="fa fa-info fa-fw"></span>
-                </span>
-            <? endif; ?>
-            
             <? if( $template->count_left_sidebar_groups() > 0 ): ?>
                 <span id="left_sidebar_trigger" class="main_menu_item pull-left"
                       onclick="toggle_left_sidebar_items()">
@@ -244,13 +237,14 @@ header("Content-Type: text/html; charset=utf-8"); ?>
             •
             <?
             if( $config->query_tracking_enabled ) echo "
-                <span class='fa fa-database fa-fw'></span>" . number_format($database->get_tracked_queries_count()) . "
-                •
+                <span class='fa fa-database fa-fw'></span>" . number_format($database->get_tracked_queries_count()) . " •
                 ";
             echo "
                 <span class='fa fa-clock-o fa-fw'></span>" . number_format(microtime(true) - $global_start_time, 3) . "s •
                 <span class='fa fa-tachometer fa-fw'></span>" . number_format(memory_get_usage(true) / 1024 / 1024, 1) . "MiB
             ";
+            if($config->display_performance_details && EMBED_INTERNALS)
+                echo "• <span class=\"fa fa-plus fa-fw pseudo_link\" onclick=\"$('.internals').show();\"></span>";
             ?>
         </div>
         
