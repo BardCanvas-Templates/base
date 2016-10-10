@@ -83,7 +83,7 @@ $author = $template->get("user_profile_account");
             <h2><?= replace_escaped_vars($language->contact->contact_user, '{$display_name}', $author->get_processed_display_name()) ?></h2>
             <div class="framed_content">
                 <ul>
-                    <? if( $account->_exists ): ?>
+                    <? if( $modules["messaging"]->enabled && $account->_exists ): ?>
                         <li>
                             <span class="pseudo_link" style="white-space: normal" onclick="send_pm(this, '<?= $author->user_name ?>', '<?= htmlspecialchars($author->display_name) ?>')">
                                 <span class="fa fa-inbox"></span>

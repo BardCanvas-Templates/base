@@ -204,7 +204,7 @@ foreach($comments as $comment)
                     <? endif; ?>
                     
                     <? if( ! is_null($author) && $account->id_account != $author->id_account ): ?>
-                        <? if($account->_exists): ?>
+                        <? if($modules["messaging"]->enabled && $account->_exists): ?>
                             <span class="pseudo_link" onclick="send_pm(this, '<?= $author->user_name ?>', '<?= htmlspecialchars($author->display_name) ?>')"
                                   title="<?= replace_escaped_vars( $language->contact->pm->title, '{$website_name}', $settings->get("engine.website_name") ) ?>">
                                 <span class="fa fa-inbox"></span>

@@ -168,7 +168,7 @@ $author = $post->get_author();
         <? endif; ?>
         
         <? if($account->_exists): ?>
-            <? if( $account->id_account != $author->id_account ): ?>
+            <? if( $modules["messaging"]->enabled && $account->id_account != $author->id_account ): ?>
                 <span class="item action" onclick="send_pm(this, '<?= $author->user_name ?>', '<?= htmlspecialchars($author->display_name) ?>')"
                       title="<?= replace_escaped_vars( $language->contact->pm->title, '{$website_name}', $settings->get("engine.website_name") ) ?>">
                     <span class="fa fa-inbox"></span>
