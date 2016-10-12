@@ -90,8 +90,8 @@ h3 .emojione { height: 12pt; }
 
 /* User profile styles */
 
-#user_profile_area    { background-color: white; box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.25); }
-#user_profile_heading { background: #990d0d center center no-repeat; background-size: cover;
+#user_profile_area    { background-color: white; box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.25); position: relative; }
+#user_profile_heading { background: #990d0d center center no-repeat; background-size: cover; 
                         width: 100%; height: 300px; display: table; }
 
 #user_profile_area .details                { width: 100%; height: 300px; padding: 0 10px 10px 195px;

@@ -15,7 +15,7 @@ $author = $post->get_author();
 ?>
 
 <article class="post single_post <?= $post->status ?> clearfix" data-post-id="<?= $post->id_post ?>"
-         data-main-category="<?= $post->main_category_slug ?>"
+         data-main-category="<?= $post->main_category_slug ?>" data-author-id="<?= $author->id_account ?>"
          data-author-role="<?= $author->get_role(true) ?>" data-author-level="<?= $author->level ?>">
     
     <div class="meta_box clearfix">
