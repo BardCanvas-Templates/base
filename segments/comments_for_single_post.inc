@@ -253,17 +253,19 @@ foreach($comments as $comment)
 <div id="comments_edit_target" style="display: none;"></div>
 <div id="reply_target" style="display: none;"></div>
 
-<script type="text/javascript">
-    $(document).ready(function()
-    {
-        var comment_id = '<?= $_GET["reply_to"] ?>';
-    
-        if( comment_id == '' ) return;
-    
-        var $comment = $('.comment_entry[data-id-comment="' + comment_id + '"]');
-        if( $comment.length == 0 ) return;
-    
-        var $trigger = $comment.find('.comment_reply .reply_comment_trigger');
-        setTimeout(function() { prepare_comment_reply($trigger, false, true) }, 1000);
-    });
-</script>
+<? if( $_POST["prevent_reopen"] != "true" ): ?>
+    <script type="text/javascript">
+        $(document).ready(function()
+        {
+            var comment_id = '<?= $_GET["reply_to"] ?>';
+        
+            if( comment_id == '' ) return;
+        
+            var $comment = $('.comment_entry[data-id-comment="' + comment_id + '"]');
+            if( $comment.length == 0 ) return;
+        
+            var $trigger = $comment.find('.comment_reply .reply_comment_trigger');
+            setTimeout(function() { prepare_comment_reply($trigger, false, true) }, 1000);
+        });
+    </script>
+<? endif; ?>
