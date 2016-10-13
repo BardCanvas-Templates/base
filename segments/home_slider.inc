@@ -28,7 +28,7 @@ if( $template->get("exclude_home_slider") ) return;
     #posts_slider li { margin: 0; padding: 0; }
     
     #posts_slider .outer          ,
-    #posts_slider .inner          { display: block; margin: 0; padding: 0; height: 300px; overflow: hidden;
+    #posts_slider .inner          { display: block; margin: 0; padding: 0; height: 300px; width: 100%; overflow: hidden;
                                     text-align: center; background: none center center no-repeat; }
     
     #posts_slider .outer              { background-size: cover; }
