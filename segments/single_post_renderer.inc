@@ -146,10 +146,8 @@ $author = $post->get_author();
     <? endif; ?>
     
     <p class="single_item_actions">
-        <a class="item action clipboard-copy seamless_right" href="<?= $post->get_permalink(true) ?>">
+        <span class="item action clipboard-copy" data-clipboard-text="<?= $post->get_permalink(true) ?>" style="">
             <?= $language->permalink ?>
-        </a><span class="item action clipboard-copy seamless_left"
-                  data-clipboard-text="<?= $post->get_permalink(true) ?>" style="">
             <span class="fa fa-clipboard"></span>
         </span>
         

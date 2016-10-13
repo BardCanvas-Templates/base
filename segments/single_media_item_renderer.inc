@@ -126,10 +126,8 @@ $author = $item->get_author();
     </h1>
     
     <p class="single_item_actions">
-        <a class="item action clipboard-copy seamless_right" href="<?= $item->get_page_url(true) ?>">
+        <span class="item action clipboard-copy" data-clipboard-text="<?= $item->get_page_url(true) ?>" style="">
             <?= $language->permalink ?>
-        </a><span class="item action clipboard-copy seamless_left"
-                  data-clipboard-text="<?= $item->get_page_url(true) ?>" style="">
             <span class="fa fa-clipboard"></span>
         </span>
         
