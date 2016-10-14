@@ -73,6 +73,13 @@ $this_module->load_extensions("front", "index_renderer_before_internal_wrapper")
                             </span>
                             <span class="target" style="display: none;"></span>
                         </span>
+                        <? if( $modules["messaging"]->enabled ): ?>
+                            <span class="meta_field critical pseudo_link" onclick="send_pm(this, '<?= $author->user_name ?>', '<?= htmlspecialchars($author->display_name) ?>')"
+                                  title="<?= replace_escaped_vars( $language->contact->pm->title, '{$website_name}', $settings->get("engine.website_name") ) ?>">
+                                <span class="fa fa-inbox"></span>
+                                <?= $language->contact->pm->caption ?>
+                            </span>
+                        <? endif; ?>
                     <? endif; ?>
                     
                     <a class="meta_field" href="<?= $config->full_root_url ?>/category/<?= $post->main_category_slug ?>/">
