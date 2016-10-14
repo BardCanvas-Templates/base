@@ -103,22 +103,22 @@ foreach($comments as $comment)
                                 if( empty($parent->id_author) )
                                 {
                                     echo "
-                                            <span class='fa fa-chevron-right fa-fw'></span>
-                                            <span class='fa fa-question-circle'></span>
-                                            {$parent->author_display_name}
-                                        ";
+                                        <span class='fa fa-chevron-right fa-fw'></span>
+                                        <span class='fa fa-question-circle'></span>
+                                        {$parent->author_display_name}
+                                    ";
                                 }
                                 else
                                 {
                                     $parent_author = $parent->get_author();
                                     echo "
-                                            <span class='fa fa-chevron-right fa-fw'></span>
-                                            <a class='user_display_name inline-block' data-user-level='{$parent_author->level}'
-                                               href='{$config->full_root_path}/user/{$parent_author->user_name}'>
-                                                <span class='fa fa-user fa-fw'></span>
-                                                {$parent_author->get_processed_display_name()}
-                                            </a>
-                                        ";
+                                        <span class='fa fa-chevron-right fa-fw'></span>
+                                        <a class='user_display_name inline-block' data-user-level='{$parent_author->level}'
+                                           href='{$config->full_root_path}/user/{$parent_author->user_name}'>
+                                            <span class='fa fa-user fa-fw'></span>
+                                            {$parent_author->get_processed_display_name()}
+                                        </a>
+                                    ";
                                 }
                             }
                         }
@@ -191,10 +191,11 @@ foreach($comments as $comment)
                     <? endif; ?>
                     
                     <? if( $account->_exists && $account->id_account != $comment->id_author ): ?>
-                        <a href="<?= "{$config->full_root_url}/comments/?flag_as_spam={$comment->id_comment}" ?>" target="_blank">
+                        <span class="pseudo_link"
+                              onclick="if( confirm($_GENERIC_CONFIRMATION) ) spam_comment('<?= $comment->id_comment ?>', function() { $('.comment_entry[data-id-comment=<?= $comment->id_comment ?>]').fadeOut('fast', function() { $(this).remove(); }); }, this)">
                             <span class="fa fa-flag"></span>
                             <?= $language->flag_as_spam ?>
-                        </a>
+                        </span>
                         <? if($account->level < config::MODERATOR_USER_LEVEL): ?>
                             <a href="<?= "{$config->full_root_url}/contact/?action=report&type=comment&id={$comment->id_comment}" ?>" target="_blank">
                                 <span class="fa fa-exclamation-circle"></span>
@@ -229,12 +230,11 @@ foreach($comments as $comment)
                     <? endif; ?>
     
                     <? if( $comment->can_be_deleted() ): ?>
-                        <a href="<?= "{$config->full_root_url}/comments/?delete={$comment->id_comment}" ?>"
-                           target="_blank"
-                           onclick="return confirm('<?= $language->confirm_action ?>')">
+                        <span class="pseudo_link"
+                              onclick="if( confirm($_GENERIC_CONFIRMATION) ) delete_comment('<?= $comment->id_comment ?>', function() { $('.comment_entry[data-id-comment=<?= $comment->id_comment ?>]').fadeOut('fast', function() { $(this).remove(); }); }, this)">
                             <span class="fa fa-trash"></span>
                             <?= $this_module->language->record_nav->actions->trash ?>
-                        </a>
+                        </span>
                     <? endif; ?>
                     
                 </div>
