@@ -29,7 +29,7 @@ $author = $post->get_author();
                 <?= $author->get_processed_display_name() ?>
             </a>
             <? if($account->level >= config::COADMIN_USER_LEVEL && $account->id_account != $author->id_account): ?>
-                <span class="meta_field critical pseudo_link" onclick="if(confirm($_GENERIC_CONFIRMATION)) toggle_account( '<?= $author->id_account ?>', 'disable', this )">
+                <span class="meta_field critical pseudo_link disable_user_link" onclick="if(confirm($_GENERIC_CONFIRMATION)) toggle_account( '<?= $author->id_account ?>', 'disable', this )">
                     <span class="fa fa-lock"></span>
                     <?= $language->disable ?>
                 </span>
