@@ -91,7 +91,7 @@ $author = $post->get_author();
                 </span>
             <? endif; ?>
             
-            <? if( $account->level >= config::MODERATOR_USER_LEVEL ): ?>
+            <? if( ! empty($post->creation_ip) && $account->level >= config::MODERATOR_USER_LEVEL ): ?>
                 <span class="meta_field critical">
                             <span class="fa fa-cloud"></span>
                     <?= $post->creation_ip ?>

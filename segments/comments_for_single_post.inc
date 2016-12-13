@@ -130,7 +130,7 @@ foreach($comments as $comment)
                             <?= time_today_string($comment->creation_date) . " (" . time_elapsed_string($comment->creation_date) . ")" ?>
                         </span>
                         
-                        <? if( $account->level >= config::MODERATOR_USER_LEVEL ): ?>
+                        <? if( ! empty($comment->creation_ip) && $account->level >= config::MODERATOR_USER_LEVEL ): ?>
                             <span class="meta_field critical">
                                 <span class="fa fa-cloud"></span>
                                 <?= $comment->creation_ip ?>
