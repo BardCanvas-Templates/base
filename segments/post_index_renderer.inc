@@ -17,7 +17,8 @@ use hng2_modules\posts\posts_data;
 $this_module = $modules["posts"];
 
 if( in_array($template->get("page_tag"), array("post_category_index", "home"))
-    && $account->level >= config::NEWCOMER_USER_LEVEL )
+    && $account->level >= config::NEWCOMER_USER_LEVEL
+    && $settings->get("modules:posts.disable_quick_post_form") != "true" )
     include "{$this_module->abspath}/contents/quick_post_form.inc";
 
 if( $posts_data->count == 0 ) return;
@@ -61,7 +62,7 @@ $this_module->load_extensions("front", "index_renderer_before_internal_wrapper")
                         <?= $author->get_processed_display_name() ?>
                     </a>
                     <? if($account->level >= config::COADMIN_USER_LEVEL && $account->id_account != $author->id_account): ?>
-                        <span class="meta_field critical pseudo_link" onclick="if(confirm($_GENERIC_CONFIRMATION)) toggle_account( '<?= $author->id_account ?>', 'disable', this )">
+                        <span class="meta_field critical pseudo_link disable_user_link" onclick="if(confirm($_GENERIC_CONFIRMATION)) toggle_account( '<?= $author->id_account ?>', 'disable', this )">
                             <span class="fa fa-lock"></span>
                             <?= $language->disable ?>
                         </span>
