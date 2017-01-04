@@ -6,6 +6,8 @@ function add_admin_menu_items_to_header_menu()
     
     foreach($modules as $module_name => $this_module)
     {
+        if( ! $account->has_admin_rights_to_module($module_name) ) continue;
+        
         if(is_array($this_module->menu_items) || is_object($this_module->menu_items))
         {
             foreach($this_module->menu_items->item as $this_menu_item)

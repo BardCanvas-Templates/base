@@ -49,7 +49,9 @@ header("Content-Type: text/html; charset=utf-8"); ?>
     }
     ?>
 </head>
-<body data-orientation="landscape" data-viewport-class="0" <?=$template->get("additional_body_attributes")?>  class="popup">
+<body data-orientation="landscape" data-viewport-class="0" <?=$template->get("additional_body_attributes")?>  class="popup"
+      data-is-known-user="<?= $account->_exists ? "true" : "false" ?>"
+      data-user-level="<?= $account->level ?>">
 
 <div id="body_wrapper">
     

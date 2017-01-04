@@ -1,13 +1,39 @@
 <?php
 /**
- * Base template - Admin menu
+ * Admin menu
  *
  * @package    HNG2
  * @subpackage core
  * @author     Alejandro Caballero - lava.caballero@gmail.com
  */
 
-use hng2_base\config;
+$menu = array();
+$index = 0;
+foreach($modules as $module_name => $this_module)
+{
+    if( ! $account->has_admin_rights_to_module($module_name) ) continue;
+    
+    if(is_array($this_module->menu_items) || is_object($this_module->menu_items))
+    {
+        foreach($this_module->menu_items->item as $this_menu_item)
+        {
+            $strict_item_level = trim($this_menu_item["strict_admin_level"]);
+            if( ! empty($strict_item_level) &&  $account->level < $strict_item_level ) continue;
+            
+            $item_url    = trim($this_menu_item->url);
+            $added_class = ($module_name == $current_module->name && stristr($_SERVER["PHP_SELF"], "/$module_name/$item_url") !== false) ? "current" : "";
+            $url         = "{$config->full_root_path}/$module_name/$item_url";
+            $caption     = $this_module->language->admin->menu_items->{$this_menu_item->caption_language_var};
+            $icon        = empty($this_module->language->icon) ? "" : ("<span class='fa " . trim($this_module->language->icon) . "'></span>");
+            $key         = strtolower($caption).sprintf("%05.0f", $index);
+            $menu[$key]  = "<a class='item $added_class' href='$url'>$icon $caption</a>";
+        }
+    }
+}
+
+if( empty($menu) ) return;
+
+ksort($menu);
 ?>
 
 <script type="text/javascript">
@@ -51,31 +77,6 @@ use hng2_base\config;
         #<?= $config->numeric_server_id ?> (<?= current(explode(".", gethostname())) ?>)
     </span>
     
-    <?
-    $menu = array();
-    $index = 0;
-    foreach($modules as $module_name => $this_module)
-    {
-        if(is_array($this_module->menu_items) || is_object($this_module->menu_items))
-        {
-            foreach($this_module->menu_items->item as $this_menu_item)
-            {
-                $strict_item_level = trim($this_menu_item["strict_admin_level"]);
-                if( ! empty($strict_item_level) &&  $account->level < $strict_item_level ) continue;
-                
-                $item_url    = trim($this_menu_item->url);
-                $added_class = ($module_name == $current_module->name && stristr($_SERVER["PHP_SELF"], "/$module_name/$item_url") !== false) ? "current" : "";
-                $url         = "{$config->full_root_path}/$module_name/$item_url";
-                $caption     = $this_module->language->admin->menu_items->{$this_menu_item->caption_language_var};
-                $icon        = empty($this_module->language->icon) ? "" : ("<span class='fa " . trim($this_module->language->icon) . "'></span>");
-                $key         = strtolower($caption).sprintf("%05.0f", $index);
-                $menu[$key]  = "<a class='item $added_class' href='$url'>$icon $caption</a>";
-            }
-        }
-    }
+    <?= implode("", $menu); ?>
     
-    ksort($menu);
-    echo implode("", $menu);
-    ?>
-
 </div>

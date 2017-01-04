@@ -47,7 +47,7 @@ header("Content-Type: text/html; charset=utf-8"); ?>
     
     <!-- Core functions and styles -->
     <link rel="stylesheet" type="text/css" href="<?= $config->full_root_path ?>/media/styles~v<?=$config->scripts_version?>.css">
-    <? if($account->_is_admin): ?><link rel="stylesheet" type="text/css" href="<?= $config->full_root_path ?>/media/admin~v<?=$config->scripts_version?>.css"><? endif; ?>
+    <link rel="stylesheet" type="text/css" href="<?= $config->full_root_path ?>/media/admin~v<?=$config->scripts_version?>.css">
     <script type="text/javascript"          src="<?= $config->full_root_path ?>/media/functions~v<?=$config->scripts_version?>.js"></script>
     <script type="text/javascript"          src="<?= $config->full_root_path ?>/media/notification_functions~v<?=$config->scripts_version?>.js"></script>
     
@@ -81,7 +81,9 @@ header("Content-Type: text/html; charset=utf-8"); ?>
 <body data-orientation="landscape" data-viewport-class="0" <?=$template->get("additional_body_attributes")?>
       data-is-user-profile-page="<?= $template->get("show_user_profile_heading") ? "true" : "false" ?>"
       data-page-tag="<?= $template->get("page_tag") ?>" class="main"
-      data-is-mobile="<?= is_mobile() ? "true" : "false" ?>">
+      data-is-mobile="<?= is_mobile() ? "true" : "false" ?>"
+      data-is-known-user="<?= $account->_exists ? "true" : "false" ?>"
+      data-user-level="<?= $account->level ?>">
 
 <div id="body_wrapper">
     
@@ -97,7 +99,7 @@ header("Content-Type: text/html; charset=utf-8"); ?>
         
         <div class="header_top">
             <?
-            if( $account->_is_admin && $settings->get("engine.show_admin_menu_in_header_menu") != "true" )
+            if( $settings->get("engine.show_admin_menu_in_header_menu") != "true" )
                 include "{$template->abspath}/segments/admin_menu.inc";
             
             foreach($template->get_includes("header_top") as $module => $include)
@@ -126,7 +128,7 @@ header("Content-Type: text/html; charset=utf-8"); ?>
             </a>
             
             <?
-            if( $account->_is_admin && $settings->get("engine.show_admin_menu_in_header_menu") == "true" )
+            if( $settings->get("engine.show_admin_menu_in_header_menu") == "true" )
                 add_admin_menu_items_to_header_menu();
             
             foreach($template->get_includes("header_menu") as $module => $include)
