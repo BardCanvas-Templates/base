@@ -80,7 +80,7 @@ $author = $template->get("user_profile_account");
             $caption = end(explode("\t", $caption));
             $url = "{$config->full_root_path}/author/{$author->user_name}/" . str_replace("@root", "", $key);
             $current = $template->get("current_user_profile_tab") == $key ? "current" : "";
-            echo "<a class='tab {$current}' href='{$url}'>{$caption}</a>";
+            echo "<a class='tab {$current}' data-key='{$key}' href='{$url}'>{$caption}</a>";
         }
         ?>
     </div>
