@@ -36,7 +36,8 @@ $author = $template->get("user_profile_account");
                 <? elseif($modules["contact"]->enabled): ?>
                     <span class="pull-right">
                         <? if( $modules["messaging"]->enabled && $account->_exists ): ?>
-                            <button onclick="send_pm(this, '<?= $author->user_name ?>', '<?= htmlspecialchars($author->display_name) ?>')"
+                            <button class="send_pm"
+                                    onclick="send_pm(this, '<?= $author->user_name ?>', '<?= htmlspecialchars($author->display_name) ?>')"
                                     title="<?= replace_escaped_vars( $language->contact->pm->title, '{$website_name}', $settings->get("engine.website_name") ) ?>">
                                 <span class="fa fa-inbox"></span>
                                 <?= $language->contact->pm->caption ?>
@@ -44,7 +45,8 @@ $author = $template->get("user_profile_account");
                         <? endif; ?>
                         <? if( $author->get_engine_pref("@contact:allow_emails") != "false"
                                || $account->level >= config::MODERATOR_USER_LEVEL ): ?>
-                            <button title="<?= $language->contact->email->title ?>" onclick="location.href = '<?= $config->full_root_path ?>/contact/?target=<?= urlencode($author->user_name) ?>'">
+                            <button class="send_email" title="<?= $language->contact->email->title ?>"
+                                    onclick="location.href = '<?= $config->full_root_path ?>/contact/?target=<?= urlencode($author->user_name) ?>'">
                                 <span class="fa fa-envelope"></span>
                                 <?= $language->contact->email->caption ?>
                             </button>
