@@ -2,14 +2,12 @@
 <template>
     
     <name>Base template</name>
-    
     <version>1.7.6</version>
+    <group>templates_basic</group>
     
     <description>
         Distributed with BardCanvas.
     </description>
-    
-    <group>BardCanvas</group>
     
     <tags>responsive, facebook clone, wordpress clone, mobile, desktop, multpile columns</tags>
     
