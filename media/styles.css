@@ -155,6 +155,10 @@ body#tinymce[data-id="account_signature"] { font-family: 'Roboto', sans-serif; f
 
 .windowed_image { background: transparent center center no-repeat; background-size: cover; }
 
+body.admin h1 a.framed_content, body.admin h1 .pseudo_link.framed_content { color: #830606; text-decoration: none; }
+body.admin h2 a.framed_content, body.admin h2 .pseudo_link.framed_content { color: #830606; text-decoration: none; }
+body.admin h3 a.framed_content, body.admin h3 .pseudo_link.framed_content { color: #830606; text-decoration: none; }
+
 /* Media lists on record browsers */
 
 .media_bullet         { padding: 0 0 4px 22px; margin-bottom: 2px; position: relative; color: #bf0060;
