@@ -2,8 +2,8 @@
 <template>
     
     <name>Base template</name>
-    <version>1.7.10</version>
-    <group>templates</group>
+    <version>1.8.0</version>
+    <group>templates_base</group>
     
     <description>
         Distributed with BardCanvas.
