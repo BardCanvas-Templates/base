@@ -1,6 +1,10 @@
 
 # Base Template Change Log
 
+## [1.8.6] - 2017-04-17
+
+- Added extension point on comments for single posts.
+
 ## [1.8.5] - 2017-04-14
 
 - Added extension point on user profile home.
