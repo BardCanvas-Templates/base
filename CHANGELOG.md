@@ -1,6 +1,10 @@
 
 # Base Template Change Log
 
+## [1.8.7] - 2017-04-20
+
+- Added extension points on post index renderer.
+
 ## [1.8.6] - 2017-04-15
 
 - Added extension point on comments for single posts.
