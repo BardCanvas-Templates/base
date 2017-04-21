@@ -1,6 +1,10 @@
 
 # Base Template Change Log
 
+## [1.8.8] - 2017-04-21
+
+- Added support for one-click on-screen notifications dismissal.
+
 ## [1.8.7] - 2017-04-20
 
 - Added extension points on post index renderer.
