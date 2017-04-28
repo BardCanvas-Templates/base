@@ -1,6 +1,10 @@
 
 # Base Template Change Log
 
+## [1.9.1] - 2017-04-28
+
+- Added actions to single post comments
+
 ## [1.9.0] - 2017-04-23
 
 - Fixed navigation issues on single post comments.
