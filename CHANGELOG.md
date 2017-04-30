@@ -1,6 +1,10 @@
 
 # Base Template Change Log
 
+## [1.10.0] - 2017-04-29
+
+- Removed local common header and included the one from the engine.
+
 ## [1.9.1] - 2017-04-28
 
 - Added actions to single post comments
