@@ -30,8 +30,8 @@ header("Content-Type: text/html; charset=utf-8"); ?>
     <? include ROOTPATH . "/includes/common_header.inc" ?>
     
     <!-- This template -->
-    <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/styles~v<?=$config->scripts_version?>.css">
-    <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/post_styles~v<?=$config->scripts_version?>.css">
+    <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/styles~v<?=$template->version?>-2.css">
+    <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/post_styles~v<?=$template->version?>-2.css">
     
     <!-- Always-on -->
     <? $template->render_always_on_files(); ?>
