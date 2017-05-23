@@ -1,6 +1,10 @@
 
 # Base Template Change Log
 
+## [1.11.0] - 2017-05-23
+
+- Simplified PM links/buttons rendering method.
+
 ## [1.10.3] - 2017-05-17
 
 - Added support for contact module option to avoid anonymous guests to send email to registered users.
