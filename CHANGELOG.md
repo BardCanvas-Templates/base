@@ -1,6 +1,10 @@
 
 # Base Template Change Log
 
+## [1.11.1] - 2017-05-29
+
+- Fxed issue with parents and added extension point on comments for single post.
+
 ## [1.11.0] - 2017-05-23
 
 - Simplified PM links/buttons rendering method.
