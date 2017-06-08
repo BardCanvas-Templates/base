@@ -1,6 +1,10 @@
 
 # Base Template Change Log
 
+## [1.12.0] - 2017-06-08
+
+- Refactored footer to allow customization.
+
 ## [1.11.1] - 2017-05-29
 
 - Fxed issue with parents and added extension point on comments for single post.
