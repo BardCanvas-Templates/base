@@ -31,7 +31,7 @@ header("Content-Type: text/html; charset=utf-8"); ?>
     
     <!-- This template -->
     <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/styles~v<?=$template->version?>-2.css">
-    <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/post_styles~v<?=$template->version?>-2.css">
+    <link rel="stylesheet" type="text/css" href="<?= $template->url ?>/media/post_styles~v<?=$template->version?>-3.css">
     
     <!-- Always-on -->
     <? $template->render_always_on_files(); ?>
