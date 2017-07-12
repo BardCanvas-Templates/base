@@ -1,6 +1,10 @@
 
 # Base Template Change Log
 
+## [1.12.4] - 2017-07-11
+
+- Hidden pagination helpers for post indexes with few items.
+
 ## [1.12.3] - 2017-07-07
 
 - CSS tuning.
