@@ -1,6 +1,10 @@
 
 # Base Template Change Log
 
+## [1.12.6] - 2017-08-03
+
+- Changed video rendering method to support "play" icon overlays.
+
 ## [1.12.5] - 2017-07-26
 
 - Fixed left sidebar relocation issue.
