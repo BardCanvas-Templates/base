@@ -1,6 +1,10 @@
 
 # Base Template Change Log
 
+## [1.12.7] - 2017-12-14
+
+- Added TinyMCE support to popup layout.
+
 ## [1.12.6] - 2017-08-03
 
 - Changed video rendering method to support "play" icon overlays.
