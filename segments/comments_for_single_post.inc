@@ -67,6 +67,8 @@ $this_module->load_extensions("front", "comments_for_single_post_presets");
             
             <div class="comment_wrapper">
                 
+                <? $this_module->load_extensions("front", "single_comment_before_meta_box"); ?>
+                
                 <div class="meta_box clearfix">
                     <img class="user_avatar" src="<?= $avatar_url ?>">
                     <div class="meta_section upper">
@@ -177,20 +179,31 @@ $this_module->load_extensions("front", "comments_for_single_post_presets");
                     </div>
                 </div>
                 
+                <? $this_module->load_extensions("front", "single_comment_after_meta_box"); ?>
+                
                 <div class="content">
+                    <? $this_module->load_extensions("front", "single_comment_before_content"); ?>
                     <?= $comment->get_processed_content() ?>
                     <? $this_module->load_extensions("front", "single_comment_after_content"); ?>
                 </div>
                 
+                <? $this_module->load_extensions("front", "single_comment_before_wrapper_closing"); ?>
+                
             </div>
+            
+            <? $this_module->load_extensions("front", "single_comment_before_reply_actions"); ?>
             
             <div class="comment_reply">
                 <div class="trigger">
+                    
+                    <? $this_module->load_extensions("front", "single_comment_pre_actions1"); ?>
                     
                     <a class="comment_action_permalink" href="<?= $comment->get_permalink() ?>" target="_blank">
                         <span class="fa fa-link"></span>
                         <?= $language->permalink ?>
                     </a>
+                    
+                    <? $this_module->load_extensions("front", "single_comment_pre_actions2"); ?>
                     
                     <? if($post->allow_comments && $allow_new_comments): ?>
                         <span class="comment_action_reply pseudo_link reply_comment_trigger" onclick="prepare_comment_reply(this, false, true)">
@@ -263,6 +276,8 @@ $this_module->load_extensions("front", "comments_for_single_post_presets");
                 <div class="target"></div>
             </div>
             
+            <? $this_module->load_extensions("front", "single_comment_after_reply_actions"); ?>
+            
         </div>
         
     <? endforeach; ?>
@@ -307,3 +322,5 @@ $this_module->load_extensions("front", "comments_for_single_post_presets");
         });
     </script>
 <? endif; ?>
+
+<? $this_module->load_extensions("front", "comments_for_single_post_before_eof"); ?>
