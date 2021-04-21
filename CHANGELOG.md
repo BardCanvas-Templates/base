@@ -1,6 +1,10 @@
 
 # Base Template Change Log
 
+## [1.12.9] - 2021-04-20
+
+- Tuned the contact section on the user profile home.
+
 ## [1.12.8] - 2020-05-04
 
 - Added extension points on comments for single post segment.
